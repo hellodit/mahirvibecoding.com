@@ -1,5 +1,5 @@
 <template>
-  <div class="font-sans antialiased text-gray-900 bg-white">
+  <div class="font-sans antialiased text-gray-900 bg-gray-50">
     <NavBar />
     <main>
       <HeroSection />
