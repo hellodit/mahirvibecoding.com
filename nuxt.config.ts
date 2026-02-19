@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/global.css'],
   fonts: {
     families: [
-      { name: 'Inter', provider: 'google', weights: [400, 500, 600, 700, 800] }
+      { name: 'Plus Jakarta Sans', provider: 'google', weights: [400, 500, 600, 700, 800] }
     ]
   },
   app: {

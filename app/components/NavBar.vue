@@ -10,14 +10,12 @@
           Dapatkan Panduan
         </a>
       </nav>
-      <!-- Mobile menu button -->
       <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 text-gray-600">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
     </div>
-    <!-- Mobile menu -->
     <div v-if="mobileMenuOpen" class="md:hidden border-t border-gray-200 bg-white px-6 py-4 space-y-3">
       <a href="#curriculum" @click="mobileMenuOpen = false" class="block text-sm text-gray-600 hover:text-gray-900">Kurikulum</a>
       <a href="#target" @click="mobileMenuOpen = false" class="block text-sm text-gray-600 hover:text-gray-900">Untuk Siapa</a>
