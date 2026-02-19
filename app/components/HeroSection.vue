@@ -41,7 +41,7 @@
 
         <!-- Right: UI Mockup Cards -->
         <div class="hidden lg:block relative z-10">
-           <img src="/hero-illustration.svg" alt="Vibe Coding Workflow: Planning to Deployment" class="w-full max-w-[650px] mx-auto hover:scale-[1.02] transition-transform duration-500" />
+           <img src="/hero-illustration.svg" alt="Vibe Coding Workflow: Planning to Deployment" class="w-full h-auto mx-auto hover:scale-[1.02] transition-transform duration-500" />
         </div>
       </div>
     </div>
