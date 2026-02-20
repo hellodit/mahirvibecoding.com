@@ -1,5 +1,5 @@
 <template>
-  <section id="curriculum" class="py-20 px-6 bg-background">
+  <section id="curriculum" class="py-24 px-6 bg-background">
     <div class="max-w-5xl mx-auto">
       <!-- Header -->
       <div class="text-center mb-12 reveal">

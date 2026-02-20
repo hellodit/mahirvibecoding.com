@@ -1,5 +1,5 @@
 <template>
-  <section id="final-cta" class="py-24 px-6 bg-background">
+  <section id="final-cta" class="py-24 px-6 bg-primary/5">
     <div class="max-w-5xl mx-auto text-center">
       <div class="reveal">
         <p class="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Mulai Sekarang</p>

@@ -1,5 +1,5 @@
 <template>
-  <section id="solution" class="py-20 px-6 bg-background">
+  <section id="solution" class="py-20 px-6 bg-white border-t border-primary/5">
     <div class="max-w-5xl mx-auto">
       <!-- Header -->
       <div class="max-w-2xl mb-14 reveal">
