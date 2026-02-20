@@ -3,34 +3,27 @@
     <div class="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
       <!-- Logo -->
       <a href="#" class="flex items-center gap-3 group">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center text-white font-mono font-bold text-sm shadow-lg shadow-gray-200/50 group-hover:scale-105 transition-transform duration-300 ring-1 ring-white/20">
-          &gt;_
-        </div>
         <div class="flex flex-col">
-          <span class="text-base font-bold text-gray-900 tracking-tight leading-none group-hover:text-gray-700 transition-colors">MahirVibe</span>
-          <span class="text-[10px] font-medium text-gray-400 uppercase tracking-widest leading-none mt-0.5">Coding Framework</span>
+          <span class="text-base font-bold text-text tracking-tight leading-none group-hover:text-text transition-colors">MahirVibeCoding</span>
         </div>
       </a>
 
       <!-- Desktop Nav -->
       <nav class="hidden md:flex items-center gap-8">
-        <a href="#curriculum" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Kurikulum</a>
-        <a href="#target" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Untuk Siapa</a>
-        <a href="#faq" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">FAQ</a>
+        <a href="#curriculum" class="text-sm font-medium text-text hover:text-text transition-colors">Kurikulum</a>
+        <a href="#target" class="text-sm font-medium text-text hover:text-text transition-colors">Untuk Siapa</a>
+        <a href="#faq" class="text-sm font-medium text-text hover:text-text transition-colors">FAQ</a>
       </nav>
 
       <!-- Right CTA -->
       <div class="hidden md:flex items-center gap-3">
-        <a href="#pricing" class="px-5 py-2.5 text-sm font-semibold text-gray-800 border border-gray-300 rounded-full hover:border-gray-400 hover:bg-gray-50 transition-all">
-          Selengkapnya
-        </a>
-        <a href="#pricing" class="px-5 py-2.5 text-sm font-semibold text-white bg-gray-900 rounded-full hover:bg-gray-800 transition-all shadow-sm">
-          Dapatkan Panduan
+        <a href="#pricing" class="px-5 py-2.5 text-sm font-semibold text-white bg-primary rounded-full hover:bg-primary transition-all shadow-sm">
+          Dapatkan Sekarang
         </a>
       </div>
 
       <!-- Mobile Menu Button -->
-      <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
+      <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 text-text hover:bg-gray-100 rounded-lg transition-colors">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
         </svg>

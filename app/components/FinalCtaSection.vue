@@ -2,10 +2,10 @@
   <section id="pricing" class="py-24 px-6 bg-gray-50">
     <div class="max-w-5xl mx-auto text-center">
       <div class="reveal">
-        <p class="text-xs font-semibold text-clockwork-400 uppercase tracking-widest mb-3">Mulai Sekarang</p>
+        <p class="text-xs font-semibold text-blue-500 uppercase tracking-widest mb-3">Mulai Sekarang</p>
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-4">
           Siap membangun aplikasi fullstack<br class="hidden md:block" />
-          dengan AI — <span class="text-clockwork-400">secara strategis?</span>
+          dengan AI — <span class="text-blue-500">secara strategis?</span>
         </h2>
         <p class="text-base text-gray-400 max-w-md mx-auto mb-10 leading-relaxed">
           Jangan biarkan AI bekerja tanpa arah. Kuasai framework yang membuat AI menjadi partner terbaik dalam development workflow kamu.

@@ -6,31 +6,30 @@
         <!-- Left: Text -->
         <div class="lg:col-span-7">
           <!-- Badge -->
-          <div class="flex items-center gap-2 mb-8">
-            <span class="inline-flex items-center px-3 py-1 rounded-full bg-gray-900 text-white text-xs font-bold uppercase tracking-wider">
-              New
+          <div class="flex items-center gap-2 mb-4">
+            <span class="inline-flex items-center px-3 py-1 rounded-full bg-primary text-white text-xs font-bold uppercase tracking-wider">
+              Framework Vibe Coding
             </span>
-            <span class="text-sm font-medium text-gray-600">Framework Vibe Coding</span>
           </div>
 
-          <h1 class="text-3xl md:text-5xl lg:text-[3.5rem] font-extrabold text-gray-900 leading-[1.1] tracking-tight mb-6">
-            Cara baru bikin aplikasi dengan <span class="text-gray-900">Vibe coding</span>
+          <h1 class="text-3xl md:text-5xl lg:text-[3.5rem] font-extrabold text-text leading-[1.1] tracking-tight mb-6">
+            Cara baru bikin aplikasi dengan <span class="text-primary">Vibe coding</span>
           </h1>
 
-          <p class="text-base md:text-lg text-gray-500 max-w-xl mb-10 leading-relaxed">
+          <p class="text-base md:text-lg text-text max-w-xl mb-10 leading-relaxed">
             Upgrade cara vibe coding kamu dengan framework lengkap untuk membangun aplikasi fullstack bersama AI Coding Agent
           </p>
 
           <!-- CTA Buttons -->
           <div class="flex flex-wrap items-center gap-4 mb-10">
             <a href="#pricing"
-              class="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-bold text-white bg-gray-900 rounded-full hover:bg-gray-800 transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 duration-300">
+              class="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-bold text-white bg-primary rounded-full hover:bg-gray-800 transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 duration-300">
               Dapatkan Panduan
             </a>
             <a href="#curriculum"
-              class="group inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-gray-700 border border-gray-300 rounded-full hover:border-gray-400 hover:bg-gray-50 transition-all duration-300">
+              class="group inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-primary border border-primary rounded-full hover:border-gray-400 hover:bg-gray-50 transition-all duration-300">
               Preview
-              <span class="w-7 h-7 rounded-full bg-gray-900 text-white flex items-center justify-center group-hover:scale-110 transition-transform">
+              <span class="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center group-hover:scale-110 transition-transform">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-0.5" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M8 5v14l11-7z"/>
                 </svg>
@@ -41,12 +40,12 @@
           <!-- Social Proof -->
           <div class="flex items-center gap-4">
             <div class="flex -space-x-2.5">
-              <div class="w-9 h-9 rounded-full bg-gray-900 border-2 border-white flex items-center justify-center text-xs font-bold text-white">A</div>
-              <div class="w-9 h-9 rounded-full bg-gray-600 border-2 border-white flex items-center justify-center text-xs font-bold text-white">B</div>
-              <div class="w-9 h-9 rounded-full bg-gray-300 border-2 border-white flex items-center justify-center text-xs font-bold text-gray-700">C</div>
+              <div class="w-9 h-9 rounded-full bg-primary border-2 border-white flex items-center justify-center text-xs font-bold text-white">A</div>
+              <div class="w-9 h-9 rounded-full bg-primary border-2 border-white flex items-center justify-center text-xs font-bold text-white">B</div>
+              <div class="w-9 h-9 rounded-full bg-primary border-2 border-white flex items-center justify-center text-xs font-bold text-white">C</div>
             </div>
             <div>
-              <p class="text-xs text-gray-400">Harga peluncuran tersedia. Tanpa risiko.</p>
+              <p class="text-xs text-text">Bergabung dengan mereka yang sudah sukses menggunakan framework ini.</p>
             </div>
           </div>
         </div>

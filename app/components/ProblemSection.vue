@@ -3,7 +3,7 @@
     <div class="max-w-5xl mx-auto">
       <!-- Header -->
       <div class="max-w-2xl mb-14 reveal">
-        <p class="text-xs font-semibold text-clockwork-400 uppercase tracking-widest mb-3">Masalah</p>
+        <p class="text-xs font-semibold text-blue-500 uppercase tracking-widest mb-3">Masalah</p>
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight tracking-tight">
           Kenapa banyak developer gagal memanfaatkan AI untuk coding?
         </h2>
@@ -29,7 +29,7 @@
       </div>
 
       <!-- Transition -->
-      <div class="reveal border-l-2 border-clockwork-400 pl-6 max-w-xl">
+      <div class="reveal border-l-2 border-blue-500 pl-6 max-w-xl">
         <p class="text-base text-gray-500 leading-relaxed">
           Masalah ini bukan karena AI-nya kurang canggih. Masalahnya ada di
           <span class="font-semibold text-gray-800">strategi</span> dan

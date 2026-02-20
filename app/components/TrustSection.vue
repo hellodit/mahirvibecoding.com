@@ -2,7 +2,7 @@
   <section id="trust" class="py-20 px-6 bg-white">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14 reveal">
-        <p class="text-xs font-semibold text-clockwork-400 uppercase tracking-widest mb-3">Kredibilitas</p>
+        <p class="text-xs font-semibold text-blue-500 uppercase tracking-widest mb-3">Kredibilitas</p>
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
           Disusun dari pengalaman nyata,<br class="hidden md:block" /> bukan sekadar teori
         </h2>
@@ -15,8 +15,8 @@
           class="reveal flex gap-4 items-start p-5 rounded-xl border border-gray-100 hover:border-gray-200 transition-colors"
           :class="`reveal-delay-${index + 1}`"
         >
-          <div class="w-8 h-8 rounded-lg bg-clockwork-50 flex items-center justify-center flex-shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-clockwork-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <div class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" :d="point.icon" />
             </svg>
           </div>

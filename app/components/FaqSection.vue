@@ -2,7 +2,7 @@
   <section id="faq" class="py-20 px-6 bg-white">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14 reveal">
-        <p class="text-xs font-semibold text-clockwork-400 uppercase tracking-widest mb-3">FAQ</p>
+        <p class="text-xs font-semibold text-blue-500 uppercase tracking-widest mb-3">FAQ</p>
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
           Pertanyaan yang sering diajukan
         </h2>
@@ -19,11 +19,11 @@
             @click="toggle(index)"
             class="w-full flex items-center justify-between py-5 text-left cursor-pointer group"
           >
-            <span class="text-sm font-semibold text-gray-800 pr-4 group-hover:text-clockwork-500 transition-colors">{{ faq.question }}</span>
-            <span class="flex-shrink-0 w-6 h-6 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-clockwork-400 transition-colors">
+            <span class="text-sm font-semibold text-gray-800 pr-4 group-hover:text-blue-600 transition-colors">{{ faq.question }}</span>
+            <span class="flex-shrink-0 w-6 h-6 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-blue-500 transition-colors">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="w-3.5 h-3.5 text-gray-400 transition-transform duration-200 group-hover:text-clockwork-400"
+                class="w-3.5 h-3.5 text-gray-400 transition-transform duration-200 group-hover:text-blue-500"
                 :class="{ 'rotate-45': openIndex === index }"
                 fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
               >

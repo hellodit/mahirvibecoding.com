@@ -7,7 +7,7 @@
           21 BAB LENGKAP
         </span>
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-3">
-          Apa aja <span class="text-clockwork-400">ada di dalamnya?</span>
+          Apa aja <span class="text-blue-500">ada di dalamnya?</span>
         </h2>
         <p class="text-base text-gray-400 max-w-xl mx-auto mb-10">
           Dari nol sampai bisa bikin project sendiri. Semua dibahas tuntas dengan bahasa yang gampang dipahami.
@@ -22,8 +22,8 @@
             <span class="text-gray-400">50+ Code Examples</span>
           </div>
           <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-gray-100 text-gray-700 text-sm font-medium hover:border-gray-200 transition-colors">
-            <div class="w-8 h-8 rounded-lg bg-clockwork-50 flex items-center justify-center flex-shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-clockwork-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <div class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
@@ -59,7 +59,7 @@
             </span>
             <!-- Title & subtitle -->
             <div class="flex-1 min-w-0">
-              <h3 class="text-lg font-bold text-gray-900 group-hover:text-clockwork-500 transition-colors">
+              <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
                 {{ section.title }}
               </h3>
               <p class="text-sm text-gray-400 mt-0.5">{{ section.babCount }} bab</p>
@@ -87,7 +87,7 @@
                 <p class="text-xs text-gray-400 italic mb-2">{{ chapter.quote }}</p>
                 <ul class="space-y-1">
                   <li v-for="(item, i) in chapter.items" :key="i" class="text-sm text-gray-500 flex items-start gap-2">
-                    <span class="text-clockwork-400 mt-0.5 flex-shrink-0">→</span>
+                    <span class="text-blue-500 mt-0.5 flex-shrink-0">→</span>
                     {{ item }}
                   </li>
                 </ul>
@@ -125,7 +125,7 @@ const sections = [
   {
     title: 'Planning',
     babCount: 3,
-    badgeColor: 'bg-clockwork-500',
+    badgeColor: 'bg-blue-500',
     chapters: [
       {
         title: 'Pengantar: Memahami Perubahan Era Coding',
