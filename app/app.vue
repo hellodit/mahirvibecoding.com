@@ -1,5 +1,5 @@
 <template>
-  <div class="font-sans antialiased text-text bg-background">
+  <div class="font-sans antialiased text-text bg-white">
     <AnnouncementBar @dismissed="announcementVisible = false" />
     <NavBar :announcement-visible="announcementVisible" />
     <main>
