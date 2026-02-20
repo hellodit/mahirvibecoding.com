@@ -1,36 +1,36 @@
 <template>
-  <section id="curriculum" class="py-20 px-6 bg-gray-50">
+  <section id="curriculum" class="py-20 px-6 bg-background">
     <div class="max-w-5xl mx-auto">
       <!-- Header -->
       <div class="text-center mb-12 reveal">
-        <span class="inline-block px-3 py-1.5 rounded-lg bg-gray-900 text-white text-xs font-semibold uppercase tracking-wider mb-4">
+        <span class="inline-block px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-semibold uppercase tracking-wider mb-4">
           21 BAB LENGKAP
         </span>
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-3">
-          Apa aja <span class="text-blue-500">ada di dalamnya?</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
+          Apa aja <span class="text-primary">ada di dalamnya?</span>
         </h2>
-        <p class="text-base text-gray-400 max-w-xl mx-auto mb-10">
+        <p class="text-base text-text/70 max-w-xl mx-auto mb-10">
           Dari nol sampai bisa bikin project sendiri. Semua dibahas tuntas dengan bahasa yang gampang dipahami.
         </p>
 
         <!-- Info cards -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
-          <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-gray-100 text-gray-700 text-sm font-medium hover:border-gray-200 transition-colors">
-            <span class="text-gray-400">21 Chapter</span>
+          <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-primary/10 text-text text-sm font-medium hover:border-primary/20 transition-colors">
+            <span class="text-text/70">21 Chapter</span>
           </div>
-          <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-gray-100 text-gray-700 text-sm font-medium hover:border-gray-200 transition-colors">
-            <span class="text-gray-400">50+ Code Examples</span>
+          <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-primary/10 text-text text-sm font-medium hover:border-primary/20 transition-colors">
+            <span class="text-text/70">50+ Code Examples</span>
           </div>
-          <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-gray-100 text-gray-700 text-sm font-medium hover:border-gray-200 transition-colors">
-            <div class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-primary/10 text-text text-sm font-medium hover:border-primary/20 transition-colors">
+            <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
             <span>Checklist Tiap Bab</span>
           </div>
-          <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-gray-100 text-gray-700 text-sm font-medium hover:border-gray-200 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-primary/10 text-text text-sm font-medium hover:border-primary/20 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-text/60 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
             <span>Templates Siap Pakai</span>
@@ -43,7 +43,7 @@
         <div
           v-for="(section, index) in sections"
           :key="index"
-          class="reveal rounded-2xl bg-white border border-gray-100 overflow-hidden transition-colors hover:border-gray-200"
+          class="reveal rounded-2xl bg-white border border-primary/10 overflow-hidden transition-colors hover:border-primary/20"
           :class="`reveal-delay-${(index % 3) + 1}`"
         >
           <button
@@ -59,13 +59,13 @@
             </span>
             <!-- Title & subtitle -->
             <div class="flex-1 min-w-0">
-              <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+              <h3 class="text-lg font-bold text-text group-hover:text-primary transition-colors">
                 {{ section.title }}
               </h3>
-              <p class="text-sm text-gray-400 mt-0.5">{{ section.babCount }} bab</p>
+              <p class="text-sm text-text/70 mt-0.5">{{ section.babCount }} bab</p>
             </div>
             <!-- Chevron -->
-            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-gray-500 transition-transform duration-200" :class="{ 'rotate-180': openIndex === index }">
+            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-text/70 transition-transform duration-200" :class="{ 'rotate-180': openIndex === index }">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
@@ -74,25 +74,25 @@
 
           <!-- Collapsed content -->
           <div
-            class="overflow-hidden transition-all duration-300 ease-in-out border-t border-gray-100"
+            class="overflow-hidden transition-all duration-300 ease-in-out border-t border-primary/10"
             :style="{ maxHeight: openIndex === index ? '2000px' : '0px' }"
           >
             <div class="p-5 pt-4 space-y-6">
               <div
                 v-for="(chapter, chIndex) in section.chapters"
                 :key="chIndex"
-                class="pl-2 border-l-2 border-gray-100"
+                class="pl-2 border-l-2 border-primary/20"
               >
-                <h4 class="text-sm font-semibold text-gray-900 mb-1">{{ chapter.title }}</h4>
-                <p class="text-xs text-gray-400 italic mb-2">{{ chapter.quote }}</p>
+                <h4 class="text-sm font-semibold text-text mb-1">{{ chapter.title }}</h4>
+                <p class="text-xs text-text/70 italic mb-2">{{ chapter.quote }}</p>
                 <ul class="space-y-1">
-                  <li v-for="(item, i) in chapter.items" :key="i" class="text-sm text-gray-500 flex items-start gap-2">
-                    <span class="text-blue-500 mt-0.5 flex-shrink-0">→</span>
+                  <li v-for="(item, i) in chapter.items" :key="i" class="text-sm text-text/80 flex items-start gap-2">
+                    <span class="text-primary mt-0.5 flex-shrink-0">→</span>
                     {{ item }}
                   </li>
                 </ul>
                 <div class="flex flex-wrap gap-1.5 mt-2">
-                  <span v-for="(tag, t) in chapter.tags" :key="t" class="text-[10px] font-medium text-gray-400 bg-gray-50 border border-gray-100 px-2 py-0.5 rounded-full">
+                  <span v-for="(tag, t) in chapter.tags" :key="t" class="text-[10px] font-medium text-text/70 bg-primary/5 border border-primary/10 px-2 py-0.5 rounded-full">
                     {{ tag }}
                   </span>
                 </div>
@@ -103,8 +103,8 @@
       </div>
 
       <!-- Footer -->
-      <div class="mt-6 reveal flex items-center gap-3 px-4 py-3 rounded-xl bg-white border border-gray-100 text-sm text-gray-500 hover:border-gray-200 transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <div class="mt-6 reveal flex items-center gap-3 px-4 py-3 rounded-xl bg-white border border-primary/10 text-sm text-text/70 hover:border-primary/20 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-text/60 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
         </svg>
         <span>250+ halaman panduan praktis dengan contoh nyata</span>
@@ -125,7 +125,7 @@ const sections = [
   {
     title: 'Planning',
     babCount: 3,
-    badgeColor: 'bg-blue-500',
+    badgeColor: 'bg-primary',
     chapters: [
       {
         title: 'Pengantar: Memahami Perubahan Era Coding',
@@ -166,7 +166,7 @@ const sections = [
   {
     title: 'Developing',
     babCount: 2,
-    badgeColor: 'bg-gray-900',
+    badgeColor: 'bg-primary',
     chapters: [
       {
         title: 'Develop: Kolaborasi, Bukan Delegasi',
@@ -195,7 +195,7 @@ const sections = [
   {
     title: 'Deployment',
     babCount: 1,
-    badgeColor: 'bg-gray-900',
+    badgeColor: 'bg-primary',
     chapters: [
       {
         title: 'Deploy & Real World: Dari Lokal ke Produksi',

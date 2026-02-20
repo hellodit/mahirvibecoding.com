@@ -1,10 +1,10 @@
 <template>
-  <section id="target" class="py-20 px-6 bg-gray-50">
+  <section id="target" class="py-20 px-6 bg-background">
     <div class="max-w-5xl mx-auto">
       <!-- Header -->
       <div class="text-center mb-14 reveal">
-        <p class="text-xs font-semibold text-blue-500 uppercase tracking-widest mb-3">Target Audience</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
+        <p class="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Target Audience</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-text tracking-tight">
           Untuk siapa panduan ini?
         </h2>
       </div>
@@ -14,13 +14,13 @@
         <div class="reveal">
           <div class="space-y-5">
             <div v-for="(item, index) in targetFor" :key="index" class="flex gap-3 items-start">
-              <div class="w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <p class="text-sm text-gray-500 leading-relaxed">
-                <span class="font-semibold text-gray-800">{{ item.bold }}</span> {{ item.rest }}
+              <p class="text-sm text-text/80 leading-relaxed">
+                <span class="font-semibold text-text">{{ item.bold }}</span> {{ item.rest }}
               </p>
             </div>
           </div>
@@ -28,15 +28,15 @@
 
         <!-- Not for -->
         <div class="reveal reveal-delay-2">
-          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-5">Bukan untuk kamu jika…</p>
+          <p class="text-xs font-semibold text-text/70 uppercase tracking-widest mb-5">Bukan untuk kamu jika…</p>
           <div class="space-y-5">
             <div v-for="(item, index) in notFor" :key="index" class="flex gap-3 items-start">
-              <div class="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <div class="w-5 h-5 rounded-full bg-primary/5 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-text/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" />
                 </svg>
               </div>
-              <p class="text-sm text-gray-400 leading-relaxed">{{ item }}</p>
+              <p class="text-sm text-text/60 leading-relaxed">{{ item }}</p>
             </div>
           </div>
         </div>

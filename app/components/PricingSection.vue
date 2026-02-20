@@ -1,13 +1,13 @@
 <template>
-  <section id="pricing" class="py-20 px-6 bg-gray-50">
+  <section id="pricing" class="py-20 px-6 bg-background">
     <div class="max-w-5xl mx-auto">
       <!-- Header -->
       <div class="text-center mb-12 reveal">
-        <p class="text-xs font-semibold text-blue-500 uppercase tracking-widest mb-3">Pricing</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-3">
-          Investasi untuk <span class="text-blue-500">skill masa depan</span>
+        <p class="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Pricing</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
+          Investasi untuk <span class="text-primary">skill masa depan</span>
         </h2>
-        <p class="text-base text-gray-400 max-w-xl mx-auto">
+        <p class="text-base text-text/70 max-w-xl mx-auto">
           Sekali beli, akses selamanya. Pilih paket yang sesuai dengan kebutuhanmu.
         </p>
       </div>
@@ -17,8 +17,8 @@
         <div
           v-for="(plan, index) in plans"
           :key="plan.id"
-          class="reveal rounded-2xl bg-white border border-gray-100 overflow-hidden flex flex-col transition-colors hover:border-gray-200"
-          :class="[`reveal-delay-${index + 1}`, plan.featured && 'ring-2 ring-blue-500']"
+          class="reveal rounded-2xl bg-white border border-primary/10 overflow-hidden flex flex-col transition-colors hover:border-primary/20"
+          :class="[`reveal-delay-${index + 1}`, plan.featured && 'ring-2 ring-primary']"
         >
           <!-- Plan badge -->
           <div class="p-5 pb-0">
@@ -32,16 +32,16 @@
 
           <!-- Card content -->
           <div class="p-5 flex-1 flex flex-col">
-            <h3 class="text-lg font-bold text-gray-900 mb-1">{{ plan.name }}</h3>
-            <p v-if="plan.subtitle" class="text-sm text-gray-500 mb-4">{{ plan.subtitle }}</p>
+            <h3 class="text-lg font-bold text-text mb-1">{{ plan.name }}</h3>
+            <p v-if="plan.subtitle" class="text-sm text-text/70 mb-4">{{ plan.subtitle }}</p>
 
             <!-- Price -->
             <div class="mb-5">
-              <span v-if="plan.originalPrice" class="text-sm text-gray-400 line-through mr-2">
+              <span v-if="plan.originalPrice" class="text-sm text-text/60 line-through mr-2">
                 Rp {{ plan.originalPrice }}
               </span>
-              <span class="text-2xl font-bold text-blue-500">Rp {{ plan.price }}</span>
-              <p v-if="plan.discountNote" class="text-xs text-gray-400 mt-1">{{ plan.discountNote }}</p>
+              <span class="text-2xl font-bold text-primary">Rp {{ plan.price }}</span>
+              <p v-if="plan.discountNote" class="text-xs text-text/60 mt-1">{{ plan.discountNote }}</p>
             </div>
 
             <!-- Benefits -->
@@ -49,10 +49,10 @@
               <li
                 v-for="(benefit, i) in plan.benefits"
                 :key="i"
-                class="flex items-start gap-2 text-sm text-gray-500"
+                class="flex items-start gap-2 text-sm text-text/80"
               >
-                <span class="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <span class="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                 </span>
@@ -63,7 +63,7 @@
             <!-- CTA -->
             <a
               :href="plan.ctaUrl"
-              class="block w-full py-3.5 text-center text-sm font-bold text-white bg-gray-900 rounded-xl hover:bg-gray-800 transition-colors"
+              class="block w-full py-3.5 text-center text-sm font-bold text-white bg-primary rounded-xl hover:opacity-90 transition-colors"
             >
               {{ plan.ctaText }}
             </a>
@@ -73,25 +73,25 @@
 
       <!-- Footer trust row -->
       <div class="reveal flex flex-wrap justify-center gap-8 md:gap-12">
-        <div class="flex items-center gap-3 text-gray-500">
-          <div class="w-10 h-10 rounded-xl bg-white border border-gray-100 flex items-center justify-center flex-shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <div class="flex items-center gap-3 text-text/80">
+          <div class="w-10 h-10 rounded-xl bg-white border border-primary/10 flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
           </div>
           <span class="text-sm">Garansi 7 Hari — Tidak puas? Uang kembali 100%</span>
         </div>
-        <div class="flex items-center gap-3 text-gray-500">
-          <div class="w-10 h-10 rounded-xl bg-white border border-gray-100 flex items-center justify-center flex-shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <div class="flex items-center gap-3 text-text/80">
+          <div class="w-10 h-10 rounded-xl bg-white border border-primary/10 flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
           </div>
           <span class="text-sm">Pembayaran Aman — Via GoAkal, trusted payment</span>
         </div>
-        <div class="flex items-center gap-3 text-gray-500">
-          <div class="w-10 h-10 rounded-xl bg-white border border-gray-100 flex items-center justify-center flex-shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <div class="flex items-center gap-3 text-text/80">
+          <div class="w-10 h-10 rounded-xl bg-white border border-primary/10 flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
           </div>
@@ -108,7 +108,7 @@ const plans = [
     id: 'lite',
     name: 'Lite',
     badge: 'Ebook Only',
-    badgeClass: 'bg-gray-100 text-gray-700',
+    badgeClass: 'bg-primary/10 text-text',
     subtitle: 'Belajar mandiri',
     originalPrice: '99.000',
     price: '89.000',
@@ -124,7 +124,7 @@ const plans = [
     id: 'pro',
     name: 'Pro',
     badge: 'Pro',
-    badgeClass: 'bg-blue-50 text-blue-600',
+    badgeClass: 'bg-primary/10 text-primary',
     subtitle: null,
     originalPrice: '199.000',
     price: '119.400',
@@ -145,7 +145,7 @@ const plans = [
     id: 'ultimate',
     name: 'Ultimate',
     badge: 'Ebook + Bootcamp',
-    badgeClass: 'bg-blue-100 text-blue-700',
+    badgeClass: 'bg-primary/10 text-primary',
     subtitle: '4 SESI LIVE — Bimbingan langsung dari mentor',
     originalPrice: '799.000',
     price: '479.400',
