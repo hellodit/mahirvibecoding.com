@@ -58,6 +58,35 @@
         </div>
       </div>
 
+      <!-- Tech marquee: teks saja (logo bisa ditambah nanti) -->
+      <div class="mt-16 md:mt-20 overflow-hidden border-y border-primary/10 bg-background/50 py-5">
+        <div class="flex items-center gap-12 md:gap-16 logo-marquee">
+          <div class="flex items-center gap-12 md:gap-16 shrink-0">
+            <a href="https://laravel.com" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-text/80 opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" aria-label="Laravel">Laravel</a>
+            <a href="https://nextjs.org" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-text/80 opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" aria-label="Next.js">Next.js</a>
+            <a href="https://nuxt.com" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-text/80 opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" aria-label="Nuxt">Nuxt</a>
+            <a href="https://svelte.dev" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-text/80 opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" aria-label="Svelte">Svelte</a>
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="flex items-center gap-12 md:gap-16 shrink-0">
+            <a href="https://laravel.com" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-text/80 opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" aria-label="Laravel">Laravel</a>
+            <a href="https://nextjs.org" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-text/80 opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" aria-label="Next.js">Next.js</a>
+            <a href="https://nuxt.com" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-text/80 opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" aria-label="Nuxt">Nuxt</a>
+            <a href="https://svelte.dev" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-text/80 opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" aria-label="Svelte">Svelte</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 </template>
+
+<style scoped>
+.logo-marquee {
+  animation: marquee 25s linear infinite;
+}
+@keyframes marquee {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+</style>
