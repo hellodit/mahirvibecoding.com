@@ -50,9 +50,11 @@
           </div>
         </div>
 
-        <!-- Right: UI Mockup Cards -->
+        <!-- Right: Task creation mockup -->
         <div class="hidden lg:block lg:col-span-5 relative z-10">
-           <img src="/hero-illustration.svg" alt="Vibe Coding Workflow: Planning to Deployment" class="w-full h-auto mx-auto hover:scale-[1.02] transition-transform duration-500" />
+          <div class="space-y-3">
+            <TaskCreationMockup class="hover:scale-[1.02] transition-transform duration-500" />
+          </div>
         </div>
       </div>
 
