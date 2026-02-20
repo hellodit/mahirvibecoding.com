@@ -1,6 +1,7 @@
 <template>
   <div class="font-sans antialiased text-gray-900 bg-gray-50">
-    <NavBar />
+    <AnnouncementBar @dismissed="announcementVisible = false" />
+    <NavBar :announcement-visible="announcementVisible" />
     <main>
       <HeroSection />
       <ProblemSection />
@@ -16,7 +17,9 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
+
+const announcementVisible = ref(true)
 
 onMounted(() => {
   const observer = new IntersectionObserver(
