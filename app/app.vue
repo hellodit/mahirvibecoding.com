@@ -6,11 +6,12 @@
       <HeroSection />
       <ProblemSection />
       <SolutionSection />
-      <CurriculumSection />
       <TargetAudienceSection />
+      <CurriculumSection />
       <TrustSection />
-      <FinalCtaSection />
+      <PricingSection />
       <FaqSection />
+      <FinalCtaSection />
     </main>
     <FooterSection />
   </div>

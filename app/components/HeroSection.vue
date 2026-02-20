@@ -1,6 +1,6 @@
 <template>
   <section id="hero" class="relative bg-white overflow-hidden mx-auto">
-    <div class="relative z-10 max-w-7xl mx-auto px-6 pt-16 pb-20 md:pt-20 md:pb-28">
+    <div class="relative z-10 max-w-5xl mx-auto px-6 pt-16 pb-20 md:pt-20 md:pb-28">
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         <!-- Left: Text -->

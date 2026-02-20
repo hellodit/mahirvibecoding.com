@@ -1,6 +1,6 @@
 <template>
   <section id="target" class="py-20 px-6 bg-gray-50">
-    <div class="max-w-7xl mx-auto">
+    <div class="max-w-5xl mx-auto">
       <!-- Header -->
       <div class="text-center mb-14 reveal">
         <p class="text-xs font-semibold text-clockwork-400 uppercase tracking-widest mb-3">Target Audience</p>

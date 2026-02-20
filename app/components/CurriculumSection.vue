@@ -1,123 +1,214 @@
 <template>
-  <section id="curriculum" class="py-20 px-6 bg-white">
-    <div class="max-w-7xl mx-auto">
+  <section id="curriculum" class="py-20 px-6 bg-gray-50">
+    <div class="max-w-5xl mx-auto">
       <!-- Header -->
-      <div class="text-center mb-16 reveal">
-        <p class="text-xs font-semibold text-clockwork-400 uppercase tracking-widest mb-3">Kurikulum</p>
+      <div class="text-center mb-12 reveal">
+        <span class="inline-block px-3 py-1.5 rounded-lg bg-gray-900 text-white text-xs font-semibold uppercase tracking-wider mb-4">
+          21 BAB LENGKAP
+        </span>
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-3">
-          Apa saja yang akan kamu pelajari?
+          Apa aja <span class="text-clockwork-400">ada di dalamnya?</span>
         </h2>
-        <p class="text-base text-gray-400 max-w-md mx-auto">
-          6 bab komprehensif — dari nol sampai deploy, dengan AI sebagai co-pilot.
+        <p class="text-base text-gray-400 max-w-xl mx-auto mb-10">
+          Dari nol sampai bisa bikin project sendiri. Semua dibahas tuntas dengan bahasa yang gampang dipahami.
         </p>
+
+        <!-- Info cards -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
+          <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-gray-100 text-gray-700 text-sm font-medium hover:border-gray-200 transition-colors">
+            <span class="text-gray-400">21 Chapter</span>
+          </div>
+          <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-gray-100 text-gray-700 text-sm font-medium hover:border-gray-200 transition-colors">
+            <span class="text-gray-400">50+ Code Examples</span>
+          </div>
+          <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-gray-100 text-gray-700 text-sm font-medium hover:border-gray-200 transition-colors">
+            <div class="w-8 h-8 rounded-lg bg-clockwork-50 flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-clockwork-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <span>Checklist Tiap Bab</span>
+          </div>
+          <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-gray-100 text-gray-700 text-sm font-medium hover:border-gray-200 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span>Templates Siap Pakai</span>
+          </div>
+        </div>
       </div>
 
-      <!-- Chapters -->
-      <div class="space-y-0">
+      <!-- Collapsible curriculum -->
+      <div class="space-y-4">
         <div
-          v-for="(chapter, index) in chapters"
+          v-for="(section, index) in sections"
           :key="index"
-          class="reveal group grid grid-cols-1 md:grid-cols-[80px_1fr] gap-4 md:gap-8 py-8 border-b border-gray-100 first:border-t first:border-gray-100"
+          class="reveal rounded-2xl bg-white border border-gray-100 overflow-hidden transition-colors hover:border-gray-200"
           :class="`reveal-delay-${(index % 3) + 1}`"
         >
-          <!-- Chapter number -->
-          <div class="flex items-start">
-            <span class="text-3xl font-bold text-gray-200 group-hover:text-clockwork-200 transition-colors tabular-nums">
-              {{ String(index + 1).padStart(2, '0') }}
+          <button
+            @click="toggle(index)"
+            class="w-full flex items-center gap-4 p-5 text-left cursor-pointer group"
+          >
+            <!-- Number badge -->
+            <span
+              class="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-lg"
+              :class="section.badgeColor"
+            >
+              {{ index + 1 }}
             </span>
-          </div>
+            <!-- Title & subtitle -->
+            <div class="flex-1 min-w-0">
+              <h3 class="text-lg font-bold text-gray-900 group-hover:text-clockwork-500 transition-colors">
+                {{ section.title }}
+              </h3>
+              <p class="text-sm text-gray-400 mt-0.5">{{ section.babCount }} bab</p>
+            </div>
+            <!-- Chevron -->
+            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-gray-500 transition-transform duration-200" :class="{ 'rotate-180': openIndex === index }">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </span>
+          </button>
 
-          <!-- Content -->
-          <div>
-            <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-clockwork-500 transition-colors">{{ chapter.title }}</h3>
-            <p class="text-sm text-gray-400 italic mb-4">{{ chapter.quote }}</p>
-            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 mb-4">
-              <li v-for="(item, i) in chapter.items" :key="i" class="text-sm text-gray-500 flex items-start gap-2">
-                <span class="text-clockwork-400 mt-1 flex-shrink-0">→</span>
-                {{ item }}
-              </li>
-            </ul>
-            <div class="flex flex-wrap gap-2">
-              <span v-for="(tag, t) in chapter.tags" :key="t"
-                class="text-[11px] font-medium text-gray-400 bg-gray-50 border border-gray-100 px-2.5 py-0.5 rounded-full">
-                {{ tag }}
-              </span>
+          <!-- Collapsed content -->
+          <div
+            class="overflow-hidden transition-all duration-300 ease-in-out border-t border-gray-100"
+            :style="{ maxHeight: openIndex === index ? '2000px' : '0px' }"
+          >
+            <div class="p-5 pt-4 space-y-6">
+              <div
+                v-for="(chapter, chIndex) in section.chapters"
+                :key="chIndex"
+                class="pl-2 border-l-2 border-gray-100"
+              >
+                <h4 class="text-sm font-semibold text-gray-900 mb-1">{{ chapter.title }}</h4>
+                <p class="text-xs text-gray-400 italic mb-2">{{ chapter.quote }}</p>
+                <ul class="space-y-1">
+                  <li v-for="(item, i) in chapter.items" :key="i" class="text-sm text-gray-500 flex items-start gap-2">
+                    <span class="text-clockwork-400 mt-0.5 flex-shrink-0">→</span>
+                    {{ item }}
+                  </li>
+                </ul>
+                <div class="flex flex-wrap gap-1.5 mt-2">
+                  <span v-for="(tag, t) in chapter.tags" :key="t" class="text-[10px] font-medium text-gray-400 bg-gray-50 border border-gray-100 px-2 py-0.5 rounded-full">
+                    {{ tag }}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="mt-6 reveal flex items-center gap-3 px-4 py-3 rounded-xl bg-white border border-gray-100 text-sm text-gray-500 hover:border-gray-200 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        <span>250+ halaman panduan praktis dengan contoh nyata</span>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-const chapters = [
+import { ref } from 'vue'
+
+const openIndex = ref(-1)
+const toggle = (index) => {
+  openIndex.value = openIndex.value === index ? -1 : index
+}
+
+const sections = [
   {
-    title: 'Pengantar: Memahami Perubahan Era Coding',
-    quote: 'Sebelum kamu mulai coding dengan AI, kamu perlu memahami kenapa dan bagaimana dunia software engineering berubah.',
-    items: [
-      'Pergeseran era dari coding tradisional ke AI Coding Agent',
-      'Masalah umum developer saat pertama kali pakai AI',
-      'Bagaimana SDLC tetap relevan di era AI',
-      'Kenapa developer perlu beradaptasi, bukan melawan'
-    ],
-    tags: ['AI era', 'software engineering shift', 'developer mindset']
+    title: 'Planning',
+    babCount: 3,
+    badgeColor: 'bg-clockwork-500',
+    chapters: [
+      {
+        title: 'Pengantar: Memahami Perubahan Era Coding',
+        quote: 'Sebelum kamu mulai coding dengan AI, kamu perlu memahami kenapa dan bagaimana dunia software engineering berubah.',
+        items: [
+          'Pergeseran era dari coding tradisional ke AI Coding Agent',
+          'Masalah umum developer saat pertama kali pakai AI',
+          'Bagaimana SDLC tetap relevan di era AI',
+          'Kenapa developer perlu beradaptasi, bukan melawan'
+        ],
+        tags: ['AI era', 'software engineering shift', 'developer mindset']
+      },
+      {
+        title: 'Planning: Fondasi yang Tidak Bisa Di-Skip',
+        quote: 'Kesalahan di tahap planning tidak bisa diperbaiki oleh secanggih apa pun AI yang kamu gunakan.',
+        items: [
+          'Cara mengidentifikasi masalah yang benar-benar dialami pengguna',
+          'Membedakan masalah nyata vs asumsi developer',
+          'Menentukan batasan masalah agar tidak over-engineering',
+          'Kesalahan umum saat menggunakan AI terlalu dini',
+          'Teknik chain-of-thought (CoT) prompting untuk planning'
+        ],
+        tags: ['problem validation', 'scope definition', 'product thinking']
+      },
+      {
+        title: 'Design: Blueprint yang Dipahami AI',
+        quote: 'AI bisa menulis kode yang bagus — tapi hanya kalau kamu memberikan spesifikasi yang jelas.',
+        items: [
+          'Menyusun PRD (Product Requirement Document) yang efektif',
+          'PRD sebagai alat komunikasi antara manusia dan AI',
+          'Membuat database schema yang tepat guna',
+          'Kesalahan desain yang sering menyebabkan AI "ngaco"'
+        ],
+        tags: ['PRD', 'system blueprint', 'database schema', 'AI communication']
+      }
+    ]
   },
   {
-    title: 'Planning: Fondasi yang Tidak Bisa Di-Skip',
-    quote: 'Kesalahan di tahap planning tidak bisa diperbaiki oleh secanggih apa pun AI yang kamu gunakan.',
-    items: [
-      'Cara mengidentifikasi masalah yang benar-benar dialami pengguna',
-      'Membedakan masalah nyata vs asumsi developer',
-      'Menentukan batasan masalah agar tidak over-engineering',
-      'Kesalahan umum saat menggunakan AI terlalu dini',
-      'Teknik chain-of-thought (CoT) prompting untuk planning'
-    ],
-    tags: ['problem validation', 'scope definition', 'product thinking']
+    title: 'Developing',
+    babCount: 2,
+    badgeColor: 'bg-gray-900',
+    chapters: [
+      {
+        title: 'Develop: Kolaborasi, Bukan Delegasi',
+        quote: 'Kunci sukses vibe coding bukan menyerahkan semua ke AI — tapi tahu kapan dan di mana AI paling efektif.',
+        items: [
+          'Menentukan tech stack yang sesuai kebutuhan',
+          'Prinsip Context > Prompt — kenapa konteks lebih penting',
+          'Framework vibe coding untuk mempercepat development',
+          'Area yang cocok untuk AI vs yang harus dikendalikan manusia'
+        ],
+        tags: ['AI coding agent', 'context management', 'human-in-the-loop']
+      },
+      {
+        title: 'Testing & Reliability: Jalan ≠ Siap Produksi',
+        quote: 'Aplikasi yang "jalan" belum tentu siap digunakan dalam skenario nyata.',
+        items: [
+          'Memeriksa kesesuaian fitur dengan kebutuhan awal',
+          'Debugging dengan bantuan AI secara bertanggung jawab',
+          'Kesalahan umum saat debugging dengan AI',
+          'Peran unit test dalam menjaga stabilitas aplikasi'
+        ],
+        tags: ['testing mindset', 'AI debugging', 'unit testing', 'reliability']
+      }
+    ]
   },
   {
-    title: 'Design: Blueprint yang Dipahami AI',
-    quote: 'AI bisa menulis kode yang bagus — tapi hanya kalau kamu memberikan spesifikasi yang jelas.',
-    items: [
-      'Menyusun PRD (Product Requirement Document) yang efektif',
-      'PRD sebagai alat komunikasi antara manusia dan AI',
-      'Membuat database schema yang tepat guna',
-      'Kesalahan desain yang sering menyebabkan AI "ngaco"'
-    ],
-    tags: ['PRD', 'system blueprint', 'database schema', 'AI communication']
-  },
-  {
-    title: 'Develop: Kolaborasi, Bukan Delegasi',
-    quote: 'Kunci sukses vibe coding bukan menyerahkan semua ke AI — tapi tahu kapan dan di mana AI paling efektif.',
-    items: [
-      'Menentukan tech stack yang sesuai kebutuhan',
-      'Prinsip Context > Prompt — kenapa konteks lebih penting',
-      'Framework vibe coding untuk mempercepat development',
-      'Area yang cocok untuk AI vs yang harus dikendalikan manusia'
-    ],
-    tags: ['AI coding agent', 'context management', 'human-in-the-loop']
-  },
-  {
-    title: 'Testing & Reliability: Jalan ≠ Siap Produksi',
-    quote: 'Aplikasi yang "jalan" belum tentu siap digunakan dalam skenario nyata.',
-    items: [
-      'Memeriksa kesesuaian fitur dengan kebutuhan awal',
-      'Debugging dengan bantuan AI secara bertanggung jawab',
-      'Kesalahan umum saat debugging dengan AI',
-      'Peran unit test dalam menjaga stabilitas aplikasi'
-    ],
-    tags: ['testing mindset', 'AI debugging', 'unit testing', 'reliability']
-  },
-  {
-    title: 'Deploy & Real World: Dari Lokal ke Produksi',
-    quote: 'Deployment adalah fase yang tidak bisa disepelekan — terutama untuk aplikasi yang dibangun dengan bantuan AI.',
-    items: [
-      'Penggunaan AI Agent untuk code review sebelum deploy',
-      'Gambaran peran Docker dalam deployment',
-      'Peran VPS/hosting dalam menjalankan aplikasi secara stabil',
-      'Risiko keamanan dan environment yang sering terlewat'
-    ],
-    tags: ['deployment', 'docker', 'VPS', 'production readiness']
+    title: 'Deployment',
+    babCount: 1,
+    badgeColor: 'bg-gray-900',
+    chapters: [
+      {
+        title: 'Deploy & Real World: Dari Lokal ke Produksi',
+        quote: 'Deployment adalah fase yang tidak bisa disepelekan — terutama untuk aplikasi yang dibangun dengan bantuan AI.',
+        items: [
+          'Penggunaan AI Agent untuk code review sebelum deploy',
+          'Gambaran peran Docker dalam deployment',
+          'Peran VPS/hosting dalam menjalankan aplikasi secara stabil',
+          'Risiko keamanan dan environment yang sering terlewat'
+        ],
+        tags: ['deployment', 'docker', 'VPS', 'production readiness']
+      }
+    ]
   }
 ]
 </script>

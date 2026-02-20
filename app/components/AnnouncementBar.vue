@@ -1,6 +1,6 @@
 <template>
   <div v-if="isVisible" class="bg-gray-900 text-white py-3 px-6 relative z-[60]">
-    <div class="max-w-7xl mx-auto flex items-center justify-center gap-3">
+    <div class="max-w-5xl mx-auto flex items-center justify-center gap-3">
       <span class="text-white text-sm">✨</span>
       <p class="text-sm text-gray-300">
         AI bukan pengganti developer. AI adalah partner kerja — kalau kamu tahu cara mengarahkannya.

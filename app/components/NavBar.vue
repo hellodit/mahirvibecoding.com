@@ -1,6 +1,6 @@
 <template>
   <header class="relative z-50 bg-white border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <div class="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
       <!-- Logo -->
       <a href="#" class="flex items-center gap-3 group">
         <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center text-white font-mono font-bold text-sm shadow-lg shadow-gray-200/50 group-hover:scale-105 transition-transform duration-300 ring-1 ring-white/20">
