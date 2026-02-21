@@ -58,21 +58,43 @@
         </div>
       </div>
 
-      <!-- Tech marquee: teks saja (logo bisa ditambah nanti) -->
-      <div class="mt-16 md:mt-20 overflow-hidden border-y border-primary/10 bg-background/50 py-5">
+      <!-- Tech marquee: logo dari public/logo -->
+      <div class="mt-16 md:mt-20 overflow-hidden border-y border-primary/10  py-5">
         <div class="flex items-center gap-12 md:gap-16 logo-marquee">
           <div class="flex items-center gap-12 md:gap-16 shrink-0">
-            <a href="https://laravel.com" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-text/80 opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" aria-label="Laravel">Laravel</a>
-            <a href="https://nextjs.org" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-text/80 opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" aria-label="Next.js">Next.js</a>
-            <a href="https://nuxt.com" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-text/80 opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" aria-label="Nuxt">Nuxt</a>
-            <a href="https://svelte.dev" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-text/80 opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" aria-label="Svelte">Svelte</a>
+            <span class="flex items-center justify-center opacity-70 transition-opacity" aria-hidden="true">
+              <img src="/logo/laravel.svg" alt="Laravel" class="h-7 md:h-8 w-auto object-contain" />
+            </span>
+            <span class="flex items-center justify-center opacity-70 transition-opacity" aria-hidden="true">
+              <img src="/logo/nextjs.svg" alt="Next.js" class="h-7 md:h-8 w-auto object-contain" />
+            </span>
+            <span class="flex items-center justify-center opacity-70 transition-opacity" aria-hidden="true">
+              <img src="/logo/vue.svg" alt="Vue" class="h-7 md:h-8 w-auto object-contain" />
+            </span>
+            <span class="flex items-center justify-center opacity-70 transition-opacity" aria-hidden="true">
+              <img src="/logo/go.svg" alt="Go" class="h-7 md:h-8 w-auto object-contain" />
+            </span>
+            <span class="flex items-center justify-center opacity-70 transition-opacity" aria-hidden="true">
+              <img src="/logo/svelte.svg" alt="Svelte" class="h-7 md:h-8 w-auto object-contain" />
+            </span>
           </div>
           <!-- Duplicate for seamless loop -->
           <div class="flex items-center gap-12 md:gap-16 shrink-0">
-            <a href="https://laravel.com" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-text/80 opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" aria-label="Laravel">Laravel</a>
-            <a href="https://nextjs.org" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-text/80 opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" aria-label="Next.js">Next.js</a>
-            <a href="https://nuxt.com" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-text/80 opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" aria-label="Nuxt">Nuxt</a>
-            <a href="https://svelte.dev" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-text/80 opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" aria-label="Svelte">Svelte</a>
+            <span class="flex items-center justify-center opacity-70 transition-opacity" aria-hidden="true">
+              <img src="/logo/laravel.svg" alt="Laravel" class="h-7 md:h-8 w-auto object-contain" />
+            </span>
+            <span class="flex items-center justify-center opacity-70 transition-opacity" aria-hidden="true">
+              <img src="/logo/nextjs.svg" alt="Next.js" class="h-7 md:h-8 w-auto object-contain" />
+            </span>
+            <span class="flex items-center justify-center opacity-70 transition-opacity" aria-hidden="true">
+              <img src="/logo/vue.svg" alt="Vue" class="h-7 md:h-8 w-auto object-contain" />
+            </span>
+            <span class="flex items-center justify-center opacity-70 transition-opacity" aria-hidden="true">
+              <img src="/logo/go.svg" alt="Go" class="h-7 md:h-8 w-auto object-contain" />
+            </span>
+            <span class="flex items-center justify-center opacity-70 transition-opacity" aria-hidden="true">
+              <img src="/logo/svelte.svg" alt="Svelte" class="h-7 md:h-8 w-auto object-contain" />
+            </span>
           </div>
         </div>
       </div>
