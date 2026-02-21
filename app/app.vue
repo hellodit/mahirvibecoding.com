@@ -9,7 +9,6 @@
       <TargetAudienceSection />
       <CurriculumSection />
       <TrustSection />
-      <TestimonialSection />
       <PricingSection />
       <FaqSection />
       <FinalCtaSection />

@@ -1,98 +1,137 @@
 <template>
-  <section id="pricing" class="py-24 px-6 bg-white">
-    <div class="max-w-5xl mx-auto">
-      <!-- Header -->
-      <div class="text-center mb-12 reveal">
-        <p class="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Pricing</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
-          Investasi untuk <span class="text-primary">skill masa depan</span>
+  <section id="pricing" class="py-24 px-6 bg-primary">
+    <div class="max-w-6xl mx-auto">
+      <!-- Hero -->
+      <div class="text-center mb-14 reveal">
+        <p class="text-xs font-semibold text-white/80 uppercase tracking-widest mb-3">Pricing</p>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
+          Investasi untuk <span class="text-background">skill masa depan</span>
         </h2>
-        <p class="text-base text-text/70 max-w-xl mx-auto">
+        <p class="text-base md:text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
           Sekali beli, akses selamanya. Pilih paket yang sesuai dengan kebutuhanmu.
         </p>
       </div>
 
-      <!-- Pricing cards – satu gaya, bersih -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+      <!-- Pricing cards: dark semi-transparent, like reference -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
         <div
           v-for="(plan, index) in plans"
           :key="plan.id"
-          class="reveal rounded-xl bg-white border border-primary/10 overflow-hidden flex flex-col hover:border-primary/20 transition-colors"
-          :class="[`reveal-delay-${index + 1}`, plan.featured && 'ring-2 ring-primary ring-offset-2 ring-offset-background']"
+          class="reveal rounded-2xl overflow-hidden flex flex-col transition-all duration-300 bg-white/[0.08] border border-white/10 backdrop-blur-sm"
+          :class="[
+            `reveal-delay-${index + 1}`,
+            plan.featured && 'ring-2 ring-white/40 shadow-xl shadow-black/20 scale-[1.02] md:scale-[1.03]'
+          ]"
         >
-          <div class="p-5 flex-1 flex flex-col">
-            <span
-              class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold w-fit mb-3"
-              :class="plan.badgeClass"
-            >
-              {{ plan.badge }}
-            </span>
-            <h3 class="text-lg font-bold text-text">{{ plan.name }}</h3>
-            <p v-if="plan.subtitle" class="text-sm text-text/70 mt-0.5 mb-4">{{ plan.subtitle }}</p>
-
-            <div class="mb-5">
-              <span v-if="plan.originalPrice" class="text-sm text-text/50 line-through mr-2">Rp {{ plan.originalPrice }}</span>
-              <span class="text-2xl font-bold text-primary">Rp {{ plan.price }}</span>
-              <p v-if="plan.discountNote" class="text-xs text-text/60 mt-1">{{ plan.discountNote }}</p>
-            </div>
-
-            <ul class="space-y-2.5 flex-1 mb-6">
-              <li
-                v-for="(benefit, i) in plan.benefits"
-                :key="i"
-                class="flex items-start gap-2 text-sm text-text/80"
+          <div class="p-6 md:p-8 flex-1 flex flex-col">
+            <div class="flex items-center gap-2 mb-1">
+              <h3 class="text-xl font-bold text-white">{{ plan.name }}</h3>
+              <span
+                v-if="plan.popular"
+                class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wide bg-background text-primary"
               >
-                <span class="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                </span>
-                {{ benefit }}
-              </li>
-            </ul>
+                Popular
+              </span>
+            </div>
+            <p v-if="plan.subtitle" class="text-sm text-white/60 mb-5">{{ plan.subtitle }}</p>
+
+            <div class="mb-6">
+              <template v-if="plan.priceCustom">
+                <span class="text-2xl md:text-3xl font-bold text-white">Custom</span>
+              </template>
+              <template v-else>
+                <span v-if="plan.originalPrice" class="text-sm text-white/50 line-through mr-2">Rp {{ plan.originalPrice }}</span>
+                <span class="text-2xl md:text-3xl font-bold text-white">Rp {{ plan.price }}</span>
+                <span class="text-sm text-white/50">/ sekali bayar</span>
+              </template>
+              <p v-if="plan.discountNote" class="text-xs text-white/60 mt-1">{{ plan.discountNote }}</p>
+            </div>
 
             <a
               :href="plan.ctaUrl"
-              class="block w-full py-3.5 text-center text-sm font-bold text-white bg-primary rounded-lg hover:opacity-90 transition-colors"
+              class="block w-full py-3.5 text-center text-sm font-bold rounded-xl transition-all mb-8"
+              :class="plan.featured
+                ? 'bg-background text-primary hover:bg-background/90'
+                : 'bg-white/10 text-white border border-white/20 hover:bg-white/15'"
             >
               {{ plan.ctaText }}
             </a>
+
+            <ul class="space-y-3 flex-1">
+              <li
+                v-for="(benefit, i) in plan.benefits"
+                :key="i"
+                class="flex items-start gap-2.5 text-sm"
+                :class="isHeading(benefit) ? 'text-white/90 font-semibold' : 'text-white/80'"
+              >
+                <span
+                  v-if="!isHeading(benefit)"
+                  class="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full bg-primary/50 flex items-center justify-center"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </span>
+                <span>{{ benefitText(benefit) }}</span>
+              </li>
+            </ul>
           </div>
         </div>
+      </div>
+
+      <!-- Testimonial -->
+      <div class="reveal text-center max-w-3xl mx-auto">
+        <div class="flex justify-center mb-6">
+          <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center text-white text-xl font-bold border-2 border-white/30">
+            A
+          </div>
+        </div>
+        <blockquote class="text-lg md:text-xl text-white/90 leading-relaxed mb-4">
+          "Worth it. Saya pakai pendekatan dari sini di tim dan workflow jadi lebih rapi."
+        </blockquote>
+        <cite class="text-sm text-white/70 not-italic font-semibold">Andi — Tech Lead</cite>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+function isHeading(benefit) {
+  return typeof benefit === 'object' && benefit?.isHeading
+}
+function benefitText(benefit) {
+  return typeof benefit === 'string' ? benefit : (benefit?.text ?? '')
+}
+
 const plans = [
   {
     id: 'lite',
     name: 'Lite',
-    badge: 'Ebook Only',
-    badgeClass: 'bg-primary/10 text-text',
-    subtitle: 'Belajar mandiri',
+    popular: false,
+    featured: false,
+    subtitle: 'Belajar mandiri dengan ebook',
     originalPrice: '99.000',
     price: '89.000',
+    priceCustom: false,
     discountNote: 'dengan kode SPECIAL40 (40% OFF)',
     benefits: [
       'Akses ke Ebook'
     ],
     ctaText: 'Beli Sekarang',
-    ctaUrl: '#',
-    featured: false
+    ctaUrl: '#'
   },
   {
     id: 'pro',
     name: 'Pro',
-    badge: 'Pro',
-    badgeClass: 'bg-primary/10 text-primary',
-    subtitle: null,
+    popular: true,
+    featured: true,
+    subtitle: 'Ebook + bonus & akses komunitas',
     originalPrice: '199.000',
     price: '119.400',
+    priceCustom: false,
     discountNote: 'dengan kode SPECIAL40 (40% OFF)',
     benefits: [
-      'Akses ke Ebook',
+      { text: 'Semua di Lite, plus:', isHeading: true },
       'Lifetime Update Ebook',
       'Bonus 4 Studi Kasus Step-by-Step',
       '1 Template di JualanKoding.com (senilai ±100rb)',
@@ -100,33 +139,29 @@ const plans = [
       'Akses Selamanya Group Discord'
     ],
     ctaText: 'Beli Sekarang',
-    ctaUrl: '#',
-    featured: true
+    ctaUrl: '#'
   },
   {
     id: 'ultimate',
     name: 'Ultimate',
-    badge: 'Ebook + Bootcamp',
-    badgeClass: 'bg-primary/10 text-primary',
-    subtitle: '4 SESI LIVE — Bimbingan langsung dari mentor',
+    popular: false,
+    featured: false,
+    subtitle: 'Ebook + Bootcamp 4 sesi live',
     originalPrice: '799.000',
     price: '479.400',
+    priceCustom: false,
     discountNote: 'dengan kode SPECIAL40 (40% OFF)',
     benefits: [
+      { text: 'Semua di Pro, plus:', isHeading: true },
       'Bootcamp Vibe Coding (4 sesi)',
       'Free Akses Model Z.AI GLM Selama 1 Bulan',
       'Link Promo Subscribe Claude Pro',
-      'Akses ke Ebook',
-      'Lifetime Update Ebook',
-      'Bonus 4 Studi Kasus Step-by-Step',
       '15 Template di JualanKoding.com (senilai ±1jt)',
       'Akses Belajar 12 Bulan BelajarKoding.com',
-      'Akses Selamanya Group Discord',
       'Konsultasi 1-1 selama 30 menit (2x)'
     ],
     ctaText: 'Beli Sekarang',
-    ctaUrl: '#',
-    featured: false
+    ctaUrl: '#'
   }
 ]
 </script>
