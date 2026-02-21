@@ -1,11 +1,8 @@
 <template>
-  <section id="curriculum" class="py-24 px-6 bg-background">
+  <section id="curriculum" class="py-24 px-6 bg-white">
     <div class="max-w-5xl mx-auto">
       <!-- Header -->
       <div class="text-center mb-12 reveal">
-        <span class="inline-block px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-semibold uppercase tracking-wider mb-4">
-          21 BAB LENGKAP
-        </span>
         <h2 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
           Apa aja <span class="text-primary">ada di dalamnya?</span>
         </h2>

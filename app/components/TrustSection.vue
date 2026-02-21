@@ -1,5 +1,5 @@
 <template>
-  <section id="trust" class="py-20 px-6 bg-white border-y border-primary/5">
+  <section id="trust" class="py-20 px-6 bg-primary/5 border-y border-primary/5">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14 reveal">
         <p class="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Kredibilitas</p>
