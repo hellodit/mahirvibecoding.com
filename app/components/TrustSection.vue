@@ -11,8 +11,8 @@
       <!-- 2 kolom: info penulis (kiri) + card kredibilitas (kanan) -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
         <!-- Kiri: Informasi penulis + social media -->
-        <div class="reveal reveal-delay-1 p-6 rounded-2xl border border-primary/10 bg-background/50 lg:sticky lg:top-24">
-          <div class="flex flex-col sm:flex-row lg:flex-col items-center sm:items-start gap-6">
+        <div class="reveal reveal-delay-1 p-6 rounded-2xl border border-primary/10 bg-background/50 lg:sticky lg:top-24 border border-primary">
+          <div class="flex flex-col items-center gap-6 text-center">
             <img
               src="/author.jpeg"
               alt="Foto penulis"
@@ -20,14 +20,13 @@
               height="120"
               class="w-30 h-30 sm:w-32 sm:h-32 rounded-full object-cover ring-2 ring-primary/20 flex-shrink-0"
             />
-            <div class="text-center sm:text-left lg:text-center">
-              <p class="text-xs font-semibold text-primary uppercase tracking-widest mb-1">Penulis</p>
-              <h3 class="text-lg font-bold text-text mb-2">Nama Penulis</h3>
+            <div>
+              <h3 class="text-lg font-bold text-text mb-2">Asdita Prasetya</h3>
               <p class="text-sm text-text/80 leading-relaxed mb-5">
                 Praktisi yang sehari-hari membangun aplikasi dengan AI Coding Agent. Panduan ini disusun dari pengalaman nyata di lapangan, bukan sekadar teori.
               </p>
               <!-- Link social media -->
-              <div class="flex flex-wrap justify-center sm:justify-start lg:justify-center gap-3">
+              <div class="flex flex-wrap justify-center gap-3">
                 <a
                   v-for="social in authorSocials"
                   :key="social.label"
