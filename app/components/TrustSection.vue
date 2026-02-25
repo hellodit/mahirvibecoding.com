@@ -8,18 +8,22 @@
         </h2>
       </div>
 
-      <!-- 2 kolom: info penulis (kiri) + card kredibilitas (kanan) -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
         <!-- Kiri: Informasi penulis + social media -->
-        <div class="reveal reveal-delay-1 p-6 rounded-2xl border border-primary/10 bg-background/50 lg:sticky lg:top-24 border border-primary">
+        <div class="reveal reveal-delay-1 p-6 rounded-2xl border border-primary bg-background/50 lg:sticky lg:top-24">
           <div class="flex flex-col items-center gap-6 text-center">
-            <img
-              src="/author.jpeg"
-              alt="Foto penulis"
-              width="120"
-              height="120"
-              class="w-30 h-30 sm:w-32 sm:h-32 rounded-full object-cover ring-2 ring-primary/20 flex-shrink-0"
-            />
+            <div class="w-30 h-30 sm:w-32 sm:h-32 rounded-full bg-primary/20 ring-2 ring-primary/20 flex items-center justify-center flex-shrink-0 overflow-hidden">
+              <NuxtImg
+                v-if="authorImageExists"
+                src="/author.jpeg"
+                alt="Foto Asdita Prasetya"
+                width="128"
+                height="128"
+                class="w-full h-full object-cover"
+                @error="authorImageExists = false"
+              />
+              <span v-else class="text-4xl font-bold text-primary">AP</span>
+            </div>
             <div>
               <h3 class="text-lg font-bold text-text mb-2">Asdita Prasetya</h3>
               <p class="text-sm text-text/80 leading-relaxed mb-5">
@@ -36,7 +40,7 @@
                   :aria-label="social.label"
                   class="group w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-text/70 hover:bg-primary hover:text-white transition-colors"
                 >
-                  <img :src="social.icon" :alt="social.label" class="w-5 h-5 group-hover:invert" />
+                  <NuxtImg :src="social.icon" :alt="social.label" class="w-5 h-5 group-hover:invert" loading="lazy" />
                 </a>
               </div>
             </div>
@@ -65,7 +69,10 @@
 </template>
 
 <script setup>
-// Ganti url dengan link profil kamu. Ikon dari public/icons/*.svg
+import { ref } from 'vue'
+
+const authorImageExists = ref(true)
+
 const authorSocials = [
   { label: 'Twitter / X', url: 'https://twitter.com/', icon: '/icons/twitter.svg' },
   { label: 'LinkedIn', url: 'https://linkedin.com/in/', icon: '/icons/linkedin.svg' },
