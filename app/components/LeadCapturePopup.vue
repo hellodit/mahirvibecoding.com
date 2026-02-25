@@ -8,7 +8,6 @@
       aria-modal="true"
     >
       <div class="max-w-3xl mx-auto rounded-t-2xl shadow-2xl overflow-hidden bg-[#0f2d18] border border-white/10 border-b-0 relative">
-        <!-- Decorative arrow (optional, points to input) -->
         <div class="absolute right-8 top-1/2 -translate-y-1/2 hidden md:block text-white/40" aria-hidden="true">
           <svg class="w-12 h-12" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
             <path d="M40 24H8M8 24L24 8M8 24L24 40" />
@@ -26,48 +25,62 @@
             </svg>
           </button>
 
-          <div class="text-center mb-6">
-            <h2 id="popup-title" class="text-xl md:text-2xl font-bold text-white flex items-center justify-center gap-2">
-              <span class="text-white/90" aria-hidden="true">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.6-6.3 4.6 2.3-7-6-4.6h7.6z"/></svg>
-              </span>
-              {{ title }}
-            </h2>
-            <p class="text-sm md:text-base text-white/70 mt-2 max-w-md mx-auto">
-              {{ subtitle }}
-            </p>
+          <!-- Success state -->
+          <div v-if="submitted" class="text-center py-4">
+            <div class="w-14 h-14 rounded-full bg-primary/30 flex items-center justify-center mx-auto mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h2 class="text-xl font-bold text-white mb-2">Terima kasih!</h2>
+            <p class="text-sm text-white/70">Kami akan mengirimkan bab gratis ke email kamu.</p>
           </div>
 
-          <form @submit.prevent="onSubmit" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
-            <input
-              v-model="email"
-              type="email"
-              :placeholder="emailPlaceholder"
-              required
-              class="flex-1 min-w-0 px-4 py-3.5 rounded-xl bg-white/5 border border-white/20 text-white placeholder-white/40 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-            />
-            <button
-              type="submit"
-              class="px-6 py-3.5 rounded-xl bg-primary text-white text-sm font-bold whitespace-nowrap hover:opacity-90 transition-opacity shrink-0"
-            >
-              {{ ctaText }}
-            </button>
-          </form>
+          <!-- Form state -->
+          <template v-else>
+            <div class="text-center mb-6">
+              <h2 id="popup-title" class="text-xl md:text-2xl font-bold text-white flex items-center justify-center gap-2">
+                <span class="text-white/90" aria-hidden="true">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.6-6.3 4.6 2.3-7-6-4.6h7.6z"/></svg>
+                </span>
+                {{ title }}
+              </h2>
+              <p class="text-sm md:text-base text-white/70 mt-2 max-w-md mx-auto">
+                {{ subtitle }}
+              </p>
+            </div>
+
+            <form @submit.prevent="onSubmit" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+              <input
+                v-model="email"
+                type="email"
+                :placeholder="emailPlaceholder"
+                required
+                :disabled="submitting"
+                class="flex-1 min-w-0 px-4 py-3.5 rounded-xl bg-white/5 border border-white/20 text-white placeholder-white/40 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent disabled:opacity-50"
+              />
+              <button
+                type="submit"
+                :disabled="submitting"
+                class="px-6 py-3.5 rounded-xl bg-primary text-white text-sm font-bold whitespace-nowrap hover:opacity-90 transition-opacity shrink-0 disabled:opacity-50"
+              >
+                {{ submitting ? 'Mengirim...' : ctaText }}
+              </button>
+            </form>
+            <p v-if="error" class="text-xs text-red-400 text-center mt-3">{{ error }}</p>
+          </template>
         </div>
       </div>
     </div>
   </Transition>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const props = defineProps({
-  /** Delay in milliseconds before showing the popup (e.g. 5000 = 5 detik) */
   delayMs: { type: Number, default: 5000 },
-  /** Jangan tampilkan lagi setelah ditutup (session = sampai tab ditutup) */
   rememberDismiss: { type: Boolean, default: true },
-  /** Key untuk localStorage (untuk rememberDismiss). Default: lead-popup-dismissed */
   storageKey: { type: String, default: 'lead-popup-dismissed' },
   title: { type: String, default: 'Claim Bab Gratis' },
   subtitle: { type: String, default: 'Lihat isi panduan dengan bab contoh gratis!' },
@@ -79,8 +92,11 @@ const emit = defineEmits(['dismissed', 'submit'])
 
 const isVisible = ref(false)
 const email = ref('')
+const submitting = ref(false)
+const submitted = ref(false)
+const error = ref('')
 
-let timeoutId = null
+let timeoutId: ReturnType<typeof setTimeout> | null = null
 
 function shouldShow() {
   if (!props.rememberDismiss) return true
@@ -102,20 +118,35 @@ function dismiss() {
   emit('dismissed')
 }
 
-function onSubmit() {
+async function onSubmit() {
+  error.value = ''
+  submitting.value = true
+
   emit('submit', { email: email.value })
-  dismiss()
+
+  try {
+    await $fetch('/api/leads', {
+      method: 'POST',
+      body: { email: email.value },
+    })
+    submitted.value = true
+    setTimeout(dismiss, 3000)
+  } catch (e: any) {
+    error.value = 'Gagal mengirim. Silakan coba lagi.'
+  } finally {
+    submitting.value = false
+  }
 }
 
 onMounted(() => {
   if (!shouldShow()) return
-  timeoutId = window.setTimeout(() => {
+  timeoutId = setTimeout(() => {
     isVisible.value = true
   }, props.delayMs)
 })
 
 onBeforeUnmount(() => {
-  if (timeoutId) window.clearTimeout(timeoutId)
+  if (timeoutId) clearTimeout(timeoutId)
 })
 </script>
 

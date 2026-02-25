@@ -2,6 +2,10 @@
    MahirVibeCoding — Minimal Design System
    ============================================ */
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* --- Scroll Reveal --- */
 .reveal {
     opacity: 0;

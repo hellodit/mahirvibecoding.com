@@ -2,7 +2,7 @@
   <section id="pricing" class="py-24 px-6 bg-primary">
     <div class="max-w-6xl mx-auto">
       <!-- Hero -->
-      <div class="text-center mb-14 reveal">
+      <div class="text-center mb-8 reveal">
         <p class="text-xs font-semibold text-white/80 uppercase tracking-widest mb-3">Pricing</p>
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
           Investasi untuk <span class="text-background">skill masa depan</span>
@@ -12,8 +12,14 @@
         </p>
       </div>
 
-      <!-- Pricing cards: dark semi-transparent, like reference -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+      <!-- Countdown Timer -->
+      <div class="text-center mb-14 reveal reveal-delay-1">
+        <p class="text-sm text-white/70 mb-3">Harga peluncuran berakhir dalam:</p>
+        <CountdownTimer :target-date="countdownTarget" :dark="true" />
+      </div>
+
+      <!-- Pricing cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
         <div
           v-for="(plan, index) in plans"
           :key="plan.id"
@@ -79,6 +85,25 @@
         </div>
       </div>
 
+      <!-- Guarantee Badge -->
+      <div class="max-w-md mx-auto mb-10 reveal">
+        <GuaranteeBadge />
+      </div>
+
+      <!-- Payment Methods -->
+      <div class="text-center mb-16 reveal">
+        <p class="text-xs text-white/50 uppercase tracking-widest mb-4">Metode Pembayaran</p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <div
+            v-for="method in paymentMethods"
+            :key="method"
+            class="px-4 py-2 rounded-lg bg-white/10 border border-white/10 text-sm font-medium text-white/70"
+          >
+            {{ method }}
+          </div>
+        </div>
+      </div>
+
       <!-- Testimonial -->
       <div class="reveal text-center max-w-3xl mx-auto">
         <div class="flex justify-center mb-6">
@@ -95,13 +120,22 @@
   </section>
 </template>
 
-<script setup>
-function isHeading(benefit) {
+<script setup lang="ts">
+const countdownTarget = (() => {
+  const d = new Date()
+  d.setDate(d.getDate() + 7)
+  d.setHours(23, 59, 59, 0)
+  return d.toISOString()
+})()
+
+function isHeading(benefit: string | { isHeading?: boolean; text?: string }) {
   return typeof benefit === 'object' && benefit?.isHeading
 }
-function benefitText(benefit) {
+function benefitText(benefit: string | { text?: string }) {
   return typeof benefit === 'string' ? benefit : (benefit?.text ?? '')
 }
+
+const paymentMethods = ['BCA', 'Mandiri', 'BRI', 'BNI', 'GoPay', 'OVO', 'DANA', 'QRIS']
 
 const plans = [
   {
