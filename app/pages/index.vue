@@ -12,6 +12,7 @@
       <HeroSection />
       <ProblemSection />
       <SolutionSection />
+      <BeforeAfterSection />
       <TargetAudienceSection />
       <CurriculumSection />
       <TrustSection />

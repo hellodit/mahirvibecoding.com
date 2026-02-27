@@ -1,13 +1,29 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://mahirvibecoding.com'
+const siteName = process.env.NUXT_PUBLIC_SITE_NAME || 'MahirVibeCoding'
+const siteTitle = process.env.NUXT_PUBLIC_SITE_TITLE || 'MahirVibeCoding — Strategi Vibe Coding untuk Membangun Aplikasi Fullstack'
+const siteDescription = process.env.NUXT_PUBLIC_SITE_DESCRIPTION || 'Framework lengkap untuk membangun aplikasi fullstack bersama AI Coding Agent — dari planning hingga deploy.'
+const ogImage = process.env.NUXT_PUBLIC_OG_IMAGE || `${siteUrl}/og-image.png`
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: ['@nuxt/fonts', '@nuxt/image', '@nuxtjs/tailwindcss', '@nuxtjs/sitemap'],
   css: ['~/assets/css/global.css'],
 
+  runtimeConfig: {
+    public: {
+      siteUrl,
+      siteName,
+      siteTitle,
+      siteDescription,
+      ogImage,
+    },
+  },
+
   site: {
-    url: 'https://mahirvibecoding.com',
-    name: 'MahirVibeCoding',
+    url: siteUrl,
+    name: siteName,
   },
 
   fonts: {
@@ -19,27 +35,27 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: 'id' },
-      title: 'MahirVibeCoding — Strategi Vibe Coding untuk Membangun Aplikasi Fullstack',
+      title: siteTitle,
       meta: [
-        { name: 'description', content: 'Framework lengkap untuk membangun aplikasi fullstack bersama AI Coding Agent — dari planning hingga deploy.' },
+        { name: 'description', content: siteDescription },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { charset: 'utf-8' },
         // Open Graph
         { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: 'https://mahirvibecoding.com' },
-        { property: 'og:title', content: 'MahirVibeCoding — Strategi Vibe Coding untuk Membangun Aplikasi Fullstack' },
-        { property: 'og:description', content: 'Framework lengkap untuk membangun aplikasi fullstack bersama AI Coding Agent — dari planning hingga deploy.' },
-        { property: 'og:image', content: 'https://mahirvibecoding.com/og-image.png' },
+        { property: 'og:url', content: siteUrl },
+        { property: 'og:title', content: siteTitle },
+        { property: 'og:description', content: siteDescription },
+        { property: 'og:image', content: ogImage },
         { property: 'og:locale', content: 'id_ID' },
-        { property: 'og:site_name', content: 'MahirVibeCoding' },
+        { property: 'og:site_name', content: siteName },
         // Twitter Card
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'MahirVibeCoding — Strategi Vibe Coding untuk Membangun Aplikasi Fullstack' },
-        { name: 'twitter:description', content: 'Framework lengkap untuk membangun aplikasi fullstack bersama AI Coding Agent — dari planning hingga deploy.' },
-        { name: 'twitter:image', content: 'https://mahirvibecoding.com/og-image.png' },
+        { name: 'twitter:title', content: siteTitle },
+        { name: 'twitter:description', content: siteDescription },
+        { name: 'twitter:image', content: ogImage },
       ],
       link: [
-        { rel: 'canonical', href: 'https://mahirvibecoding.com' },
+        { rel: 'canonical', href: siteUrl },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
       ],
@@ -49,10 +65,10 @@ export default defineNuxtConfig({
           innerHTML: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Product',
-            name: 'MahirVibeCoding',
-            description: 'Framework lengkap untuk membangun aplikasi fullstack bersama AI Coding Agent — dari planning hingga deploy.',
-            url: 'https://mahirvibecoding.com',
-            brand: { '@type': 'Brand', name: 'MahirVibeCoding' },
+            name: siteName,
+            description: siteDescription,
+            url: siteUrl,
+            brand: { '@type': 'Brand', name: siteName },
             offers: [
               {
                 '@type': 'Offer',
