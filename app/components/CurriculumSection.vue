@@ -13,7 +13,7 @@
         <!-- Info cards -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
           <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-primary/10 text-text text-sm font-medium hover:border-primary/20 transition-colors">
-            <span class="text-text/70">21 Chapter</span>
+            <span class="text-text/70">5 Bab</span>
           </div>
           <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-primary/10 text-text text-sm font-medium hover:border-primary/20 transition-colors">
             <span class="text-text/70">50+ Code Examples</span>
@@ -81,18 +81,7 @@
                 class="pl-2 border-l-2 border-primary/20"
               >
                 <h4 class="text-sm font-semibold text-text mb-1">{{ chapter.title }}</h4>
-                <p class="text-xs text-text/70 italic mb-2">{{ chapter.quote }}</p>
-                <ul class="space-y-1">
-                  <li v-for="(item, i) in chapter.items" :key="i" class="text-sm text-text/80 flex items-start gap-2">
-                    <span class="text-primary mt-0.5 flex-shrink-0">→</span>
-                    {{ item }}
-                  </li>
-                </ul>
-                <div class="flex flex-wrap gap-1.5 mt-2">
-                  <span v-for="(tag, t) in chapter.tags" :key="t" class="text-[10px] font-medium text-text/70 bg-primary/5 border border-primary/10 px-2 py-0.5 rounded-full">
-                    {{ tag }}
-                  </span>
-                </div>
+                <p class="text-sm text-text/60 leading-relaxed">{{ chapter.description }}</p>
               </div>
             </div>
           </div>
@@ -125,67 +114,27 @@ const sections = [
     badgeColor: 'bg-primary',
     chapters: [
       {
-        title: 'Pengantar: Memahami Perubahan Era Coding',
-        quote: 'Sebelum kamu mulai coding dengan AI, kamu perlu memahami kenapa dan bagaimana dunia software engineering berubah.',
-        items: [
-          'Pergeseran era dari coding tradisional ke AI Coding Agent',
-          'Masalah umum developer saat pertama kali pakai AI',
-          'Bagaimana SDLC tetap relevan di era AI',
-          'Kenapa developer perlu beradaptasi, bukan melawan'
-        ],
-        tags: ['AI era', 'software engineering shift', 'developer mindset']
+        title: 'Pengantar: Evolusi Software Engineering di Era AI',
+        description: 'Memahami pergeseran paradigma dari menulis kode ke manajemen konteks. Mengenal tiga risiko utama bekerja dengan AI dan tiga pilar strategi sebagai solusinya.',
       },
       {
-        title: 'Planning: Fondasi yang Tidak Bisa Di-Skip',
-        quote: 'Kesalahan di tahap planning tidak bisa diperbaiki oleh secanggih apa pun AI yang kamu gunakan.',
-        items: [
-          'Cara mengidentifikasi masalah yang benar-benar dialami pengguna',
-          'Membedakan masalah nyata vs asumsi developer',
-          'Menentukan batasan masalah agar tidak over-engineering',
-          'Kesalahan umum saat menggunakan AI terlalu dini',
-          'Teknik chain-of-thought (CoT) prompting untuk planning'
-        ],
-        tags: ['problem validation', 'scope definition', 'product thinking']
+        title: 'Planning: Fondasi di Balik Produk yang Berhasil',
+        description: 'Belajar dari contoh kasus nyata kenapa langsung coding tanpa strategi menghasilkan output generic. Menyusun PRD dan menempatkan AI sebagai partner berpikir.',
       },
       {
-        title: 'Design: Blueprint yang Dipahami AI',
-        quote: 'AI bisa menulis kode yang bagus — tapi hanya kalau kamu memberikan spesifikasi yang jelas.',
-        items: [
-          'Menyusun PRD (Product Requirement Document) yang efektif',
-          'PRD sebagai alat komunikasi antara manusia dan AI',
-          'Membuat database schema yang tepat guna',
-          'Kesalahan desain yang sering menyebabkan AI "ngaco"'
-        ],
-        tags: ['PRD', 'system blueprint', 'database schema', 'AI communication']
+        title: 'Design: Mendesain Struktur Sistem Sebelum Coding',
+        description: 'Menjembatani PRD ke coding dengan database schema sebagai kontrak antara bisnis dan aplikasi. Workflow tiga langkah bersama AI: draft, generate DDL, review & iterasi.',
       }
     ]
   },
   {
     title: 'Developing',
-    babCount: 2,
+    babCount: 1,
     badgeColor: 'bg-primary',
     chapters: [
       {
-        title: 'Develop: Kolaborasi, Bukan Delegasi',
-        quote: 'Kunci sukses vibe coding bukan menyerahkan semua ke AI — tapi tahu kapan dan di mana AI paling efektif.',
-        items: [
-          'Menentukan tech stack yang sesuai kebutuhan',
-          'Prinsip Context > Prompt — kenapa konteks lebih penting',
-          'Framework vibe coding untuk mempercepat development',
-          'Area yang cocok untuk AI vs yang harus dikendalikan manusia'
-        ],
-        tags: ['AI coding agent', 'context management', 'human-in-the-loop']
-      },
-      {
-        title: 'Testing & Reliability: Jalan ≠ Siap Produksi',
-        quote: 'Aplikasi yang "jalan" belum tentu siap digunakan dalam skenario nyata.',
-        items: [
-          'Memeriksa kesesuaian fitur dengan kebutuhan awal',
-          'Debugging dengan bantuan AI secara bertanggung jawab',
-          'Kesalahan umum saat debugging dengan AI',
-          'Peran unit test dalam menjaga stabilitas aplikasi'
-        ],
-        tags: ['testing mindset', 'AI debugging', 'unit testing', 'reliability']
+        title: 'Develop: Kolaborasi Efektif dengan AI Coding Agent',
+        description: 'Mengeksekusi PRD dan schema menjadi kode dengan prinsip Context > Prompt. Memilih AI Coding Agent, memecah PRD jadi unit kerja, dan membagi area kerja AI vs manusia.',
       }
     ]
   },
@@ -195,15 +144,8 @@ const sections = [
     badgeColor: 'bg-primary',
     chapters: [
       {
-        title: 'Deploy & Real World: Dari Lokal ke Produksi',
-        quote: 'Deployment adalah fase yang tidak bisa disepelekan — terutama untuk aplikasi yang dibangun dengan bantuan AI.',
-        items: [
-          'Penggunaan AI Agent untuk code review sebelum deploy',
-          'Gambaran peran Docker dalam deployment',
-          'Peran VPS/hosting dalam menjalankan aplikasi secara stabil',
-          'Risiko keamanan dan environment yang sering terlewat'
-        ],
-        tags: ['deployment', 'docker', 'VPS', 'production readiness']
+        title: 'Deploy & Real World',
+        description: 'Tantangan nyata membawa aplikasi ke produksi. Penggunaan AI untuk code review, peran Docker dan VPS, serta risiko keamanan yang sering terlewat.',
       }
     ]
   }
