@@ -21,9 +21,7 @@
         <div class="rounded-2xl border border-red-100 bg-red-50/40 p-6 flex flex-col gap-6">
           <div class="flex items-center gap-3">
             <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              <IconClose class="w-4 h-4 text-red-400" :stroke-width="2.5" />
             </div>
             <p class="text-sm font-bold text-red-500 uppercase tracking-wider">Sebelum</p>
           </div>
@@ -59,9 +57,7 @@
         <div class="rounded-2xl border border-primary/20 bg-primary/5 p-6 flex flex-col gap-6">
           <div class="flex items-center gap-3">
             <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
+              <IconCheck class="w-4 h-4 text-primary" :stroke-width="2.5" />
             </div>
             <p class="text-sm font-bold text-primary uppercase tracking-wider">Sesudah</p>
           </div>

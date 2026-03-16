@@ -20,16 +20,12 @@
           </div>
           <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-primary/10 text-text text-sm font-medium hover:border-primary/20 transition-colors">
             <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+              <IconClock class="w-4 h-4 text-primary" />
             </div>
             <span>Checklist Tiap Bab</span>
           </div>
           <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-primary/10 text-text text-sm font-medium hover:border-primary/20 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-text/60 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
+            <IconDocument class="w-4 h-4 text-text/60 flex-shrink-0" />
             <span>Templates Siap Pakai</span>
           </div>
         </div>
@@ -63,9 +59,7 @@
             </div>
             <!-- Chevron -->
             <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-text/70 transition-transform duration-200" :class="{ 'rotate-180': openIndex === index }">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
+              <IconChevronDown class="w-5 h-5" />
             </span>
           </button>
 
@@ -90,9 +84,7 @@
 
       <!-- Footer -->
       <div class="mt-6 reveal flex items-center gap-3 px-4 py-3 rounded-xl bg-white border border-primary/10 text-sm text-text/70 hover:border-primary/20 transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-text/60 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-        </svg>
+        <IconDocument class="w-5 h-5 text-text/60 flex-shrink-0" />
         <span>250+ halaman panduan praktis dengan contoh nyata</span>
       </div>
     </div>

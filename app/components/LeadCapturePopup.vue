@@ -20,17 +20,13 @@
             class="absolute right-4 top-4 p-1.5 text-white/60 hover:text-white rounded-lg transition-colors"
             aria-label="Tutup"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <IconClose class="w-5 h-5" />
           </button>
 
           <!-- Success state -->
           <div v-if="submitted" class="text-center py-4">
             <div class="w-14 h-14 rounded-full bg-primary/30 flex items-center justify-center mx-auto mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
+              <IconCheck class="w-7 h-7 text-white" :stroke-width="2.5" />
             </div>
             <h2 class="text-xl font-bold text-white mb-2">Terima kasih!</h2>
             <p class="text-sm text-white/70">Kami akan mengirimkan bab gratis ke email kamu.</p>

@@ -15,9 +15,7 @@
           <div class="space-y-5">
             <div v-for="(item, index) in targetFor" :key="index" class="flex gap-3 items-start">
               <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
+                <IconCheck class="w-3 h-3 text-primary" />
               </div>
               <p class="text-sm text-text/80 leading-relaxed">
                 <span class="font-semibold text-text">{{ item.bold }}</span> {{ item.rest }}
@@ -32,9 +30,7 @@
           <div class="space-y-5">
             <div v-for="(item, index) in notFor" :key="index" class="flex gap-3 items-start">
               <div class="w-5 h-5 rounded-full bg-primary/5 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-text/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" />
-                </svg>
+                <IconMinus class="w-3 h-3 text-text/50" />
               </div>
               <p class="text-sm text-text/60 leading-relaxed">{{ item }}</p>
             </div>

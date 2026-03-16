@@ -54,9 +54,7 @@
                   v-if="!isHeading(benefit)"
                   class="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full bg-primary/50 flex items-center justify-center"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
+                  <IconCheck class="w-3.5 h-3.5 text-white" :stroke-width="2.5" />
                 </span>
                 <span>{{ benefitText(benefit) }}</span>
               </li>
@@ -73,15 +71,11 @@
           @click="openWaitlistModal()"
         >
           Daftar Waiting List
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-          </svg>
+          <IconArrowRight class="w-5 h-5" :stroke-width="2.5" />
         </button>
         <div class="flex flex-wrap items-center justify-center gap-6 mt-6">
           <div v-for="item in trustIndicators" :key="item" class="flex items-center gap-2 text-white/60">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-            </svg>
+            <IconCheck class="w-4 h-4 text-white/40" />
             <span class="text-sm">{{ item }}</span>
           </div>
         </div>
@@ -105,9 +99,7 @@
             <!-- Success State -->
             <div v-if="submitSuccess" class="p-8 text-center">
               <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-5">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
+                <IconCheck class="w-8 h-8 text-green-600" />
               </div>
               <h3 class="text-xl font-bold text-text mb-2">Berhasil Terdaftar!</h3>
               <p class="text-sm text-text/70 mb-6 leading-relaxed">
@@ -137,9 +129,7 @@
                     class="w-8 h-8 rounded-full bg-primary/5 flex items-center justify-center text-text/40 hover:text-text/70 hover:bg-primary/10 transition-colors cursor-pointer"
                     @click="closeModal"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+                    <IconClose class="w-4 h-4" />
                   </button>
                 </div>
 

@@ -18,9 +18,7 @@
           :class="`reveal-delay-${index + 1}`"
         >
           <div class="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <IconClose class="w-3.5 h-3.5 text-red-400" :stroke-width="2.5" />
           </div>
           <p class="text-sm text-text/80 leading-relaxed">
             <span class="font-semibold text-text">{{ point.bold }}</span> {{ point.rest }}

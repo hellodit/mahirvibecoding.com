@@ -21,14 +21,10 @@
           >
             <span class="text-sm font-semibold text-text pr-4 group-hover:text-primary transition-colors">{{ faq.question }}</span>
             <span class="flex-shrink-0 w-6 h-6 rounded-full border border-primary/20 flex items-center justify-center group-hover:border-primary transition-colors">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
+              <IconPlus
                 class="w-3.5 h-3.5 text-text/60 transition-transform duration-200 group-hover:text-primary"
                 :class="{ 'rotate-45': openIndex === index }"
-                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-              </svg>
+              />
             </span>
           </button>
           <div
