@@ -25,9 +25,10 @@
               <span v-else class="text-4xl font-bold text-primary">AP</span>
             </div>
             <div>
-              <h3 class="text-lg font-bold text-text mb-2">Asdita Prasetya</h3>
+              <h3 class="text-lg font-bold text-text mb-1">Asdita Prasetya</h3>
+              <p class="text-xs text-primary font-medium mb-2">Software Engineer, Tech Lead & Tech Content Creator</p>
               <p class="text-sm text-text/80 leading-relaxed mb-5">
-                Praktisi yang sehari-hari membangun aplikasi dengan AI Coding Agent. Panduan ini disusun dari pengalaman nyata di lapangan, bukan sekadar teori.
+                Berpengalaman membangun solusi software yang scalable dan high-performance. Mengubah kebutuhan teknis yang kompleks menjadi sistem yang stabil dan berdampak tinggi.
               </p>
               <!-- Link social media -->
               <div class="flex flex-wrap justify-center gap-3">
@@ -95,10 +96,10 @@ import { ref } from 'vue'
 const authorImageExists = ref(true)
 
 const authorSocials = [
-  { label: 'Twitter / X', url: 'https://twitter.com/', icon: '/icons/twitter.svg' },
-  { label: 'LinkedIn', url: 'https://linkedin.com/in/', icon: '/icons/linkedin.svg' },
-  { label: 'GitHub', url: 'https://github.com/', icon: '/icons/github.svg' },
-  { label: 'Instagram', url: 'https://instagram.com/', icon: '/icons/instagram.svg' }
+  { label: 'Instagram', url: 'https://www.instagram.com/codingtengahmalam', icon: '/icons/instagram.svg' },
+  { label: 'YouTube', url: 'https://www.youtube.com/@asditaprasetya', icon: '/icons/youtube.svg' },
+  { label: 'Threads', url: 'https://www.threads.com/@codingtengahmalam', icon: '/icons/threads.svg' },
+  { label: 'TikTok', url: 'https://www.tiktok.com/@codingtengahmalam', icon: '/icons/tiktok.svg' }
 ]
 
 const testimonials = [

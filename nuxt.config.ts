@@ -103,4 +103,15 @@ export default defineNuxtConfig({
       scrollBehaviorType: 'smooth',
     },
   },
+
+  components: [
+    {
+      path: '~/components/icons',
+      pathPrefix: false,
+    },
+    {
+      path: '~/components',
+      ignore: ['**/icons/**'],
+    },
+  ],
 })
