@@ -12,11 +12,7 @@
         </p>
       </div>
 
-      <!-- Countdown Timer -->
-      <div class="text-center mb-14 reveal reveal-delay-1">
-        <p class="text-sm text-white/70 mb-3">Harga peluncuran berakhir dalam:</p>
-        <CountdownTimer :target-date="countdownTarget" :dark="true" />
-      </div>
+   
 
       <!-- Pricing cards -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
@@ -42,26 +38,10 @@
             <p v-if="plan.subtitle" class="text-sm text-white/60 mb-5">{{ plan.subtitle }}</p>
 
             <div class="mb-6">
-              <template v-if="plan.priceCustom">
-                <span class="text-2xl md:text-3xl font-bold text-white">Custom</span>
-              </template>
-              <template v-else>
-                <span v-if="plan.originalPrice" class="text-sm text-white/50 line-through mr-2">Rp {{ plan.originalPrice }}</span>
-                <span class="text-2xl md:text-3xl font-bold text-white">Rp {{ plan.price }}</span>
-                <span class="text-sm text-white/50">/ sekali bayar</span>
-              </template>
-              <p v-if="plan.discountNote" class="text-xs text-white/60 mt-1">{{ plan.discountNote }}</p>
+              <span class="text-2xl md:text-3xl font-bold text-white">
+                COMING SOON
+              </span>
             </div>
-
-            <a
-              :href="plan.ctaUrl"
-              class="block w-full py-3.5 text-center text-sm font-bold rounded-xl transition-all mb-8"
-              :class="plan.featured
-                ? 'bg-background text-primary hover:bg-background/90'
-                : 'bg-white/10 text-white border border-white/20 hover:bg-white/15'"
-            >
-              {{ plan.ctaText }}
-            </a>
 
             <ul class="space-y-3 flex-1">
               <li
@@ -85,48 +65,154 @@
         </div>
       </div>
 
-      <!-- Guarantee Badge -->
-      <div class="max-w-md mx-auto mb-10 reveal">
-        <GuaranteeBadge />
-      </div>
-
-      <!-- Payment Methods -->
-      <div class="text-center mb-16 reveal">
-        <p class="text-xs text-white/50 uppercase tracking-widest mb-4">Metode Pembayaran</p>
-        <div class="flex flex-wrap items-center justify-center gap-4">
-          <div
-            v-for="method in paymentMethods"
-            :key="method"
-            class="px-4 py-2 rounded-lg bg-white/10 border border-white/10 text-sm font-medium text-white/70"
-          >
-            {{ method }}
+      <!-- Single Waiting List CTA -->
+      <div class="text-center mb-10 reveal">
+        <button
+          type="button"
+          class="inline-flex items-center justify-center gap-2 px-10 py-4 bg-background text-primary text-base font-bold rounded-full hover:bg-background/90 transition-colors cursor-pointer shadow-lg shadow-black/20"
+          @click="openWaitlistModal()"
+        >
+          Daftar Waiting List
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </button>
+        <div class="flex flex-wrap items-center justify-center gap-6 mt-6">
+          <div v-for="item in trustIndicators" :key="item" class="flex items-center gap-2 text-white/60">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            <span class="text-sm">{{ item }}</span>
           </div>
         </div>
       </div>
 
-      <!-- Testimonial -->
-      <div class="reveal text-center max-w-3xl mx-auto">
-        <div class="flex justify-center mb-6">
-          <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center text-white text-xl font-bold border-2 border-white/30">
-            A
-          </div>
-        </div>
-        <blockquote class="text-lg md:text-xl text-white/90 leading-relaxed mb-4">
-          "Worth it. Saya pakai pendekatan dari sini di tim dan workflow jadi lebih rapi."
-        </blockquote>
-        <cite class="text-sm text-white/70 not-italic font-semibold">Andi — Tech Lead</cite>
-      </div>
     </div>
+
+    <!-- Waitlist Modal -->
+    <Teleport to="body">
+      <Transition name="modal">
+        <div
+          v-if="showModal"
+          class="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          @click.self="closeModal"
+        >
+          <!-- Backdrop -->
+          <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+
+          <!-- Modal Content -->
+          <div class="relative w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <!-- Success State -->
+            <div v-if="submitSuccess" class="p-8 text-center">
+              <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-text mb-2">Berhasil Terdaftar!</h3>
+              <p class="text-sm text-text/70 mb-6 leading-relaxed">
+                Kamu sudah masuk waiting list.
+                Kami akan menghubungi kamu saat launching.
+              </p>
+              <button
+                type="button"
+                class="px-6 py-3 bg-primary text-white text-sm font-semibold rounded-xl hover:opacity-90 transition-colors cursor-pointer"
+                @click="closeModal"
+              >
+                Tutup
+              </button>
+            </div>
+
+            <!-- Form State -->
+            <div v-else>
+              <div class="p-8">
+                <!-- Header -->
+                <div class="flex items-start justify-between mb-6">
+                  <div>
+                    <p class="text-xs font-semibold text-primary uppercase tracking-widest mb-1">Waiting List</p>
+                    <h3 class="text-xl font-bold text-text">Daftar Waiting List</h3>
+                  </div>
+                  <button
+                    type="button"
+                    class="w-8 h-8 rounded-full bg-primary/5 flex items-center justify-center text-text/40 hover:text-text/70 hover:bg-primary/10 transition-colors cursor-pointer"
+                    @click="closeModal"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+
+                <p class="text-sm text-text/60 mb-6 leading-relaxed">
+                  Isi data kamu di bawah ini. Kami akan menghubungi kamu saat panduan ini resmi diluncurkan.
+                </p>
+
+                <!-- Form -->
+                <form @submit.prevent="submitWaitlist" class="space-y-4">
+                  <div>
+                    <label for="wl-name" class="block text-sm font-medium text-text mb-1.5">Nama</label>
+                    <input
+                      id="wl-name"
+                      v-model="form.name"
+                      type="text"
+                      placeholder="Nama lengkap"
+                      required
+                      class="w-full px-4 py-3 rounded-xl border border-primary/15 bg-primary/[0.02] text-sm text-text placeholder:text-text/40 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-colors"
+                    />
+                  </div>
+
+                  <div>
+                    <label for="wl-email" class="block text-sm font-medium text-text mb-1.5">Email</label>
+                    <input
+                      id="wl-email"
+                      v-model="form.email"
+                      type="email"
+                      placeholder="email@example.com"
+                      required
+                      class="w-full px-4 py-3 rounded-xl border border-primary/15 bg-primary/[0.02] text-sm text-text placeholder:text-text/40 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-colors"
+                    />
+                  </div>
+
+                  <div>
+                    <label for="wl-phone" class="block text-sm font-medium text-text mb-1.5">Nomor Telepon</label>
+                    <input
+                      id="wl-phone"
+                      v-model="form.phone"
+                      type="tel"
+                      placeholder="08xxxxxxxxxx"
+                      required
+                      class="w-full px-4 py-3 rounded-xl border border-primary/15 bg-primary/[0.02] text-sm text-text placeholder:text-text/40 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-colors"
+                    />
+                  </div>
+
+                  <p v-if="submitError" class="text-sm text-red-500 font-medium">{{ submitError }}</p>
+
+                  <button
+                    type="submit"
+                    :disabled="submitting"
+                    class="w-full py-3.5 bg-primary text-white text-sm font-bold rounded-xl hover:opacity-90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                  >
+                    <span v-if="submitting">Mendaftarkan...</span>
+                    <span v-else>Daftar Waiting List</span>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
   </section>
 </template>
 
 <script setup lang="ts">
-const countdownTarget = (() => {
-  const d = new Date()
-  d.setDate(d.getDate() + 7)
-  d.setHours(23, 59, 59, 0)
-  return d.toISOString()
-})()
+import { ref, reactive, watch } from 'vue'
+
+const trustIndicators = [
+  'Gratis, tanpa kartu kredit',
+  'Tanpa komitmen',
+  'Dapat notifikasi + harga spesial saat launch',
+]
 
 function isHeading(benefit: string | { isHeading?: boolean; text?: string }) {
   return typeof benefit === 'object' && benefit?.isHeading
@@ -135,7 +221,6 @@ function benefitText(benefit: string | { text?: string }) {
   return typeof benefit === 'string' ? benefit : (benefit?.text ?? '')
 }
 
-const paymentMethods = ['BCA', 'Mandiri', 'BRI', 'BNI', 'GoPay', 'OVO', 'DANA', 'QRIS']
 
 const plans = [
   {
@@ -146,13 +231,10 @@ const plans = [
     subtitle: 'Belajar mandiri dengan ebook',
     originalPrice: '99.000',
     price: '89.000',
-    priceCustom: false,
     discountNote: 'dengan kode SPECIAL40 (40% OFF)',
     benefits: [
       'Akses ke Ebook'
     ],
-    ctaText: 'Beli Sekarang',
-    ctaUrl: '#'
   },
   {
     id: 'pro',
@@ -162,7 +244,6 @@ const plans = [
     subtitle: 'Ebook + bonus & akses komunitas',
     originalPrice: '199.000',
     price: '119.400',
-    priceCustom: false,
     discountNote: 'dengan kode SPECIAL40 (40% OFF)',
     benefits: [
       { text: 'Semua di Lite, plus:', isHeading: true },
@@ -172,8 +253,6 @@ const plans = [
       'Akses Belajar 1 Bulan BelajarKoding.com (senilai 99rb)',
       'Akses Selamanya Group Discord'
     ],
-    ctaText: 'Beli Sekarang',
-    ctaUrl: '#'
   },
   {
     id: 'ultimate',
@@ -183,7 +262,6 @@ const plans = [
     subtitle: 'Ebook + Bootcamp 4 sesi live',
     originalPrice: '799.000',
     price: '479.400',
-    priceCustom: false,
     discountNote: 'dengan kode SPECIAL40 (40% OFF)',
     benefits: [
       { text: 'Semua di Pro, plus:', isHeading: true },
@@ -194,8 +272,91 @@ const plans = [
       'Akses Belajar 12 Bulan BelajarKoding.com',
       'Konsultasi 1-1 selama 30 menit (2x)'
     ],
-    ctaText: 'Beli Sekarang',
-    ctaUrl: '#'
   }
 ]
+
+// Waitlist modal state
+const showModal = ref(false)
+const submitting = ref(false)
+const submitSuccess = ref(false)
+const submitError = ref('')
+
+const form = reactive({
+  name: '',
+  email: '',
+  phone: '',
+})
+
+function openWaitlistModal() {
+  submitSuccess.value = false
+  submitError.value = ''
+  form.name = ''
+  form.email = ''
+  form.phone = ''
+  showModal.value = true
+  document.body.style.overflow = 'hidden'
+}
+
+function closeModal() {
+  showModal.value = false
+  document.body.style.overflow = ''
+}
+
+async function submitWaitlist() {
+  submitError.value = ''
+  submitting.value = true
+
+  try {
+    await $fetch('/api/waitlist', {
+      method: 'POST',
+      body: {
+        name: form.name.trim(),
+        email: form.email.trim(),
+        phone: form.phone.trim(),
+      },
+    })
+    submitSuccess.value = true
+  } catch (e: any) {
+    submitError.value = e?.data?.statusMessage || 'Terjadi kesalahan. Silakan coba lagi.'
+  } finally {
+    submitting.value = false
+  }
+}
+
+// Close modal on Escape key
+if (import.meta.client) {
+  watch(showModal, (val) => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeModal()
+    }
+    if (val) {
+      window.addEventListener('keydown', handler)
+    } else {
+      window.removeEventListener('keydown', handler)
+    }
+  })
+}
 </script>
+
+<style scoped>
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.25s ease;
+}
+.modal-enter-active .relative,
+.modal-leave-active .relative {
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+}
+.modal-enter-from .relative {
+  transform: translateY(16px);
+  opacity: 0;
+}
+.modal-leave-to .relative {
+  transform: translateY(8px);
+  opacity: 0;
+}
+</style>

@@ -12,13 +12,11 @@
       <HeroSection />
       <ProblemSection />
       <SolutionSection />
-      <BeforeAfterSection />
       <TargetAudienceSection />
       <CurriculumSection />
       <TrustSection />
       <PricingSection />
       <FaqSection />
-      <FinalCtaSection />
     </main>
     <FooterSection />
   </div>
@@ -28,7 +26,7 @@
 import { ref, onMounted } from 'vue'
 
 const announcementVisible = ref(true)
-const leadPopupDelay = 3000
+const leadPopupDelay = 45000
 
 async function onLeadSubmit({ email }: { email: string }) {
   try {
