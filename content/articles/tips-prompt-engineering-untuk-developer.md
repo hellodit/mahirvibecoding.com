@@ -1,6 +1,8 @@
 ---
 title: "Prompt Engineering untuk Developer"
 description: "Tips menulis prompt yang lebih operasional untuk coding agent, supaya output lebih dekat ke implementasi yang bisa dipakai."
+titleVariant: "Prompt yang Lebih Operasional"
+descriptionVariant: "Checklist prompt untuk coding agent agar output lebih dekat ke diff yang kecil, jelas, dan siap direview."
 image: "/articles/images/tips-prompt-engineering-untuk-developer/cover.svg"
 author: "Asdita"
 publishedAt: "2026-03-20"

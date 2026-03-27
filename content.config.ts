@@ -15,6 +15,8 @@ export default defineContentConfig({
         tags: z.array(z.string()),
         draft: z.boolean().default(false),
         keywords: z.string().optional(),
+        titleVariant: z.string().max(60).optional(),
+        descriptionVariant: z.string().max(160).optional(),
       }),
     }),
   },

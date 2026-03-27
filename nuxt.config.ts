@@ -17,7 +17,7 @@ const prerenderRoutes = Array.from(new Set([...articleRoutes, ...tagRoutes, '/fe
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/content', '@nuxt/fonts', '@nuxt/image', '@nuxtjs/robots', '@nuxtjs/tailwindcss', '@nuxtjs/sitemap', 'nuxt-schema-org'],
+  modules: ['@nuxt/content', '@nuxt/fonts', '@nuxt/image', '@nuxtjs/robots', '@nuxtjs/tailwindcss', '@nuxtjs/sitemap', 'nuxt-schema-org', 'nuxt-og-image', 'nuxt-link-checker'],
   css: ['~/assets/css/global.css'],
 
   runtimeConfig: {
@@ -27,6 +27,7 @@ export default defineNuxtConfig({
       siteTitle,
       siteDescription,
       ogImage,
+      articleAnalyticsEnabled: process.env.NUXT_PUBLIC_ARTICLE_ANALYTICS_ENABLED === 'true',
     },
   },
 
@@ -41,6 +42,20 @@ export default defineNuxtConfig({
 
   sitemap: {
     urls: [...articleRoutes, ...tagRoutes],
+  },
+
+  ogImage: {
+    defaults: {
+      cacheMaxAgeSeconds: 60 * 60 * 24 * 7,
+    },
+  },
+
+  linkChecker: {
+    report: {
+      html: true,
+      markdown: true,
+      json: true,
+    },
   },
 
   fonts: {

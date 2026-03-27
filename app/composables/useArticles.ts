@@ -10,7 +10,9 @@ export interface ArticleTocLink {
 export interface ArticleRecord {
   path: string
   title: string
+  titleVariant?: string
   description: string
+  descriptionVariant?: string
   image: string
   author: string
   publishedAt: string
@@ -40,8 +42,25 @@ export interface ArticleNavigationLink {
   description?: string
 }
 
+export interface ArticleSearchSection {
+  id: string
+  title: string
+  titles: string[]
+  level: number
+  content: string
+  path: string
+  articleTitle: string
+  description: string
+  publishedAt: string
+  image: string
+  tags: string[]
+  titleVariant?: string
+  descriptionVariant?: string
+}
+
 const contentQueryCollection = queryCollection as unknown as (collection: 'articles') => any
 const contentQueryCollectionItemSurroundings = queryCollectionItemSurroundings as unknown as (collection: 'articles', path: string) => any
+const contentQueryCollectionSearchSections = queryCollectionSearchSections as unknown as (collection: 'articles', options?: Record<string, unknown>) => any
 
 export function fetchPublishedArticles() {
   return contentQueryCollection('articles')
@@ -102,6 +121,16 @@ export async function fetchArticleSurroundings(path: string) {
   return items.map(item => normalizeNavigationItem(item))
 }
 
+export async function fetchArticleSearchSections() {
+  const sections = await contentQueryCollectionSearchSections('articles', {
+    fields: ['title', 'description', 'path', 'publishedAt', 'image', 'tags', 'titleVariant', 'descriptionVariant'],
+  })
+    .where('draft', '=', false)
+    .order('publishedAt', 'DESC') as Array<Record<string, unknown>>
+
+  return sections.map(section => normalizeSearchSection(section)).filter(Boolean) as ArticleSearchSection[]
+}
+
 export function paginateArticles(articles: ArticleRecord[], page: number, pageSize = ARTICLE_PAGE_SIZE): ArticlePaginationResult {
   const totalItems = articles.length
   const totalPages = Math.max(1, Math.ceil(totalItems / pageSize))
@@ -154,6 +183,14 @@ export function getTagPath(tag: string) {
   return `/articles/tag/${encodeURIComponent(tag)}`
 }
 
+export function getArticleDisplayTitle(article: Pick<ArticleRecord, 'title' | 'titleVariant'>, variant: 'control' | 'variant' = 'control') {
+  return variant === 'variant' && article.titleVariant ? article.titleVariant : article.title
+}
+
+export function getArticleDisplayDescription(article: Pick<ArticleRecord, 'description' | 'descriptionVariant'>, variant: 'control' | 'variant' = 'control') {
+  return variant === 'variant' && article.descriptionVariant ? article.descriptionVariant : article.description
+}
+
 function normalizeNavigationItem(item: Record<string, unknown> | null): ArticleNavigationLink | null {
   if (!item) {
     return null
@@ -172,6 +209,36 @@ function normalizeNavigationItem(item: Record<string, unknown> | null): ArticleN
     title,
     description: readString(item.description) ?? readString(navigation?.description),
   }
+}
+
+function normalizeSearchSection(section: Record<string, unknown>) {
+  const path = readString(section.path) ?? readString(section._path)
+  const title = readString(section.title)
+  const content = readString(section.content)
+  const description = readString(section.description)
+  const publishedAt = readString(section.publishedAt)
+  const image = readString(section.image)
+  const id = readString(section.id)
+
+  if (!path || !title || !content || !description || !publishedAt || !image || !id) {
+    return null
+  }
+
+  return {
+    id,
+    title,
+    titles: Array.isArray(section.titles) ? section.titles.filter(value => typeof value === 'string') : [],
+    level: typeof section.level === 'number' ? section.level : 0,
+    content,
+    path,
+    articleTitle: title,
+    description,
+    publishedAt,
+    image,
+    tags: Array.isArray(section.tags) ? section.tags.filter(value => typeof value === 'string') : [],
+    titleVariant: readString(section.titleVariant),
+    descriptionVariant: readString(section.descriptionVariant),
+  } satisfies ArticleSearchSection
 }
 
 function readString(value: unknown) {

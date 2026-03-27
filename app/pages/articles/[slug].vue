@@ -36,6 +36,7 @@
                   <ArticleMeta
                     :article="article"
                     :reading-stats="readingStats"
+                    :view-count="viewCount"
                   />
                 </div>
 
@@ -116,6 +117,16 @@ const previousArticle = surroundingsData.value?.[0] ?? null
 const nextArticle = surroundingsData.value?.[1] ?? null
 const relatedArticles = relatedArticlesData.value ?? []
 const canonicalUrl = `${runtimeConfig.public.siteUrl}${article.path}`
+const analytics = useArticleAnalytics()
+const viewCount = ref<number | null>(null)
+
+defineOgImageComponent('ArticleFrame', {
+  title: article.title,
+  description: article.description,
+  tags: article.tags,
+  eyebrow: formatArticleDate(article.publishedAt),
+  footer: 'MahirVibeCoding Articles',
+})
 
 useSchemaOrg([
   defineArticle({
@@ -151,11 +162,9 @@ useSeoMeta({
   ogDescription: article.description,
   ogType: 'article',
   ogUrl: canonicalUrl,
-  ogImage: `${runtimeConfig.public.siteUrl}${article.image}`,
   twitterCard: 'summary_large_image',
   twitterTitle: article.title,
   twitterDescription: article.description,
-  twitterImage: `${runtimeConfig.public.siteUrl}${article.image}`,
 })
 
 useHead({
@@ -178,6 +187,24 @@ function extractTocLinks(body: unknown) {
   const links = 'links' in toc ? toc.links : undefined
   return Array.isArray(links) ? links as ArticleTocLink[] : []
 }
+
+onMounted(async () => {
+  const articleSlug = article.path.split('/').filter(Boolean).at(-1)
+
+  if (!articleSlug) {
+    return
+  }
+
+  await trackOncePerSession(`view:${articleSlug}`, async () => {
+    await analytics.track(articleSlug, {
+      event: 'view',
+      source: 'detail',
+    })
+  })
+
+  const stats = await analytics.fetchStats(articleSlug)
+  viewCount.value = stats?.views ?? null
+})
 </script>
 
 <style scoped>

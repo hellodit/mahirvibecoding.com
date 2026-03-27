@@ -1,6 +1,8 @@
 ---
 title: "Laravel + AI Coding Agent"
 description: "Cara memakai AI coding agent di project Laravel tanpa merusak struktur aplikasi, convention, dan flow review."
+titleVariant: "Laravel + Agent yang Tetap Rapi"
+descriptionVariant: "Workflow memakai AI coding agent di Laravel tanpa mengorbankan convention, review discipline, dan struktur aplikasi."
 image: "/articles/images/laravel-boost-ai-coding-agent/cover.svg"
 author: "Asdita"
 publishedAt: "2026-03-24"

@@ -15,6 +15,7 @@
         v-for="article in articles"
         :key="article.path"
         :article="article"
+        source="related"
       />
     </div>
   </section>

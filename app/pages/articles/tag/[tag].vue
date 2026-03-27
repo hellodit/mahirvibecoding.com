@@ -83,6 +83,13 @@ const canonicalUrl = articlesPage.currentPage > 1
   ? `${runtimeConfig.public.siteUrl}${getTagPath(currentTag)}?page=${articlesPage.currentPage}`
   : `${runtimeConfig.public.siteUrl}${getTagPath(currentTag)}`
 
+defineOgImageComponent('ArticleFrame', {
+  title: `#${currentTag}`,
+  description: `Archive artikel MahirVibeCoding untuk topik ${currentTag}.`,
+  tags: [currentTag],
+  eyebrow: 'Tag Archive',
+})
+
 useSchemaOrg([
   defineWebPage({
     name: `Articles tagged ${currentTag}`,
@@ -112,11 +119,9 @@ useSeoMeta({
   ogDescription: `Kumpulan artikel MahirVibeCoding untuk tag ${currentTag}.`,
   ogType: 'website',
   ogUrl: canonicalUrl,
-  ogImage: runtimeConfig.public.ogImage,
   twitterCard: 'summary_large_image',
   twitterTitle: `#${currentTag} — Articles — ${runtimeConfig.public.siteName}`,
   twitterDescription: `Kumpulan artikel MahirVibeCoding untuk tag ${currentTag}.`,
-  twitterImage: runtimeConfig.public.ogImage,
 })
 
 useHead({

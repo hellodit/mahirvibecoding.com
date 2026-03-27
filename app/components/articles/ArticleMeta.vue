@@ -24,6 +24,11 @@
       <p class="font-medium text-text/75">{{ readingStats.minutes }} menit baca</p>
     </div>
 
+    <div v-if="typeof viewCount === 'number'">
+      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-text/45">Views</p>
+      <p class="font-medium text-text/75">{{ viewCount }} views</p>
+    </div>
+
     <div v-if="article.updatedAt">
       <p class="text-xs font-semibold uppercase tracking-[0.22em] text-text/45">Update Terakhir</p>
       <p class="font-medium text-text/75">{{ updatedLabel }}</p>
@@ -37,6 +42,7 @@ import type { ArticleReadingStats, ArticleRecord } from '~/composables/useArticl
 const props = defineProps<{
   article: ArticleRecord
   readingStats?: ArticleReadingStats
+  viewCount?: number | null
 }>()
 
 const publishedLabel = computed(() => formatArticleDate(props.article.publishedAt))

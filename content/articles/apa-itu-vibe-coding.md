@@ -1,6 +1,8 @@
 ---
 title: "Apa Itu Vibe Coding?"
 description: "Penjelasan praktis vibe coding untuk developer Indonesia yang ingin shipping lebih cepat tanpa kehilangan struktur."
+titleVariant: "Vibe Coding Tanpa Chaos"
+descriptionVariant: "Cara bekerja dengan AI coding agent lebih cepat, tapi tetap rapi saat masuk ke planning, review, dan shipping."
 image: "/articles/images/apa-itu-vibe-coding/cover.svg"
 author: "Asdita"
 publishedAt: "2026-03-27"

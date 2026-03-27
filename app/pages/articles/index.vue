@@ -18,6 +18,11 @@
         </section>
 
         <section class="mt-12">
+          <ArticleSearchPanel
+            v-if="searchSections.length"
+            :sections="searchSections"
+          />
+
           <div class="mb-8 flex flex-wrap gap-2">
             <NuxtLink
               v-for="tag in availableTags"
@@ -53,12 +58,21 @@ const { data: articlesPageData } = await useAsyncData(
   () => fetchPaginatedArticles(requestedPage),
 )
 const { data: availableTagsData } = await useAsyncData('articles-tags', fetchAvailableTags)
+const { data: searchSectionsData } = await useAsyncData('article-search-sections', fetchArticleSearchSections)
 
 const articlesPage = articlesPageData.value ?? paginateArticles([], 1)
 const availableTags = availableTagsData.value ?? []
+const searchSections = searchSectionsData.value ?? []
 const canonicalUrl = articlesPage.currentPage > 1
   ? `${runtimeConfig.public.siteUrl}/articles?page=${articlesPage.currentPage}`
   : `${runtimeConfig.public.siteUrl}/articles`
+
+defineOgImageComponent('ArticleFrame', {
+  title: articlesPage.currentPage > 1 ? `Articles Page ${articlesPage.currentPage}` : 'Articles',
+  description: 'Kumpulan insight praktis soal vibe coding, Laravel, AI coding agent, dan workflow development.',
+  tags: availableTags.slice(0, 3),
+  eyebrow: 'Knowledge Base',
+})
 
 useSchemaOrg([
   defineWebSite({
@@ -96,13 +110,11 @@ useSeoMeta({
   ogDescription: 'Artikel MahirVibeCoding tentang vibe coding, Laravel, AI coding agent, dan workflow development yang lebih strategis.',
   ogType: 'website',
   ogUrl: canonicalUrl,
-  ogImage: runtimeConfig.public.ogImage,
   twitterCard: 'summary_large_image',
   twitterTitle: articlesPage.currentPage > 1
     ? `Articles Page ${articlesPage.currentPage} — ${runtimeConfig.public.siteName}`
     : `Articles — ${runtimeConfig.public.siteName}`,
   twitterDescription: 'Artikel MahirVibeCoding tentang vibe coding, Laravel, AI coding agent, dan workflow development yang lebih strategis.',
-  twitterImage: runtimeConfig.public.ogImage,
 })
 
 useHead({
