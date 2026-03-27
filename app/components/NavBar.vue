@@ -13,6 +13,7 @@
 
       <!-- Desktop Nav -->
       <nav class="hidden md:flex items-center gap-8">
+        <NuxtLink to="/articles" class="text-sm font-medium text-text/70 hover:text-primary transition-colors">Artikel</NuxtLink>
         <a href="/#curriculum" class="text-sm font-medium text-text/70 hover:text-primary transition-colors">Kurikulum</a>
         <a href="/#target" class="text-sm font-medium text-text/70 hover:text-primary transition-colors">Untuk Siapa</a>
         <a href="/#faq" class="text-sm font-medium text-text/70 hover:text-primary transition-colors">FAQ</a>
@@ -35,6 +36,7 @@
     <!-- Mobile Menu -->
     <Transition name="mobile-menu">
       <div v-if="mobileMenuOpen" class="md:hidden border-t border-primary/10 bg-white/95 backdrop-blur-lg px-6 py-4 space-y-4 shadow-xl absolute w-full left-0">
+        <NuxtLink to="/articles" @click="mobileMenuOpen = false" class="block text-sm font-medium text-text/70 hover:text-primary transition-colors">Artikel</NuxtLink>
         <a href="/#curriculum" @click="mobileMenuOpen = false" class="block text-sm font-medium text-text/70 hover:text-primary transition-colors">Kurikulum</a>
         <a href="/#target" @click="mobileMenuOpen = false" class="block text-sm font-medium text-text/70 hover:text-primary transition-colors">Untuk Siapa</a>
         <a href="/#faq" @click="mobileMenuOpen = false" class="block text-sm font-medium text-text/70 hover:text-primary transition-colors">FAQ</a>

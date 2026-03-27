@@ -1,14 +1,23 @@
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
+import { join, relative, sep } from 'node:path'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://mahirvibecoding.com'
 const siteName = process.env.NUXT_PUBLIC_SITE_NAME || 'MahirVibeCoding'
 const siteTitle = process.env.NUXT_PUBLIC_SITE_TITLE || 'MahirVibeCoding — Strategi Vibe Coding untuk Membangun Aplikasi Fullstack'
 const siteDescription = process.env.NUXT_PUBLIC_SITE_DESCRIPTION || 'Framework lengkap untuk membangun aplikasi fullstack bersama AI Coding Agent — dari planning hingga deploy.'
 const ogImage = process.env.NUXT_PUBLIC_OG_IMAGE || `${siteUrl}/og-image.png`
+const articleEntries = getArticleEntries()
+const articleRoutes = ['/articles', ...articleEntries.map(entry => `/articles/${entry.slug}`)]
+const tagRoutes = Array.from(
+  new Set(articleEntries.flatMap(entry => entry.tags.map(tag => `/articles/tag/${encodeURIComponent(tag)}`)))
+)
+const prerenderRoutes = Array.from(new Set([...articleRoutes, ...tagRoutes, '/feed.xml']))
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/fonts', '@nuxt/image', '@nuxtjs/tailwindcss', '@nuxtjs/sitemap'],
+  modules: ['@nuxt/content', '@nuxt/fonts', '@nuxt/image', '@nuxtjs/robots', '@nuxtjs/tailwindcss', '@nuxtjs/sitemap', 'nuxt-schema-org'],
   css: ['~/assets/css/global.css'],
 
   runtimeConfig: {
@@ -24,6 +33,14 @@ export default defineNuxtConfig({
   site: {
     url: siteUrl,
     name: siteName,
+  },
+
+  robots: {
+    sitemap: `${siteUrl}/sitemap.xml`,
+  },
+
+  sitemap: {
+    urls: [...articleRoutes, ...tagRoutes],
   },
 
   fonts: {
@@ -58,6 +75,7 @@ export default defineNuxtConfig({
         { rel: 'canonical', href: siteUrl },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+        { rel: 'alternate', type: 'application/rss+xml', title: `${siteName} Articles Feed`, href: `${siteUrl}/feed.xml` },
       ],
       script: [
         {
@@ -104,14 +122,124 @@ export default defineNuxtConfig({
     },
   },
 
+  routeRules: {
+    '/articles': { prerender: true },
+    '/articles/**': { prerender: true },
+    '/feed.xml': { prerender: true },
+  },
+
+  nitro: {
+    prerender: {
+      routes: prerenderRoutes,
+    },
+  },
+
   components: [
     {
       path: '~/components/icons',
       pathPrefix: false,
     },
     {
+      path: '~/components/articles',
+      pathPrefix: false,
+    },
+    {
+      path: '~/components/content',
+      pathPrefix: false,
+      global: true,
+    },
+    {
       path: '~/components',
-      ignore: ['**/icons/**'],
+      ignore: ['**/icons/**', '**/articles/**', '**/content/**'],
     },
   ],
 })
+
+function getArticleEntries() {
+  const contentRoot = join(process.cwd(), 'content', 'articles')
+
+  if (!existsSync(contentRoot)) {
+    return []
+  }
+
+  const entries: Array<{ slug: string, tags: string[] }> = []
+
+  const visit = (dir: string) => {
+    for (const entry of readdirSync(dir)) {
+      const fullPath = join(dir, entry)
+      const stats = statSync(fullPath)
+
+      if (stats.isDirectory()) {
+        visit(fullPath)
+        continue
+      }
+
+      if (!entry.endsWith('.md')) {
+        continue
+      }
+
+      const relativePath = relative(contentRoot, fullPath)
+      const slug = relativePath.slice(0, -3).split(sep).join('/')
+      const rawContent = readFileSync(fullPath, 'utf8')
+      const frontmatter = extractFrontmatter(rawContent)
+
+      if (isDraft(frontmatter)) {
+        continue
+      }
+
+      entries.push({
+        slug,
+        tags: extractTags(frontmatter),
+      })
+    }
+  }
+
+  visit(contentRoot)
+
+  return entries
+}
+
+function extractFrontmatter(content: string) {
+  const match = content.match(/^---\n([\s\S]*?)\n---/)
+  return match?.[1] ?? ''
+}
+
+function isDraft(frontmatter: string) {
+  return /^\s*draft:\s*true\s*$/m.test(frontmatter)
+}
+
+function extractTags(frontmatter: string) {
+  const lines = frontmatter.split('\n')
+  const tags: string[] = []
+  let readingTags = false
+
+  for (const line of lines) {
+    if (/^\s*tags:\s*$/.test(line)) {
+      readingTags = true
+      continue
+    }
+
+    if (!readingTags) {
+      continue
+    }
+
+    const match = line.match(/^\s*-\s*(.+)\s*$/)
+    if (match) {
+      const tagValue = match[1]
+      if (tagValue) {
+        tags.push(tagValue.replace(/^['"]|['"]$/g, ''))
+      }
+      continue
+    }
+
+    if (line.trim() === '') {
+      continue
+    }
+
+    if (/^\S/.test(line)) {
+      break
+    }
+  }
+
+  return tags
+}

@@ -1,0 +1,15 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" rx="36" fill="#F6F6FB"/>
+  <rect x="54" y="54" width="1092" height="522" rx="32" fill="#10162D"/>
+  <circle cx="1008" cy="152" r="122" fill="#88A1FF" fill-opacity="0.2"/>
+  <circle cx="1002" cy="480" r="176" fill="#CED8FF" fill-opacity="0.16"/>
+  <rect x="150" y="194" width="260" height="58" rx="16" fill="#1F2A57"/>
+  <rect x="150" y="268" width="424" height="58" rx="16" fill="#1A2347"/>
+  <rect x="150" y="342" width="338" height="58" rx="16" fill="#1F2A57"/>
+  <text x="150" y="142" fill="#A9BBFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="28" font-weight="700" letter-spacing="6">MahirVibeCoding Articles</text>
+  <text x="150" y="470" fill="white" font-family="'Plus Jakarta Sans', sans-serif" font-size="60" font-weight="800">Prompt Engineering</text>
+  <text x="150" y="540" fill="white" font-family="'Plus Jakarta Sans', sans-serif" font-size="60" font-weight="800">untuk Developer</text>
+  <text x="702" y="310" fill="#D9E0FF" font-family="'Plus Jakarta Sans', sans-serif" font-size="28" font-weight="500">Tulis brief yang lebih operasional</text>
+  <text x="702" y="352" fill="#D9E0FF" font-family="'Plus Jakarta Sans', sans-serif" font-size="28" font-weight="500">agar output agent lebih dekat</text>
+  <text x="702" y="394" fill="#D9E0FF" font-family="'Plus Jakarta Sans', sans-serif" font-size="28" font-weight="500">ke implementasi siap review.</text>
+</svg>
