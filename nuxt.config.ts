@@ -48,6 +48,12 @@ export default defineNuxtConfig({
     defaults: {
       cacheMaxAgeSeconds: 60 * 60 * 24 * 7,
     },
+    // Cloudflare Workers cannot bundle native @resvg/resvg-js; force WASM so Nitro
+    // does not resolve platform-specific .node binaries (e.g. win32) at build time.
+    compatibility: {
+      runtime: { resvg: 'wasm' },
+      prerender: { resvg: 'wasm' },
+    },
   },
 
   linkChecker: {
