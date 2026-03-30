@@ -19,20 +19,20 @@
       <nav class="hidden items-center gap-8 md:flex">
         <NuxtLink
           to="/articles"
-          class="text-sm font-semibold text-primary transition-colors hover:text-text"
+          class="text-sm font-semibold  transition-colors hover:text-text"
         >
           Artikel
         </NuxtLink>
         <a
           href="/#curriculum"
-          class="text-sm font-semibold text-primary transition-colors hover:text-text"
+          class="text-sm font-semibold  transition-colors hover:text-text"
         >
           Kurikulum
         </a>
-        <a href="/#target" class="text-sm font-semibold text-primary transition-colors hover:text-text">
+        <a href="/#target" class="text-sm font-semibold  transition-colors hover:text-text">
           Untuk Siapa
         </a>
-        <a href="/#faq" class="text-sm font-semibold text-primary transition-colors hover:text-text">
+        <a href="/#faq" class="text-sm font-semibold  transition-colors hover:text-text">
           FAQ
         </a>
       </nav>

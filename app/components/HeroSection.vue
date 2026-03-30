@@ -6,7 +6,7 @@
         href="#pricing"
         class="mb-8 inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm font-medium text-text transition-opacity hover:opacity-80"
       >
-        <span >Yang baru</span>
+        <span class="font-bold">Yang baru</span>
         <span class="text-text/35" aria-hidden="true">|</span>
         <span>Framework Vibe Coding untuk tim developer →</span>
       </a>
