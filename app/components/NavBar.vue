@@ -1,7 +1,10 @@
 <template>
   <header
-    class="sticky top-0 z-50 border-b border-transparent bg-background/80 backdrop-blur-lg transition-shadow duration-300"
-    :class="scrolled ? 'border-primary/10 shadow-sm' : ''"
+    class="sticky z-50 border-b border-transparent bg-background/80 backdrop-blur-lg transition-shadow duration-300"
+    :class="[
+      announcementVisible ? 'top-11' : 'top-0',
+      scrolled ? 'border-primary/10 shadow-sm' : '',
+    ]"
   >
     <div class="mx-auto flex h-20 max-w-5xl items-center justify-between px-4 md:px-6">
       <!-- Logo -->
@@ -116,7 +119,7 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 defineProps({
   announcementVisible: {
     type: Boolean,
-    default: true,
+    default: false,
   },
 })
 

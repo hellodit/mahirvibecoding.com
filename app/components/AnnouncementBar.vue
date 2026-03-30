@@ -1,5 +1,8 @@
 <template>
-  <div v-if="isVisible" class="bg-primary text-white py-3 px-6 relative z-[60]">
+  <div
+    v-if="isVisible"
+    class="sticky top-0 z-[60] w-full bg-primary py-3 px-6 text-white relative"
+  >
     <div class="max-w-5xl mx-auto flex items-center justify-center gap-3">
       <span class="text-white text-sm">✨</span>
       <p class="text-sm text-white">
