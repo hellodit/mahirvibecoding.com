@@ -4,14 +4,15 @@
       <!-- Header -->
       <div class="max-w-2xl mb-14 reveal">
         <h2 class="text-3xl md:text-4xl font-bold text-text leading-tight tracking-tight mb-4">
-          Kenapa banyak developer gagal memanfaatkan AI untuk coding?
+          Kenapa sebagian besar proyek Vibe Coding gagal di tengah jalan?
         </h2>
               <!-- Transition -->
       <div class="reveal border-l-2 border-primary pl-6 max-w-xl">
         <p class="text-base text-text/70 leading-relaxed">
-          Masalah ini bukan karena AI-nya kurang canggih. Masalahnya ada di
-          <span class="font-semibold text-text">strategi</span> dan
-          <span class="font-semibold text-text">workflow</span> yang kamu pakai.
+          Bukan karena AI-nya kurang canggih. Masalahnya ada di
+          <span class="font-semibold text-text">planning</span>,
+          <span class="font-semibold text-text">manajemen konteks</span>, dan
+          <span class="font-semibold text-text">kontrol kualitas</span> yang kamu pakai.
         </p>
       </div>
       </div>
@@ -38,10 +39,11 @@
 
 <script setup>
 const painPoints = [
-  { bold: 'Langsung minta AI bikin aplikasi', rest: 'tanpa planning yang jelas — hasilnya berantakan.' },
-  { bold: 'Prompt asal-asalan', rest: 'tanpa konteks yang tepat — AI malah bikin solusi yang keliru.' },
-  { bold: 'Tidak punya blueprint teknis', rest: '— fitur yang dihasilkan tidak sesuai kebutuhan.' },
-  { bold: 'Over-reliance pada AI', rest: '— begitu ada bug, tidak tahu harus mulai dari mana.' },
-  { bold: 'Aplikasi "jalan" tapi tidak reliable', rest: '— belum siap untuk real users.' }
+  { bold: 'Prompt dengan ide kasar tanpa planning yang jelas', rest: '— output AI generic dan tidak relevan dengan kebutuhan spesifik.' },
+  { bold: 'Tidak mendesain arsitektur dan schema sebelum coding', rest: '— hasilnya tidak scalable dan sulit di-maintain.' },
+  { bold: 'Tidak memecah kerja jadi unit kecil', rest: '— kehilangan kontrol di tengah jalan dan sulit di-review.' },
+  { bold: 'AI berhalusinasi tanpa disadari', rest: '— kode terlihat benar tapi logikanya keliru.' },
+  { bold: 'Over-reliance pada AI', rest: '— begitu ada bug atau edge case, tidak tahu harus mulai dari mana.' },
+  { bold: 'Aplikasi "jalan" tapi tidak production-ready', rest: '— keamanan, performa, dan reliabilitas terabaikan.' }
 ]
 </script>

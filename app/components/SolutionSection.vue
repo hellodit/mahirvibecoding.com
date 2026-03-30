@@ -127,48 +127,48 @@
 
 <script setup>
 const comparisons = [
-  { other: 'Fokus di prompting saja', ours: 'Fokus di strategi & workflow end-to-end' },
-  { other: 'Langsung koding', ours: 'Mulai dari validasi masalah' },
-  { other: 'Percaya buta pada AI', ours: 'Prinsip Human-in-the-Loop' },
-  { other: 'Tidak ada struktur', ours: 'Mengikuti SDLC yang diadaptasi untuk AI' },
-  { other: 'Teori tanpa konteks', ours: 'Berdasarkan pengalaman nyata' }
+  { other: 'Fokus di prompting saja', ours: 'Fokus di planning, development, sampai deployment' },
+  { other: 'Langsung koding tanpa arah', ours: 'Mulai dari requirement yang jelas dan terstruktur' },
+  { other: 'Percaya buta pada output AI', ours: 'Kontrol penuh: review, validasi, dan rollback per unit' },
+  { other: 'Tidak ada desain arsitektur', ours: 'Desain schema dan entitas sebelum implementasi' },
+  { other: 'Teori tanpa studi kasus', ours: 'Satu proyek nyata dari nol sampai production' }
 ]
 
 const beforeSteps = [
   {
-    title: 'Langsung minta AI buat aplikasi',
-    desc: 'Tanpa planning, tanpa blueprint — AI mengira-ngira sendiri apa yang kamu mau.',
+    title: 'Prompt dengan ide kasar ke AI',
+    desc: 'Tanpa planning dan konteks yang jelas — AI menghasilkan output generic yang tidak relevan.',
   },
   {
-    title: 'Prompt berulang, hasil tetap meleset',
-    desc: 'Konteks tidak lengkap, AI menghasilkan solusi yang tidak sesuai kebutuhan.',
+    title: 'Tidak ada desain arsitektur',
+    desc: 'Langsung coding tanpa schema dan struktur — hasilnya tidak konsisten dan sulit di-maintain.',
   },
   {
-    title: 'Bug muncul, tidak tahu harus mulai dari mana',
-    desc: 'Tidak ada pemahaman atas kode yang dihasilkan AI — debugging jadi tebak-tebakan.',
+    title: 'Kehilangan kontrol di tengah jalan',
+    desc: 'Kerja tidak dipecah jadi unit kecil — sulit di-review, sulit di-rollback.',
   },
   {
-    title: 'Fitur "jalan" tapi rapuh',
-    desc: 'Tidak ada testing, tidak ada code review — aplikasi tidak siap dipakai user nyata.',
+    title: 'Aplikasi "jalan" tapi penuh risiko',
+    desc: 'Halusinasi AI tidak terdeteksi, tidak ada code review — tidak siap untuk real users.',
   },
 ]
 
 const afterSteps = [
   {
-    title: 'Planning dulu sebelum koding',
-    desc: 'Validasi masalah, tentukan scope, susun PRD — AI punya konteks yang jelas.',
+    title: 'Planning terstruktur sebelum coding',
+    desc: 'Requirement jelas, scope terdefinisi, dipecah jadi unit kerja kecil yang bisa dieksekusi.',
   },
   {
-    title: 'Context-driven prompting',
-    desc: 'Setiap prompt punya konteks yang tepat — AI menghasilkan solusi yang relevan.',
+    title: 'Desain arsitektur dan schema dulu',
+    desc: 'Entitas, relasi, dan database schema dirancang sebelum AI generate kode.',
   },
   {
-    title: 'Human-in-the-loop di setiap tahap',
-    desc: 'Kamu tetap memahami dan mengontrol kode — AI mempercepat, bukan menggantikan.',
+    title: 'Kolaborasi terstruktur dengan AI',
+    desc: 'Konteks yang tepat di setiap tahap — kamu tetap mengontrol, AI mempercepat eksekusi.',
   },
   {
     title: 'Aplikasi reliable dan production-ready',
-    desc: 'Ada testing, code review, dan deployment checklist — siap untuk real users.',
+    desc: 'Code review, keamanan, dan deployment checklist — siap untuk real users.',
   },
 ]
 </script>
