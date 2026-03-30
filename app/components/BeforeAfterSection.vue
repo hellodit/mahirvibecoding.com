@@ -1,5 +1,5 @@
 <template>
-  <section id="before-after" class="py-24 px-6 bg-white border-t border-primary/5">
+  <section id="before-after" class="py-24 px-6 bg-primary/5 border-t border-primary/5">
     <div class="max-w-5xl mx-auto">
 
       <!-- Header -->
