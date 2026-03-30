@@ -209,76 +209,181 @@ onMounted(async () => {
 
 <style scoped>
 .article-content :deep(h2) {
-  margin-top: 2.5rem;
-  font-size: 1.75rem;
+  margin-top: 3rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.625rem;
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
   color: #050315;
 }
 
 .article-content :deep(h3) {
-  margin-top: 1.75rem;
+  margin-top: 2.25rem;
+  margin-bottom: 0.5rem;
   font-size: 1.25rem;
   font-weight: 700;
-  line-height: 1.35;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
   color: #050315;
 }
 
-.article-content :deep(p),
+.article-content :deep(h4) {
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: #050315;
+}
+
+.article-content :deep(p) {
+  margin-top: 1.25rem;
+  font-size: 1.0625rem;
+  line-height: 1.9;
+  color: rgb(5 3 21 / 0.72);
+}
+
 .article-content :deep(li) {
-  margin-top: 1rem;
-  font-size: 1rem;
-  line-height: 1.95;
-  color: rgb(5 3 21 / 0.78);
+  margin-top: 0.5rem;
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  color: rgb(5 3 21 / 0.72);
 }
 
 .article-content :deep(ul),
 .article-content :deep(ol) {
-  margin-top: 1rem;
-  padding-left: 1.25rem;
+  margin-top: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.article-content :deep(ul) {
+  list-style-type: disc;
+}
+
+.article-content :deep(ol) {
+  list-style-type: decimal;
+}
+
+.article-content :deep(ul ul),
+.article-content :deep(ol ol),
+.article-content :deep(ul ol),
+.article-content :deep(ol ul) {
+  margin-top: 0.375rem;
 }
 
 .article-content :deep(a) {
   color: #2e6b3b;
   font-weight: 600;
-  text-decoration: underline;
-  text-decoration-thickness: 0.08em;
-  text-underline-offset: 0.2em;
+  text-decoration: none;
+}
+
+.article-content :deep(a:hover) {
+  color: #1a5c28;
+}
+
+.article-content :deep(strong) {
+  font-weight: 700;
+  color: #050315;
 }
 
 .article-content :deep(blockquote) {
-  margin-top: 1.5rem;
-  border-left: 4px solid rgb(46 107 59 / 0.22);
-  padding-left: 1rem;
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem;
+  border-left: 3px solid rgb(46 107 59 / 0.28);
+  padding: 0.75rem 0 0.75rem 1.25rem;
   font-style: italic;
-  color: rgb(5 3 21 / 0.68);
+}
+
+.article-content :deep(blockquote p) {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: rgb(5 3 21 / 0.6);
+}
+
+.article-content :deep(hr) {
+  margin: 2.5rem 0;
+  border: none;
+  border-top: 1px solid rgb(46 107 59 / 0.12);
 }
 
 .article-content :deep(code) {
-  border-radius: 0.5rem;
-  background: rgb(46 107 59 / 0.08);
-  padding: 0.15rem 0.4rem;
-  font-size: 0.9em;
-  color: #1f4c29;
+  border-radius: 0.375rem;
+  background: rgb(46 107 59 / 0.07);
+  padding: 0.15rem 0.45rem;
+  font-size: 0.875em;
+  font-weight: 500;
+  color: #1a5c28;
 }
 
 .article-content :deep(pre) {
-  margin-top: 1.5rem;
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem;
   overflow-x: auto;
-  border-radius: 1.25rem;
-  background: #09110b;
-  padding: 1rem 1.25rem;
-  color: #f8fafc;
+  border-radius: 1rem;
+  background: #0c1a0f;
+  padding: 1.25rem 1.5rem;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: #e8f5e9;
 }
 
 .article-content :deep(pre code) {
   background: transparent;
   padding: 0;
+  font-size: inherit;
+  font-weight: 400;
   color: inherit;
 }
 
 .article-content :deep(img) {
-  margin-top: 1.5rem;
-  border-radius: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 1.25rem;
+}
+
+.article-content :deep(table) {
+  margin-top: 1.75rem;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.article-content :deep(th),
+.article-content :deep(td) {
+  border-bottom: 1px solid rgb(46 107 59 / 0.1);
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+.article-content :deep(th) {
+  font-weight: 700;
+  color: #050315;
+}
+
+.article-content :deep(td) {
+  color: rgb(5 3 21 / 0.72);
+}
+
+@media (min-width: 768px) {
+  .article-content :deep(h2) {
+    margin-top: 3.5rem;
+    font-size: 1.875rem;
+  }
+
+  .article-content :deep(h3) {
+    margin-top: 2.5rem;
+    font-size: 1.375rem;
+  }
+
+  .article-content :deep(p),
+  .article-content :deep(li) {
+    font-size: 1.125rem;
+  }
+
+  .article-content :deep(pre) {
+    padding: 1.5rem 1.75rem;
+    font-size: 0.925rem;
+  }
 }
 </style>
