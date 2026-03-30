@@ -1,94 +1,63 @@
 <template>
-  <section id="hero" class="relative bg-white overflow-hidden mx-auto">
-    <div class="relative z-10 max-w-5xl mx-auto px-6 pt-16 pb-20 md:pt-20 md:pb-28">
+  <section id="hero" class="relative overflow-hidden bg-background">
+    <div class="mx-auto flex max-w-5xl flex-col items-center px-4 py-16 text-center md:py-24 md:px-6">
+      <!-- Announcement -->
+      <a
+        href="#pricing"
+        class="mb-8 inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm font-medium text-text transition-opacity hover:opacity-80"
+      >
+        <span >Yang baru</span>
+        <span class="text-text/35" aria-hidden="true">|</span>
+        <span>Framework Vibe Coding untuk tim developer →</span>
+      </a>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        <!-- Left: Text -->
-        <div class="lg:col-span-7">
-          <!-- Badge -->
-          <div class="flex items-center gap-2 mb-4">
-            <span class="inline-flex items-center px-3 py-1 rounded-full bg-primary text-white text-xs font-bold uppercase tracking-wider">
-              Framework Vibe Coding
-            </span>
-          </div>
+      <h1
+        class="max-w-4xl text-balance text-4xl font-bold leading-tight tracking-tight text-text md:text-6xl md:leading-tight lg:text-7xl lg:leading-[1.12]"
+      >
+        <span class="block">
+          Cara baru bikin aplikasi dengan
+          <span
+            class="ml-1 inline-flex items-center bg-primary px-[0.3em] py-[0.14em] align-baseline text-white md:px-[0.32em] md:py-[0.16em]"
+          >
+            Vibe Coding
+          </span>
+        </span>
+      </h1>
 
-          <h1 class="text-3xl md:text-5xl lg:text-[3.5rem] font-extrabold text-text leading-[1.1] tracking-tight mb-6">
-            Cara baru bikin aplikasi dengan <span class="text-primary">Vibe coding</span>
-          </h1>
+      <p class="mt-6 max-w-2xl text-base leading-relaxed text-text md:text-lg">
+        Framework lengkap untuk membangun aplikasi fullstack bersama AI Coding Agent dari planning hingga deploy.
+      </p>
 
-          <p class="text-base md:text-lg text-text max-w-xl mb-10 leading-relaxed">
-            Upgrade cara vibe coding kamu dengan framework lengkap untuk membangun aplikasi fullstack bersama AI Coding Agent
-          </p>
-
-          <!-- CTA Buttons -->
-          <div class="flex flex-wrap items-center gap-4 mb-10">
-            <a href="#pricing"
-              class="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-bold text-white bg-primary rounded-full hover:bg-gray-800 transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 duration-300">
-              Dapatkan Panduan
-            </a>
-            <a href="#curriculum"
-              class="group inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-primary border border-primary rounded-full hover:border-gray-400 hover:bg-gray-50 transition-all duration-300">
-              Preview
-              <span class="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center group-hover:scale-110 transition-transform">
-                <IconPlay class="w-3.5 h-3.5 ml-0.5" />
-              </span>
-            </a>
-          </div>
-
-          <!-- Social Proof -->
-          <div class="flex items-center gap-4">
-            <div class="flex -space-x-2.5">
-              <div
-                v-for="avatar in avatars"
-                :key="avatar.initial"
-                class="w-9 h-9 rounded-full border-2 border-white flex items-center justify-center text-xs font-bold text-white"
-                :class="avatar.bg"
-              >
-                {{ avatar.initial }}
-              </div>
-              <div class="w-9 h-9 rounded-full bg-primary/80 border-2 border-white flex items-center justify-center text-[10px] font-bold text-white">
-                +500
-              </div>
-            </div>
-            <div>
-              <div class="flex items-center gap-1 mb-0.5">
-                <IconStar v-for="n in 5" :key="n" class="w-3.5 h-3.5 text-amber-400" />
-              </div>
-              <p class="text-xs text-text/70"><span class="font-semibold text-text">500+ developer</span> sudah bergabung</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Task creation mockup -->
-        <div class="hidden lg:block lg:col-span-5 relative z-10">
-          <div class="space-y-3">
-            <TaskCreationMockup class="hover:scale-[1.02] transition-transform duration-500" />
-          </div>
-        </div>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="#pricing"
+          class="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+        >
+          Dapatkan Panduan
+        </a>
+        <a
+          href="#curriculum"
+          class="inline-flex items-center justify-center rounded-lg border-2 border-primary bg-transparent px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary/5"
+        >
+          Preview Materi
+        </a>
       </div>
 
-      <!-- Tech marquee -->
-      <div class="mt-16 md:mt-20 overflow-hidden border-y border-primary/10 py-5">
-        <div class="flex items-center gap-12 md:gap-16 logo-marquee">
-          <div v-for="n in 2" :key="n" class="flex items-center gap-12 md:gap-16 shrink-0">
-            <span v-for="logo in techLogos" :key="`${n}-${logo.alt}`" class="flex items-center justify-center opacity-70 transition-opacity" aria-hidden="true">
-              <NuxtImg :src="logo.src" :alt="logo.alt" class="h-7 md:h-8 w-auto object-contain" loading="lazy" />
-            </span>
-          </div>
-        </div>
+      <!-- Logo strip -->
+      <div class="mt-16 flex w-full max-w-3xl flex-wrap items-center justify-center gap-8 md:gap-12">
+        <span
+          v-for="logo in techLogos"
+          :key="logo.alt"
+          class="flex items-center justify-center opacity-40 grayscale transition-opacity hover:opacity-70"
+        >
+          <NuxtImg :src="logo.src" :alt="logo.alt" class="h-7 w-auto object-contain md:h-8" loading="lazy" />
+        </span>
       </div>
-
     </div>
   </section>
 </template>
 
 <script setup>
-const avatars = [
-  { initial: 'R', bg: 'bg-primary' },
-  { initial: 'D', bg: 'bg-primary/80' },
-  { initial: 'A', bg: 'bg-primary/60' },
-]
-
 const techLogos = [
   { src: '/logo/laravel.svg', alt: 'Laravel' },
   { src: '/logo/nextjs.svg', alt: 'Next.js' },
@@ -97,13 +66,3 @@ const techLogos = [
   { src: '/logo/svelte.svg', alt: 'Svelte' },
 ]
 </script>
-
-<style scoped>
-.logo-marquee {
-  animation: marquee 25s linear infinite;
-}
-@keyframes marquee {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
-}
-</style>
