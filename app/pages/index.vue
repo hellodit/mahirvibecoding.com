@@ -2,10 +2,6 @@
   <div>
     <AnnouncementBar @dismissed="announcementVisible = false" />
     <NavBar :announcement-visible="announcementVisible" />
-    <LeadCapturePopup
-      :delay-ms="leadPopupDelay"
-      @submit="onLeadSubmit"
-    />
     <WhatsAppButton />
     <BackToTopButton />
     <main>

@@ -1,12 +1,19 @@
 <template>
-  <section id="problem" class="py-24 px-6 bg-primary/5">
+  <section id="problem" class="py-20 px-6 bg-primary/5">
     <div class="max-w-5xl mx-auto">
       <!-- Header -->
       <div class="max-w-2xl mb-14 reveal">
-        <p class="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Masalah</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-text leading-tight tracking-tight">
+        <h2 class="text-3xl md:text-4xl font-bold text-text leading-tight tracking-tight mb-4">
           Kenapa banyak developer gagal memanfaatkan AI untuk coding?
         </h2>
+              <!-- Transition -->
+      <div class="reveal border-l-2 border-primary pl-6 max-w-xl">
+        <p class="text-base text-text/70 leading-relaxed">
+          Masalah ini bukan karena AI-nya kurang canggih. Masalahnya ada di
+          <span class="font-semibold text-text">strategi</span> dan
+          <span class="font-semibold text-text">workflow</span> yang kamu pakai.
+        </p>
+      </div>
       </div>
 
       <!-- Pain Points Grid -->
@@ -24,15 +31,6 @@
             <span class="font-semibold text-text">{{ point.bold }}</span> {{ point.rest }}
           </p>
         </div>
-      </div>
-
-      <!-- Transition -->
-      <div class="reveal border-l-2 border-primary pl-6 max-w-xl">
-        <p class="text-base text-text/70 leading-relaxed">
-          Masalah ini bukan karena AI-nya kurang canggih. Masalahnya ada di
-          <span class="font-semibold text-text">strategi</span> dan
-          <span class="font-semibold text-text">workflow</span> yang kamu pakai.
-        </p>
       </div>
     </div>
   </section>
