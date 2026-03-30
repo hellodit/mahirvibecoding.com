@@ -10,23 +10,35 @@
           Dari nol sampai bisa bikin project sendiri. Semua dibahas tuntas dengan bahasa yang gampang dipahami.
         </p>
 
-        <!-- Info cards -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
-          <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-primary/10 text-text text-sm font-medium hover:border-primary/20 transition-colors">
-            <span class="text-text/70">5 Bab</span>
-          </div>
-          <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-primary/10 text-text text-sm font-medium hover:border-primary/20 transition-colors">
-            <span class="text-text/70">50+ Code Examples</span>
-          </div>
-          <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-primary/10 text-text text-sm font-medium hover:border-primary/20 transition-colors">
-            <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-              <IconClock class="w-4 h-4 text-primary" />
+        <!-- Info cards (centered, with icons) -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12 justify-center place-items-center">
+          <div class="flex w-full flex-col items-center gap-2 rounded-xl border border-primary bg-white px-4 py-5 text-center text-sm font-medium text-text">
+            <div class="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+              <IconBookOpen class="h-5 w-5 text-primary" />
             </div>
-            <span>Checklist Tiap Bab</span>
+            <span class="text-text/80 font-semibold text-base">18 Bab</span>
+            <span class="text-text/60 text-xs">Materi Terstruktur</span>
           </div>
-          <div class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-primary/10 text-text text-sm font-medium hover:border-primary/20 transition-colors">
-            <IconDocument class="w-4 h-4 text-text/60 flex-shrink-0" />
-            <span>Templates Siap Pakai</span>
+          <div class="flex w-full flex-col items-center gap-2 rounded-xl border border-primary bg-white px-4 py-5 text-center text-sm font-medium text-text">
+            <div class="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+              <IconLightBulb class="h-5 w-5 text-primary" />
+            </div>
+            <span class="text-text/80 font-semibold text-base">1 Studi Kasus</span>
+            <span class="text-text/60 text-xs">Real Project</span>
+          </div>
+          <div class="flex w-full flex-col items-center gap-2 rounded-xl border border-primary bg-white px-4 py-5 text-center text-sm font-medium text-text">
+            <div class="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+              <IconClock class="h-5 w-5 text-primary" />
+            </div>
+            <span class="text-text/80 font-semibold text-base">Teori + Praktek</span>
+            <span class="text-text/60 text-xs">Langsung Action</span>
+          </div>
+          <div class="flex w-full flex-col items-center gap-2 rounded-xl border border-primary bg-white px-4 py-5 text-center text-sm font-medium text-text">
+            <div class="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+              <IconDocument class="h-5 w-5 text-primary" />
+            </div>
+            <span class="text-text/80 font-semibold text-base">Contoh Kode Nyata</span>
+            <span class="text-text/60 text-xs">Bisa Langsung Dipakai</span>
           </div>
         </div>
       </div>
@@ -36,36 +48,39 @@
         <div
           v-for="(section, index) in sections"
           :key="index"
-          class="reveal rounded-2xl bg-white border border-primary/10 overflow-hidden transition-colors hover:border-primary/20"
+          class="reveal overflow-hidden rounded-2xl border border-primary bg-white shadow-sm"
           :class="`reveal-delay-${(index % 3) + 1}`"
         >
           <button
+            type="button"
             @click="toggle(index)"
-            class="w-full flex items-center gap-4 p-5 text-left cursor-pointer group"
+            class="flex w-full cursor-pointer items-center gap-4 bg-primary p-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
           >
             <!-- Number badge -->
             <span
-              class="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-lg"
-              :class="section.badgeColor"
+              class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-white text-lg font-bold text-primary shadow-sm"
             >
               {{ index + 1 }}
             </span>
             <!-- Title & subtitle -->
-            <div class="flex-1 min-w-0">
-              <h3 class="text-lg font-bold text-text group-hover:text-primary transition-colors">
+            <div class="min-w-0 flex-1">
+              <h3 class="text-lg font-bold text-white">
                 {{ section.title }}
               </h3>
-              <p class="text-sm text-text/70 mt-0.5">{{ section.babCount }} bab</p>
+              <p class="mt-0.5 text-sm text-white/75">{{ section.babCount }} bab</p>
             </div>
             <!-- Chevron -->
-            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-text/70 transition-transform duration-200" :class="{ 'rotate-180': openIndex === index }">
-              <IconChevronDown class="w-5 h-5" />
+            <span
+              class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-white/15 text-white transition-transform duration-200"
+              :class="{ 'rotate-180': openIndex === index }"
+            >
+              <IconChevronDown class="h-5 w-5" />
             </span>
           </button>
 
           <!-- Collapsed content -->
           <div
-            class="overflow-hidden transition-all duration-300 ease-in-out border-t border-primary/10"
+            class="overflow-hidden border-t border-primary/15 transition-all duration-300 ease-in-out"
             :style="{ maxHeight: openIndex === index ? '2000px' : '0px' }"
           >
             <div class="p-5 pt-4 space-y-6">
@@ -83,9 +98,9 @@
       </div>
 
       <!-- Footer -->
-      <div class="mt-6 reveal flex items-center gap-3 px-4 py-3 rounded-xl bg-white border border-primary/10 text-sm text-text/70 hover:border-primary/20 transition-colors">
+      <div class="mt-6 reveal flex items-center gap-3 rounded-xl border border-primary/10 bg-white px-4 py-3 text-sm text-text/70">
         <IconDocument class="w-5 h-5 text-text/60 flex-shrink-0" />
-        <span>250+ halaman panduan praktis dengan contoh nyata</span>
+        <span>Semua diilustrasikan dengan satu studi kasus nyata: Restaurant Booking & Ordering System</span>
       </div>
     </div>
   </section>
@@ -101,44 +116,99 @@ const toggle = (index) => {
 
 const sections = [
   {
-    title: 'Planning',
-    babCount: 3,
-    badgeColor: 'bg-primary',
+    title: 'Strategi & Planning',
+    babCount: 7,
     chapters: [
       {
-        title: 'Pengantar: Evolusi Software Engineering di Era AI',
-        description: 'Memahami pergeseran paradigma dari menulis kode ke manajemen konteks. Mengenal tiga risiko utama bekerja dengan AI dan tiga pilar strategi sebagai solusinya.',
+        title: 'Pergeseran Paradigma Software Engineering',
+        description: 'Fokus berpindah dari sintaksis ke manajemen konteks dan desain sistem. Mengenal tiga risiko AI Coding Agent: halusinasi, loss of control, dan degradasi arsitektur.',
       },
       {
-        title: 'Planning: Fondasi di Balik Produk yang Berhasil',
-        description: 'Belajar dari contoh kasus nyata kenapa langsung coding tanpa strategi menghasilkan output generic. Menyusun PRD dan menempatkan AI sebagai partner berpikir.',
+        title: 'Kesalahan Umum Vibe Coding & Fondasi Planning',
+        description: 'Apa yang terjadi ketika prompt dengan ide kasar — output generic dan tidak relevan. Memahami fondasi planning sebagai langkah pertama sebelum coding.',
       },
       {
-        title: 'Design: Mendesain Struktur Sistem Sebelum Coding',
-        description: 'Menjembatani PRD ke coding dengan database schema sebagai kontrak antara bisnis dan aplikasi. Workflow tiga langkah bersama AI: draft, generate DDL, review & iterasi.',
-      }
+        title: 'Menyusun Requirement dari Nol dengan Bantuan AI',
+        description: 'Struktur requirement minimal: problem statement, target user, MVP scope, dan constraints. Enam pertanyaan untuk menggali kebutuhan bersama AI.',
+      },
+      {
+        title: 'Memecah Requirement Menjadi Unit Kerja',
+        description: 'Tiga langkah memecah requirement: identifikasi dependency, urutkan berdasarkan prasyarat, tentukan ukuran realistis per unit.',
+      },
+      {
+        title: 'Generate Flow Brief per Flow',
+        description: 'Membuat panduan eksekusi per flow dari requirement menggunakan AI. Contoh lengkap untuk Flow 1: Customer Booking.',
+      },
+      {
+        title: 'Prinsip Mendesain Database Schema',
+        description: 'Database schema sebagai kontrak antara bisnis, aplikasi, dan developer. Prinsip naming convention yang konsisten dan schema sesuai MVP scope.',
+      },
+      {
+        title: 'Mendesain Database Schema dengan Bantuan AI',
+        description: 'Draft entitas dan relasi secara manual, lalu gunakan AI untuk generate DDL lengkap. Review relasi, tipe data, constraint, dan index.',
+      },
     ]
   },
   {
-    title: 'Developing',
-    babCount: 1,
-    badgeColor: 'bg-primary',
+    title: 'Setup & Persiapan',
+    babCount: 4,
     chapters: [
       {
-        title: 'Develop: Kolaborasi Efektif dengan AI Coding Agent',
-        description: 'Mengeksekusi PRD dan schema menjadi kode dengan prinsip Context > Prompt. Memilih AI Coding Agent, memecah PRD jadi unit kerja, dan membagi area kerja AI vs manusia.',
-      }
+        title: 'Schema & Migration: Dari DDL ke Laravel',
+        description: 'Pendekatan incremental: mulai dari Pre-Flow, tambah tabel per flow. Keputusan desain: JSON snapshot, tabel transaksi terpisah, composite index.',
+      },
+      {
+        title: 'Menentukan AI Coding Agent & Tech Stack',
+        description: 'Tiga kriteria evaluasi AI Coding Agent: MCP support, agentic capabilities, pricing. Dokumentasi dan kompatibilitas AI sebagai faktor baru dalam memilih tech stack.',
+      },
+      {
+        title: 'Setup Project & Mempersenjatai AI dengan Konteks',
+        description: 'Setup project secara manual, lalu lengkapi AI dengan tiga komponen konteks: AI Guidelines, Agent Skills, dan MCP Server. Prinsip Context > Prompt.',
+      },
+      {
+        title: 'Dari Flow Brief ke UI Mockup',
+        description: 'Workflow tiga langkah: mockup, design system, panduan generate kode. Tools: v0, Bolt, Lovable, Google Stitch — dan cara menulis prompt yang efektif.',
+      },
     ]
   },
   {
-    title: 'Deployment',
-    babCount: 1,
-    badgeColor: 'bg-primary',
+    title: 'Eksekusi Development',
+    babCount: 5,
     chapters: [
       {
-        title: 'Deploy & Real World',
-        description: 'Tantangan nyata membawa aplikasi ke produksi. Penggunaan AI untuk code review, peran Docker dan VPS, serta risiko keamanan yang sering terlewat.',
-      }
+        title: 'Eksekusi Pre-Flow: Auth & Master Data Admin',
+        description: 'Pola kerja: convert UI mockup ke Blade, baru implementasi fungsionalitas. Empat unit kerja: auth admin, CRUD kategori, CRUD menu, manajemen meja.',
+      },
+      {
+        title: 'Eksekusi Flow 1: Customer Booking (Unit 1–2)',
+        description: 'Halaman katalog menu dengan keranjang belanja dan session management. Form booking dengan validasi ketersediaan meja dan race condition handling.',
+      },
+      {
+        title: 'Eksekusi Flow 1: Customer Booking (Unit 3–4)',
+        description: 'Halaman status booking dengan countdown timer. Integrasi Midtrans Snap: webhook handler, validasi signature, idempotency, dan state machine booking.',
+      },
+      {
+        title: 'Eksekusi Flow 2: Admin Approval',
+        description: 'Approval/reject booking dengan state machine — hanya status tertentu yang boleh berubah ke status tertentu. Dashboard admin dengan filter dan detail lengkap.',
+      },
+      {
+        title: 'Eksekusi Flow 3: Customer Tracking',
+        description: 'Halaman tracking status booking read-only tanpa login. Lookup berdasarkan booking reference dengan keamanan: error message generic, tidak ekspos data sensitif.',
+      },
+    ]
+  },
+  {
+    title: 'Post-Flow & Deployment',
+    babCount: 2,
+    chapters: [
+      {
+        title: 'Eksekusi Post-Flow: Notifikasi & Automasi',
+        description: 'Notifikasi WhatsApp otomatis saat status berubah. Scheduler auto-cancel expired booking dengan query atomik dan race condition handling.',
+      },
+      {
+        title: 'Deployment: Keamanan & Code Review',
+        description: 'Checklist keamanan: .env, hardcoded credentials, file konfigurasi. Code review dengan AI — setup PR-Agent sebagai second opinion otomatis.',
+      },
     ]
   }
 ]
