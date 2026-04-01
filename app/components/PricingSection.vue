@@ -106,7 +106,7 @@ const planBase = [
     subtitle: 'Mulai belajar vibe coding dari nol.',
     originalPrice: '142.000',
     price: '99.000',
-    checkoutUrl: '',
+    checkoutUrl: 'https://akses.codingtengahmalam.com/c/checkout?variant_ids=471653',
     benefits: [
       'Ebook "Mahir Vibe Coding"',
       'Lifetime access',
@@ -121,7 +121,7 @@ const planBase = [
     subtitle: 'Belajar + langsung praktik dari source code nyata.',
     originalPrice: '215.000',
     price: '150.000',
-    checkoutUrl: '',
+    checkoutUrl: 'https://akses.codingtengahmalam.com/c/checkout?variant_ids=471654',
     benefits: [
       { text: 'Semua di paket Lite, plus:', isHeading: true },
       'Source code 1 studi kasus lengkap + 2 studi kasus mendatang (coming soon)',
@@ -137,7 +137,7 @@ const planBase = [
     subtitle: 'Mau serius? Langsung dibimbing.',
     originalPrice: '429.000',
     price: '300.000',
-    checkoutUrl: '',
+    checkoutUrl: 'https://akses.codingtengahmalam.com/c/checkout?variant_ids=471655',
     benefits: [
       { text: 'Semua di paket Pro, plus:', isHeading: true },
       '2x sesi konsultasi 1-on-1 (masing-masing 30 menit) — tanya apa aja seputar vibe coding, Laravel, karier dev, atau project kamu',
