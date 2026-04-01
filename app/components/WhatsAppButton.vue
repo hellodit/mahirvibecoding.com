@@ -17,7 +17,7 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const props = defineProps({
-  phone: { type: String, default: '6281234567890' },
+  phone: { type: String, default: '62895413601704' },
   message: { type: String, default: 'Halo, saya tertarik dengan panduan MahirVibeCoding!' },
   showAfterScroll: { type: Number, default: 300 },
 })
