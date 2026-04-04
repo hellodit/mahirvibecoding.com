@@ -83,16 +83,17 @@ export default defineNuxtConfig({
         { property: 'og:url', content: siteUrl },
         { property: 'og:title', content: siteTitle },
         { property: 'og:description', content: siteDescription },
-        { property: 'og:image', content: ogImage },
+
         { property: 'og:locale', content: 'id_ID' },
         { property: 'og:site_name', content: siteName },
         // Twitter Card
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: siteTitle },
         { name: 'twitter:description', content: siteDescription },
-        { name: 'twitter:image', content: ogImage },
+
       ],
       link: [
+        { rel: 'icon', type: 'image/png', href: '/favicon.png' },
         { rel: 'canonical', href: siteUrl },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
