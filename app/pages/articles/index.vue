@@ -34,7 +34,20 @@
             </NuxtLink>
           </div>
 
-          <ArticleList :articles="articlesPage.items" />
+          <div v-if="featuredArticle" class="mb-12">
+            <h2 class="mb-5 text-xs font-semibold uppercase tracking-[0.26em] text-primary">
+              Latest article
+            </h2>
+            <ArticleFeaturedCard :article="featuredArticle" />
+          </div>
+
+          <h2
+            v-if="featuredArticle && restArticles.length"
+            class="mb-5 text-xs font-semibold uppercase tracking-[0.26em] text-text/55"
+          >
+            More articles
+          </h2>
+          <ArticleList :articles="restArticles" />
           <ArticlePagination
             :current-page="articlesPage.currentPage"
             :total-pages="articlesPage.totalPages"
@@ -63,6 +76,8 @@ const { data: searchSectionsData } = await useAsyncData('article-search-sections
 const articlesPage = articlesPageData.value ?? paginateArticles([], 1)
 const availableTags = availableTagsData.value ?? []
 const searchSections = searchSectionsData.value ?? []
+const featuredArticle = articlesPage.currentPage === 1 ? articlesPage.items[0] ?? null : null
+const restArticles = featuredArticle ? articlesPage.items.slice(1) : articlesPage.items
 const canonicalUrl = articlesPage.currentPage > 1
   ? `${runtimeConfig.public.siteUrl}/articles?page=${articlesPage.currentPage}`
   : `${runtimeConfig.public.siteUrl}/articles`
