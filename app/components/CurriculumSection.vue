@@ -3,10 +3,10 @@
     <div class="max-w-5xl mx-auto">
       <!-- Header -->
       <div class="text-center mb-12 reveal">
-        <h2 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
+        <h2 class="text-2xl md:text-3xl font-bold text-text tracking-tight mb-3">
           Apa aja <span class="text-primary">ada di dalamnya?</span>
         </h2>
-        <p class="text-base text-text/70 max-w-xl mx-auto mb-10">
+        <p class="text-sm text-text/70 max-w-xl mx-auto mb-10">
           Dari nol sampai bisa bikin project sendiri. Semua dibahas tuntas dengan bahasa yang gampang dipahami.
         </p>
 

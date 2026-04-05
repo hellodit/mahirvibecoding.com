@@ -3,7 +3,7 @@
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14 reveal">
         <p class="text-xs font-semibold text-primary uppercase tracking-widest mb-3">FAQ</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-text tracking-tight">
+        <h2 class="text-2xl md:text-3xl font-bold text-text tracking-tight">
           Pertanyaan yang sering diajukan
         </h2>
       </div>

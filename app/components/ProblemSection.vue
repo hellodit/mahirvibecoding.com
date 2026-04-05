@@ -3,12 +3,12 @@
     <div class="max-w-5xl mx-auto">
       <!-- Header -->
       <div class="max-w-2xl mb-14 reveal">
-        <h2 class="text-3xl md:text-4xl font-bold text-text leading-tight tracking-tight mb-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-text leading-tight tracking-tight mb-4">
           Kenapa sebagian besar proyek Vibe Coding gagal di tengah jalan?
         </h2>
               <!-- Transition -->
       <div class="reveal border-l-2 border-primary pl-6 max-w-xl">
-        <p class="text-base text-text/70 leading-relaxed">
+        <p class="text-sm text-text/70 leading-relaxed">
           Bukan karena AI-nya kurang canggih. Masalahnya ada di
           <span class="font-semibold text-text">planning</span>,
           <span class="font-semibold text-text">manajemen konteks</span>, dan

@@ -4,10 +4,10 @@
       <!-- Hero -->
       <div class="text-center mb-8 reveal">
         <p class="text-xs font-semibold text-white/80 uppercase tracking-widest mb-3">Harga</p>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-white tracking-tight mb-4">
           Pilih paket yang <span class="text-background">cocok buat kamu</span>
         </h2>
-        <p class="text-base md:text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
+        <p class="text-sm md:text-base text-white/80 max-w-2xl mx-auto leading-relaxed">
           Sekali bayar, akses selamanya. Tanpa langganan, tanpa biaya tersembunyi.
         </p>
       </div>

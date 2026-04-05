@@ -12,7 +12,7 @@
       </a>
 
       <h1
-        class="text-balance text-2xl font-bold leading-tight tracking-tight text-text sm:text-3xl md:text-4xl md:leading-tight lg:text-5xl lg:leading-[1.12]"
+        class="max-w-4xl text-balance text-4xl font-bold leading-tight tracking-tight text-text md:text-6xl md:leading-tight lg:text-7xl lg:leading-[1.12]"
       >
         <span class="block">
           Cara baru bikin aplikasi dengan
@@ -23,7 +23,7 @@
           </span>
         </span>
       </h1>
-      <p class="mt-5 max-w-2xl text-sm leading-relaxed text-text md:text-lg">
+      <p class="mt-5 max-w-2xl text-base leading-relaxed text-text md:text-lg">
         Framework lengkap untuk membangun aplikasi fullstack bersama AI Coding Agent dari planning hingga deploy.
       </p>
 

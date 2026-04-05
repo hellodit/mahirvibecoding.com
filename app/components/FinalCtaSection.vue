@@ -3,11 +3,11 @@
     <div class="max-w-5xl mx-auto text-center">
       <div class="reveal">
         <p class="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Mulai Sekarang</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-text tracking-tight mb-4">
           Siap membangun aplikasi fullstack<br class="hidden md:block" />
           dengan AI — <span class="text-primary">secara strategis?</span>
         </h2>
-        <p class="text-base text-text/70 max-w-md mx-auto mb-10 leading-relaxed">
+        <p class="text-sm text-text/70 max-w-md mx-auto mb-10 leading-relaxed">
           Jangan biarkan AI bekerja tanpa arah. Kuasai framework yang membuat AI menjadi partner terbaik dalam development workflow kamu.
         </p>
       </div>

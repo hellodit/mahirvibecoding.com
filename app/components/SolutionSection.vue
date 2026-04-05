@@ -4,10 +4,10 @@
       <!-- Header -->
       <div class="max-w-2xl mb-14 reveal">
         <p class="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Solusi</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-text leading-tight tracking-tight mb-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-text leading-tight tracking-tight mb-4">
           Strategi Vibe Coding — framework untuk kolaborasi developer × AI
         </h2>
-        <p class="text-base text-text/70 leading-relaxed">
+        <p class="text-sm text-text/70 leading-relaxed">
           Panduan ini bukan kursus prompting biasa. Ini adalah
           <span class="text-text font-medium">framework lengkap</span>
           yang mengajarkan cara berpikir, merencanakan, dan mengeksekusi pembangunan aplikasi fullstack
@@ -48,7 +48,7 @@
         <h3 class="text-2xl md:text-3xl font-bold text-text leading-tight tracking-tight mb-3">
           Seperti apa perbedaannya?
         </h3>
-        <p class="text-base text-text/70 leading-relaxed">
+        <p class="text-sm text-text/70 leading-relaxed">
           Workflow yang sama, AI yang sama — tapi hasilnya berbeda jauh tergantung
           <span class="font-medium text-text">strategi</span> yang kamu pakai.
         </p>
