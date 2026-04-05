@@ -1,6 +1,6 @@
 <template>
   <header
-    class="sticky z-50 border-b border-transparent bg-background/80 backdrop-blur-lg transition-shadow duration-300"
+    class="sticky z-50 border-b border-b-primary/10 bg-background transition-shadow "
     :class="[
       announcementVisible ? 'top-11' : 'top-0',
       scrolled ? 'border-primary/10 shadow-sm' : '',

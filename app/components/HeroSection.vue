@@ -1,6 +1,6 @@
 <template>
   <section id="hero" class="relative overflow-hidden bg-background">
-    <div class="mx-auto flex max-w-5xl flex-col items-center px-4 py-16 text-center md:py-24 md:px-6">
+    <div class="mx-auto flex max-w-5xl flex-col items-center px-4 py-5 text-center md:py-20 md:px-6">
       <!-- Announcement -->
       <a
         href="#pricing"
@@ -12,7 +12,7 @@
       </a>
 
       <h1
-        class="max-w-4xl text-balance text-4xl font-bold leading-tight tracking-tight text-text md:text-6xl md:leading-tight lg:text-7xl lg:leading-[1.12]"
+        class="text-balance text-xl font-bold leading-tight tracking-tight text-text md:leading-tight text-xl md:text-4xl lg:leading-[1.12]"
       >
         <span class="block">
           Cara baru bikin aplikasi dengan
@@ -23,10 +23,25 @@
           </span>
         </span>
       </h1>
-
-      <p class="mt-6 max-w-2xl text-base leading-relaxed text-text md:text-lg">
+      <p class="mt-5 max-w-2xl text-base leading-relaxed text-text md:text-lg">
         Framework lengkap untuk membangun aplikasi fullstack bersama AI Coding Agent dari planning hingga deploy.
       </p>
+
+      <div class="mt-10 w-full max-w-3xl">
+        <div class="relative w-full overflow-hidden rounded-xl border-2 border-primary/10 bg-black shadow-xl" style="aspect-ratio: 16 / 9;">
+          <iframe
+            class="absolute inset-0 h-full w-full"
+            src="https://www.youtube.com/embed/i9FwOKpHzxg?si=3dpR4zHNXSsXBvSY"
+            title="Course Trailer - Mahir Vibe Coding"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          />
+        </div>
+      </div>
+
+    
 
       <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
         <a
