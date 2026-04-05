@@ -12,7 +12,7 @@
       </a>
 
       <h1
-        class="text-balance text-xl font-bold leading-tight tracking-tight text-text md:leading-tight text-xl md:text-4xl lg:leading-[1.12]"
+        class="text-balance text-2xl font-bold leading-tight tracking-tight text-text sm:text-3xl md:text-4xl md:leading-tight lg:text-5xl lg:leading-[1.12]"
       >
         <span class="block">
           Cara baru bikin aplikasi dengan
@@ -23,25 +23,9 @@
           </span>
         </span>
       </h1>
-      <p class="mt-5 max-w-2xl text-base leading-relaxed text-text md:text-lg">
+      <p class="mt-5 max-w-2xl text-sm leading-relaxed text-text md:text-lg">
         Framework lengkap untuk membangun aplikasi fullstack bersama AI Coding Agent dari planning hingga deploy.
       </p>
-
-      <div class="mt-10 w-full max-w-3xl">
-        <div class="relative w-full overflow-hidden rounded-xl border-2 border-primary/10 bg-black shadow-xl" style="aspect-ratio: 16 / 9;">
-          <iframe
-            class="absolute inset-0 h-full w-full"
-            src="https://www.youtube.com/embed/i9FwOKpHzxg?si=3dpR4zHNXSsXBvSY"
-            title="Course Trailer - Mahir Vibe Coding"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          />
-        </div>
-      </div>
-
-    
 
       <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
         <a
@@ -50,12 +34,16 @@
         >
           Dapatkan Panduan
         </a>
-        <a
-          href="#curriculum"
-          class="inline-flex items-center justify-center rounded-lg border-2 border-primary bg-transparent px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary/5"
+        <button
+          type="button"
+          class="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-primary bg-transparent px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary/5"
+          @click="openTrailer = true"
         >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
+            <path d="M8 5v14l11-7z" />
+          </svg>
           Preview Materi
-        </a>
+        </button>
       </div>
 
       <!-- Logo strip -->
@@ -69,10 +57,20 @@
         </span>
       </div>
     </div>
+
+    <VideoModal
+      v-model="openTrailer"
+      src="https://www.youtube.com/embed/i9FwOKpHzxg?si=3dpR4zHNXSsXBvSY"
+      title="Course Trailer - Mahir Vibe Coding"
+    />
   </section>
 </template>
 
 <script setup>
+import { ref } from 'vue'
+
+const openTrailer = ref(false)
+
 const techLogos = [
   { src: '/logo/laravel.svg', alt: 'Laravel' },
   { src: '/logo/nextjs.svg', alt: 'Next.js' },
