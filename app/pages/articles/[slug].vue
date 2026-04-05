@@ -45,32 +45,18 @@
                 </div>
 
                 <div class="mt-12 space-y-6">
-                  <ArticleShare
-                    :article-title="article.title"
-                    :url="canonicalUrl"
-                  />
                   <ArticleCta />
                 </div>
               </div>
             </div>
           </article>
 
-          <div class="space-y-5">
+          <div class="space-y-5 lg:sticky lg:top-28 lg:self-start">
             <ArticleToc :links="articleTocLinks" />
-            <section class="rounded-[28px] border border-primary/10 bg-white p-6 shadow-sm">
-              <p class="text-xs font-semibold uppercase tracking-[0.24em] text-primary">Topik</p>
-              <div class="mt-4">
-                <ArticleTags :tags="article.tags" />
-              </div>
-            </section>
           </div>
         </div>
 
         <div class="mt-10 space-y-8">
-          <ArticleSurroundings
-            :previous="previousArticle"
-            :next="nextArticle"
-          />
           <ArticleRelated :articles="relatedArticles" />
         </div>
       </div>

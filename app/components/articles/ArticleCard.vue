@@ -1,17 +1,16 @@
 <template>
-  <article class="group flex h-full flex-col overflow-hidden rounded-[28px] border border-primary/10 bg-white shadow-sm transition duration-200 hover:-translate-y-1 hover:border-primary/25 hover:shadow-lg">
+  <article class="group flex h-full flex-col overflow-hidden rounded-[28px] border border-primary/10 bg-white shadow-sm transition-colors  hover:border-primary">
     <NuxtLink :to="article.path" class="flex h-full flex-col" @click="trackClick">
       <div class="aspect-[16/9] overflow-hidden bg-primary/5">
         <NuxtImg
           :src="article.image"
           :alt="displayTitle"
-          class="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+          class="h-full w-full object-cover"
           sizes="sm:100vw md:50vw lg:33vw"
         />
       </div>
 
       <div class="flex flex-1 flex-col gap-4 p-6">
-        <ArticleTags :tags="article.tags" :linked="false" />
 
         <div class="space-y-3">
           <p class="text-xs font-medium uppercase tracking-[0.22em] text-text/45">
@@ -25,10 +24,6 @@
           </p>
         </div>
 
-        <div class="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-primary">
-          <span>Baca artikel</span>
-          <IconArrowRight class="h-4 w-4" />
-        </div>
       </div>
     </NuxtLink>
   </article>

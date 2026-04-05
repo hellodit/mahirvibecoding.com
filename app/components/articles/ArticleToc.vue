@@ -1,7 +1,7 @@
 <template>
   <aside
     v-if="flattenedLinks.length"
-    class="rounded-[28px] border border-primary/10 bg-white p-6 shadow-sm lg:sticky lg:top-28"
+    class="rounded-[28px] border border-primary/10 bg-white p-6 shadow-sm"
   >
     <p class="text-xs font-semibold uppercase tracking-[0.24em] text-primary">Daftar Isi</p>
     <nav class="mt-5 space-y-2">
