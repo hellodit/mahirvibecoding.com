@@ -84,12 +84,14 @@ export default defineNuxtConfig({
         { property: 'og:title', content: siteTitle },
         { property: 'og:description', content: siteDescription },
 
+        { property: 'og:image', content: `${siteUrl}/preview.png` },
         { property: 'og:locale', content: 'id_ID' },
         { property: 'og:site_name', content: siteName },
         // Twitter Card
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: siteTitle },
         { name: 'twitter:description', content: siteDescription },
+        { name: 'twitter:image', content: `${siteUrl}/preview.png` },
 
       ],
       link: [

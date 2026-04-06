@@ -21,14 +21,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
-const runtimeConfig = useRuntimeConfig()
-
-defineOgImageComponent('ArticleFrame', {
-  title: runtimeConfig.public.siteTitle,
-  description: runtimeConfig.public.siteDescription,
-  eyebrow: runtimeConfig.public.siteName,
-  footer: 'mahirvibecoding.com',
-})
+defineOgImage({ url: '/preview.png' })
 
 const announcementVisible = ref(true)
 const leadPopupDelay = 45000
