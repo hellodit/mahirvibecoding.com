@@ -85,6 +85,9 @@ export default defineNuxtConfig({
         { property: 'og:description', content: siteDescription },
 
         { property: 'og:image', content: `${siteUrl}/preview.png` },
+        { property: 'og:image:width', content: '1280' },
+        { property: 'og:image:height', content: '800' },
+        { property: 'og:image:type', content: 'image/png' },
         { property: 'og:locale', content: 'id_ID' },
         { property: 'og:site_name', content: siteName },
         // Twitter Card

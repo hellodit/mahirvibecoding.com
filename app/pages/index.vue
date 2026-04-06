@@ -21,7 +21,11 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
-defineOgImage({ url: '/preview.png' })
+defineOgImage({
+  url: '/preview.png',
+  width: 1280,
+  height: 800,
+})
 
 const announcementVisible = ref(true)
 const leadPopupDelay = 45000
