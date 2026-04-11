@@ -90,58 +90,12 @@
 </template>
 
 <script setup lang="ts">
+import { planBase } from '~/data/pricingPlans'
+
 function isHeading(benefit: string | { isHeading?: boolean; text?: string }) {
   return typeof benefit === 'object' && benefit?.isHeading
 }
 function benefitText(benefit: string | { text?: string }) {
   return typeof benefit === 'string' ? benefit : (benefit?.text ?? '')
 }
-
-const planBase = [
-  {
-    id: 'lite',
-    name: 'Lite',
-    popular: false,
-    featured: false,
-    subtitle: 'Mulai belajar vibe coding dari nol.',
-    originalPrice: '142.000',
-    price: '99.000',
-    checkoutUrl: 'https://akses.codingtengahmalam.com/c/checkout?variant_ids=471653',
-    benefits: [
-      'Ebook "Mahir Vibe Coding"',
-      'Lifetime access',
-      'Lifetime update — materi terus diperbarui',
-    ],
-  },
-  {
-    id: 'pro',
-    name: 'Pro',
-    popular: true,
-    featured: true,
-    subtitle: 'Belajar + langsung praktik dari source code nyata.',
-    originalPrice: '215.000',
-    price: '150.000',
-    checkoutUrl: 'https://akses.codingtengahmalam.com/c/checkout?variant_ids=471654',
-    benefits: [
-      { text: 'Semua di paket Lite, plus:', isHeading: true },
-      'Source code 1 studi kasus lengkap + 2 studi kasus mendatang (coming soon)',
-      'Voucher diskon 40% untuk ebook "Laravel Pro!"',
-      'Akses grup eksklusif — diskusi & networking bareng sesama learner',
-    ],
-  },
-  {
-    id: 'ultimate',
-    name: 'Ultimate',
-    popular: false,
-    featured: false,
-    subtitle: 'Mau serius? Langsung dibimbing.',
-    originalPrice: '429.000',
-    price: '300.000',
-    checkoutUrl: 'https://akses.codingtengahmalam.com/c/checkout?variant_ids=471655',
-    benefits: [
-      { text: 'Semua di paket Pro, plus:', isHeading: true },
-      '2x sesi konsultasi 1-on-1 (masing-masing 30 menit) — tanya apa aja seputar vibe coding, Laravel, karier dev, atau project kamu',
-    ],
-  },
-]
 </script>

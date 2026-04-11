@@ -6,7 +6,7 @@
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat di WhatsApp"
-      class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 flex items-center justify-center"
+      class="fixed z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl right-6 left-auto bottom-[calc(max(0.75rem,env(safe-area-inset-bottom,0px))+7.25rem)] sm:bottom-6 sm:left-6 sm:right-auto sm:z-50"
     >
       <IconWhatsApp class="w-7 h-7" />
     </a>

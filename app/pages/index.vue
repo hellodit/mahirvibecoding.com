@@ -3,7 +3,7 @@
     <AnnouncementBar @dismissed="announcementVisible = false" />
     <NavBar :announcement-visible="announcementVisible" />
     <WhatsAppButton />
-    <BackToTopButton />
+    <SocialProofSalesPopup />
     <main>
       <HeroSection />
       <ProblemSection />
