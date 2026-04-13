@@ -6,7 +6,7 @@
     <Transition name="toast" @after-leave="onAfterLeave">
       <div
         v-if="showContent && toast"
-        class="pointer-events-auto relative w-full rounded-2xl bg-[#0f2d18]/95 p-3.5 pr-12 pt-3.5 backdrop-blur-sm outline outline-2 outline-offset-0 outline-white/25 sm:p-4 sm:pr-11"
+        class="pointer-events-auto relative w-full overflow-hidden rounded-2xl bg-primary p-3.5 pr-12 pt-3.5 backdrop-blur-sm outline outline-2 outline-offset-0 outline-white/25 sm:p-4 sm:pr-11"
         role="status"
         aria-live="polite"
       >
@@ -41,13 +41,20 @@
             <span class="font-bold text-white">{{ toast.timePhrase }}</span>.
           </p>
         </div>
+        <div class="progress-line-track" aria-hidden="true">
+          <div
+            :key="toastSequence"
+            class="progress-line-fill"
+            :style="{ animationDuration: `${rotationDelayMs}ms` }"
+          />
+        </div>
       </div>
     </Transition>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import { planBase } from '~/data/pricingPlans'
 
 const STORAGE_KEY = 'mvc-social-proof-dismissed-day'
@@ -69,6 +76,7 @@ const sessionActive = ref(true)
 const showContent = ref(false)
 const toast = ref<ToastPayload | null>(null)
 const pendingRefresh = ref(false)
+const toastSequence = ref(0)
 
 let initialTimer: ReturnType<typeof setTimeout> | null = null
 let rotationTimer: ReturnType<typeof setTimeout> | null = null
@@ -180,12 +188,11 @@ function clearTimers() {
 
 function scheduleNextRotation() {
   clearTimers()
-  const delay = randomInt(props.rotationMinMs, props.rotationMaxMs)
   rotationTimer = setTimeout(() => {
     rotationTimer = null
     pendingRefresh.value = true
     showContent.value = false
-  }, delay)
+  }, rotationDelayMs.value)
 }
 
 function onAfterLeave() {
@@ -193,10 +200,14 @@ function onAfterLeave() {
   if (pendingRefresh.value) {
     pendingRefresh.value = false
     toast.value = buildToast()
+    toastSequence.value += 1
     showContent.value = true
     scheduleNextRotation()
   }
 }
+
+const initialDelayMs = computed(() => Math.max(0, props.initialDelayMinMs))
+const rotationDelayMs = computed(() => Math.max(1000, props.rotationMinMs))
 
 onMounted(() => {
   if (isDismissedToday()) {
@@ -204,13 +215,13 @@ onMounted(() => {
     return
   }
 
-  const delay = randomInt(props.initialDelayMinMs, props.initialDelayMaxMs)
   initialTimer = setTimeout(() => {
     initialTimer = null
     toast.value = buildToast()
+    toastSequence.value += 1
     showContent.value = true
     scheduleNextRotation()
-  }, delay)
+  }, initialDelayMs.value)
 })
 
 onBeforeUnmount(() => {
@@ -227,5 +238,36 @@ onBeforeUnmount(() => {
 .toast-leave-to {
   opacity: 0;
   transform: translateX(12px);
+}
+
+.progress-line-track {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  overflow: hidden;
+  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  background: rgb(255 255 255 / 18%);
+}
+
+.progress-line-fill {
+  height: 100%;
+  width: 100%;
+  transform-origin: left center;
+  background: linear-gradient(90deg, rgb(74 222 128 / 90%), rgb(52 211 153 / 90%));
+  animation-name: slide-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slide-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 </style>
