@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="sessionActive"
-    class="pointer-events-none fixed inset-x-3 bottom-[max(0.75rem,env(safe-area-inset-bottom,0px))] z-[45] mx-auto w-full max-w-sm sm:inset-x-auto sm:bottom-[max(1.5rem,env(safe-area-inset-bottom,0px))] sm:left-auto sm:right-4 sm:mx-0 sm:w-auto"
+    class="pointer-events-none fixed inset-x-3 bottom-[max(0.75rem,env(safe-area-inset-bottom,0px))] z-[45] mx-auto w-full max-w-sm sm:inset-x-auto sm:bottom-[max(1.5rem,env(safe-area-inset-bottom,0px))] sm:left-4 sm:right-auto sm:mx-0 sm:w-auto"
   >
     <Transition name="toast" @after-leave="onAfterLeave">
       <div
@@ -237,7 +237,7 @@ onBeforeUnmount(() => {
 .toast-enter-from,
 .toast-leave-to {
   opacity: 0;
-  transform: translateX(12px);
+  transform: translateX(-12px);
 }
 
 .progress-line-track {
