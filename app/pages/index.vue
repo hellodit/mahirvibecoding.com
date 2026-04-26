@@ -6,13 +6,14 @@
     <main>
       <HeroSection class="bg-background" />
       <ProblemSection class="bg-primary/5" />
-      <SolutionSection class="bg-white" />
-      <BeforeAfterSection class="bg-primary/5" />
-      <TargetAudienceSection class="bg-white" />
-      <CurriculumSection class="bg-primary/5" />
-      <TrustSection class="bg-white" />
+      <SolutionSection class="bg-background" />
+      <StudyCaseSection class="bg-primary/5" />
+      <BeforeAfterSection class="bg-background" />
+      <TargetAudienceSection class="bg-primary/5" />
+      <CurriculumSection class="bg-background" />
+      <TrustSection class="bg-primary/5" />
       <PricingSection class="bg-primary" />
-      <FaqSection class="bg-primary/5" />
+      <FaqSection class="bg-background" />
     </main>
     <FooterSection />
   </div>

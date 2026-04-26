@@ -9,10 +9,12 @@ const siteDescription = process.env.NUXT_PUBLIC_SITE_DESCRIPTION || 'Framework l
 const ogImage = process.env.NUXT_PUBLIC_OG_IMAGE || `${siteUrl}/og-image.png`
 const articleEntries = getArticleEntries()
 const articleRoutes = ['/articles', ...articleEntries.map(entry => `/articles/${entry.slug}`)]
+const studyCaseEntries = getStudyCaseEntries()
+const studyCaseRoutes = studyCaseEntries.map(entry => `/studycase/${entry.slug}`)
 const tagRoutes = Array.from(
   new Set(articleEntries.flatMap(entry => entry.tags.map(tag => `/articles/tag/${encodeURIComponent(tag)}`)))
 )
-const prerenderRoutes = Array.from(new Set([...articleRoutes, ...tagRoutes, '/feed.xml']))
+const prerenderRoutes = Array.from(new Set([...articleRoutes, ...studyCaseRoutes, ...tagRoutes, '/feed.xml']))
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -152,6 +154,7 @@ export default defineNuxtConfig({
   routeRules: {
     '/articles': { prerender: true },
     '/articles/**': { prerender: true },
+    '/studycase/**': { prerender: true },
     '/feed.xml': { prerender: true },
   },
 
@@ -218,6 +221,47 @@ function getArticleEntries() {
         slug,
         tags: extractTags(frontmatter),
       })
+    }
+  }
+
+  visit(contentRoot)
+
+  return entries
+}
+
+function getStudyCaseEntries() {
+  const contentRoot = join(process.cwd(), 'content', 'studycase')
+
+  if (!existsSync(contentRoot)) {
+    return []
+  }
+
+  const entries: Array<{ slug: string }> = []
+
+  const visit = (dir: string) => {
+    for (const entry of readdirSync(dir)) {
+      const fullPath = join(dir, entry)
+      const stats = statSync(fullPath)
+
+      if (stats.isDirectory()) {
+        visit(fullPath)
+        continue
+      }
+
+      if (!entry.endsWith('.md')) {
+        continue
+      }
+
+      const relativePath = relative(contentRoot, fullPath)
+      const slug = relativePath.slice(0, -3).split(sep).join('/')
+      const rawContent = readFileSync(fullPath, 'utf8')
+      const frontmatter = extractFrontmatter(rawContent)
+
+      if (isDraft(frontmatter)) {
+        continue
+      }
+
+      entries.push({ slug })
     }
   }
 

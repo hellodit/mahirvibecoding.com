@@ -19,5 +19,18 @@ export default defineContentConfig({
         descriptionVariant: z.string().max(160).optional(),
       }),
     }),
+    studycase: defineCollection({
+      type: 'page',
+      source: 'studycase/**/*.md',
+      schema: z.object({
+        id: z.string(),
+        title: z.string().max(80),
+        description: z.string().max(220),
+        image: z.string(),
+        tools: z.array(z.string()),
+        order: z.number().default(0),
+        draft: z.boolean().default(false),
+      }),
+    }),
   },
 })
