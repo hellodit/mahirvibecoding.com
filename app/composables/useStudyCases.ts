@@ -17,15 +17,31 @@ export interface StudyCaseRecord {
 
 const contentQueryStudyCaseCollection = queryCollection as unknown as (collection: 'studycase') => any
 
-export function fetchStudyCases() {
-  return contentQueryStudyCaseCollection('studycase')
+function toStudyCaseSlug(raw: { path?: string, stem?: string }) {
+  const candidate = raw.path ?? raw.stem ?? ''
+  const segments = candidate.split('/').filter(Boolean)
+  return segments.at(-1) ?? ''
+}
+
+function normalizeStudyCasePath(raw: { path?: string, stem?: string }) {
+  const slug = toStudyCaseSlug(raw)
+  return slug ? `/studycase/${slug}` : '/studycase'
+}
+
+export async function fetchStudyCases() {
+  const records = (await contentQueryStudyCaseCollection('studycase')
     .order('order', 'ASC')
-    .all() as Promise<StudyCaseRecord[]>
+    .all()) as Array<StudyCaseRecord & { stem?: string }>
+
+  return records.map(record => ({
+    ...record,
+    path: normalizeStudyCasePath(record),
+  }))
 }
 
 export async function fetchStudyCaseBySlug(slug: string) {
   const studyCases = await fetchStudyCases()
-  const studyCase = studyCases.find(item => item.path === `/studycase/${slug}` || item.path.endsWith(`/${slug}`))
+  const studyCase = studyCases.find(item => item.path === `/studycase/${slug}`)
 
   if (!studyCase || studyCase.status === 'draft') {
     return null

@@ -59,15 +59,15 @@
             </div>
 
            
-            <NuxtLink
+            <a
               v-if="!studyCase.isLocked"
-              :to="studyCase.path"
+              :href="studyCase.path"
               class="inline-flex w-fit items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-text"
               :aria-label="`Lihat detail ${studyCase.title}`"
             >
               <span>Lihat detail</span>
               <IconArrowRight class="h-4 w-4" />
-            </NuxtLink>
+            </a>
             <p v-else class="text-sm font-semibold text-text/40">
               {{ studyCase.statusLabel }}
             </p>
