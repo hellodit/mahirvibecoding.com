@@ -16,14 +16,13 @@
           <NuxtImg
             :src="studyCase.image"
             :alt="studyCase.title"
-            class="aspect-[16/9] w-full object-cover"
+            class="h-64 w-full object-cover md:h-80"
             sizes="100vw lg:960px"
+            loading="eager"
+            fetchpriority="high"
           />
 
           <div class="px-6 py-8 md:px-10 md:py-10">
-            <p class="text-xs font-semibold uppercase tracking-[0.26em] text-primary">
-              {{ studyCase.id }}
-            </p>
             <h1 class="mt-5 text-3xl font-bold leading-tight tracking-tight text-text md:text-[2.75rem]">
               {{ studyCase.title }}
             </h1>
@@ -40,6 +39,23 @@
                 {{ tool }}
               </span>
             </div>
+
+            <section v-if="studyCase.videoId" class="mt-10">
+              <h2 class="mb-4 text-2xl font-bold tracking-tight text-text">
+                Video Preview
+              </h2>
+              <Youtube
+                :id="studyCase.videoId"
+                title="Preview Dapur Nabilah - Laravel 13 Web Booking Restaurant"
+              />
+            </section>
+
+            <section v-if="studyCase.gallery.length" class="mt-10">
+              <h2 class="mb-4 text-2xl font-bold tracking-tight text-text">
+                Tampilan Aplikasi
+              </h2>
+              <StudyCaseGallery :images="studyCase.gallery" />
+            </section>
 
             <div class="studycase-content mt-10">
               <ContentRenderer :value="studyCase" />
@@ -83,7 +99,7 @@
 </template>
 
 <script setup lang="ts">
-import type { StudyCaseRecord } from '~/composables/useStudyCases'
+import { fetchStudyCaseBySlug, type StudyCaseRecord } from '~/composables/useStudyCases'
 import { planBase } from '~/data/pricingPlans'
 
 const runtimeConfig = useRuntimeConfig()

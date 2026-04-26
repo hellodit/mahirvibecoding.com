@@ -4,24 +4,32 @@ export interface StudyCaseRecord {
   title: string
   description: string
   image: string
+  videoId?: string
+  gallery: Array<{
+    src: string
+    alt: string
+  }>
   tools: string[]
   order: number
-  draft: boolean
+  status: 'draft' | 'published'
   body?: unknown
 }
 
 const contentQueryStudyCaseCollection = queryCollection as unknown as (collection: 'studycase') => any
 
-export function fetchPublishedStudyCases() {
+export function fetchStudyCases() {
   return contentQueryStudyCaseCollection('studycase')
-    .where('draft', '=', false)
     .order('order', 'ASC')
     .all() as Promise<StudyCaseRecord[]>
 }
 
-export function fetchStudyCaseBySlug(slug: string) {
-  return contentQueryStudyCaseCollection('studycase')
-    .where('draft', '=', false)
-    .path(`/studycase/${slug}`)
-    .first() as Promise<StudyCaseRecord | null>
+export async function fetchStudyCaseBySlug(slug: string) {
+  const studyCases = await fetchStudyCases()
+  const studyCase = studyCases.find(item => item.path === `/studycase/${slug}` || item.path.endsWith(`/${slug}`))
+
+  if (!studyCase || studyCase.status === 'draft') {
+    return null
+  }
+
+  return studyCase
 }

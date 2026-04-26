@@ -257,7 +257,7 @@ function getStudyCaseEntries() {
       const rawContent = readFileSync(fullPath, 'utf8')
       const frontmatter = extractFrontmatter(rawContent)
 
-      if (isDraft(frontmatter)) {
+      if (!isPublishedStudyCase(frontmatter)) {
         continue
       }
 
@@ -277,6 +277,10 @@ function extractFrontmatter(content: string) {
 
 function isDraft(frontmatter: string) {
   return /^\s*draft:\s*true\s*$/m.test(frontmatter)
+}
+
+function isPublishedStudyCase(frontmatter: string) {
+  return /^\s*status:\s*published\s*$/m.test(frontmatter)
 }
 
 function extractTags(frontmatter: string) {

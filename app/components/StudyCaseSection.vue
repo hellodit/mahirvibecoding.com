@@ -16,16 +16,25 @@
         <article
           v-for="(studyCase, index) in studyCases"
           :key="studyCase.id"
-          class="reveal rounded-2xl border border-primary/10 bg-white overflow-hidden hover:border-primary/25 hover:shadow-sm transition-all"
-          :class="`reveal-delay-${index + 1}`"
+          class="reveal rounded-2xl border border-primary/10 bg-white overflow-hidden transition-all"
+          :class="[
+            `reveal-delay-${index + 1}`,
+            studyCase.isLocked ? 'opacity-80' : 'hover:border-primary/25 hover:shadow-sm',
+          ]"
         >
           <div class="aspect-[16/9] bg-primary/5 border-b border-primary/10 overflow-hidden">
             <NuxtImg
+              v-if="studyCase.image"
               :src="studyCase.image"
               :alt="studyCase.title"
               class="w-full h-full object-cover"
               loading="lazy"
             />
+            <div v-else class="w-full h-full flex items-center justify-center bg-primary/5">
+              <span class="rounded-full bg-white/80 px-4 py-2 text-xs font-bold uppercase tracking-widest text-primary">
+                Coming Soon
+              </span>
+            </div>
           </div>
      
           <div class="p-6 flex flex-col gap-5">
@@ -51,6 +60,7 @@
 
            
             <NuxtLink
+              v-if="!studyCase.isLocked"
               :to="studyCase.path"
               class="inline-flex w-fit items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-text"
               :aria-label="`Lihat detail ${studyCase.title}`"
@@ -58,6 +68,9 @@
               <span>Lihat detail</span>
               <IconArrowRight class="h-4 w-4" />
             </NuxtLink>
+            <p v-else class="text-sm font-semibold text-text/40">
+              {{ studyCase.statusLabel }}
+            </p>
           </div>
         </article>
       </div>
@@ -67,12 +80,29 @@
 </template>
 
 <script setup lang="ts">
-import type { StudyCaseRecord } from '~/composables/useStudyCases'
+import { fetchStudyCases, type StudyCaseRecord } from '~/composables/useStudyCases'
+
+type PublishedStudyCaseCard = StudyCaseRecord & {
+  isLocked: boolean
+  statusLabel: string
+}
+
+type StudyCaseCard = PublishedStudyCaseCard
 
 const { data: studyCasesData } = await useAsyncData<StudyCaseRecord[]>(
   'study-cases-section',
-  fetchPublishedStudyCases,
+  fetchStudyCases,
 )
 
-const studyCases = computed(() => studyCasesData.value ?? [])
+const maxStudyCaseCards = 4
+
+const studyCases = computed<StudyCaseCard[]>(() => {
+  return (studyCasesData.value ?? [])
+    .slice(0, maxStudyCaseCards)
+    .map(studyCase => ({
+      ...studyCase,
+      isLocked: studyCase.status === 'draft',
+      statusLabel: studyCase.status === 'draft' ? 'Coming soon' : '',
+    }))
+})
 </script>
