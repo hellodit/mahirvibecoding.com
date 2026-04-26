@@ -4,14 +4,15 @@
     <NavBar :announcement-visible="announcementVisible" />
     <WhatsAppButton />
     <main>
-      <HeroSection />
-      <ProblemSection />
-      <SolutionSection />
-      <TargetAudienceSection />
-      <CurriculumSection />
-      <TrustSection />
-      <PricingSection />
-      <FaqSection />
+      <HeroSection class="bg-background" />
+      <ProblemSection class="bg-primary/5" />
+      <SolutionSection class="bg-white" />
+      <BeforeAfterSection class="bg-primary/5" />
+      <TargetAudienceSection class="bg-white" />
+      <CurriculumSection class="bg-primary/5" />
+      <TrustSection class="bg-white" />
+      <PricingSection class="bg-primary" />
+      <FaqSection class="bg-primary/5" />
     </main>
     <FooterSection />
   </div>

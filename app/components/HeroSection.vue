@@ -1,5 +1,5 @@
 <template>
-  <section id="hero" class="relative overflow-hidden bg-background">
+  <section id="hero" class="relative overflow-hidden">
     <div class="mx-auto flex max-w-5xl flex-col items-center px-4 py-5 text-center md:py-20 md:px-6">
       <!-- Announcement -->
       <a

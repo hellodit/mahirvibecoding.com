@@ -1,5 +1,5 @@
 <template>
-  <section id="pricing" class="py-24 px-6 bg-primary">
+  <section id="pricing" class="py-24 px-6">
     <div class="max-w-6xl mx-auto">
       <!-- Hero -->
       <div class="text-center mb-8 reveal">

@@ -1,9 +1,7 @@
 <template>
-  <section id="before-after" class="py-24 px-6 bg-primary/5 border-t border-primary/5">
+  <section id="before-after" class="py-20 px-6 border-t border-primary/5">
     <div class="max-w-5xl mx-auto">
-
-      <!-- Header -->
-      <div class="max-w-2xl mb-14 reveal">
+      <div class="max-w-2xl mb-10 reveal">
         <p class="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Perbandingan</p>
         <h2 class="text-2xl md:text-3xl font-bold text-text leading-tight tracking-tight mb-4">
           Seperti apa perbedaannya?
@@ -14,9 +12,7 @@
         </p>
       </div>
 
-      <!-- Comparison Cards -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal">
-
         <!-- BEFORE -->
         <div class="rounded-2xl border border-red-100 bg-red-50/40 p-6 flex flex-col gap-6">
           <div class="flex items-center gap-3">
@@ -27,11 +23,7 @@
           </div>
 
           <div class="flex flex-col gap-4">
-            <div
-              v-for="(step, i) in beforeSteps"
-              :key="i"
-              class="flex gap-3 items-start"
-            >
+            <div v-for="(step, i) in beforeSteps" :key="i" class="flex gap-3 items-start">
               <div class="flex flex-col items-center gap-1 flex-shrink-0 pt-0.5">
                 <div class="w-5 h-5 rounded-full bg-red-100 border border-red-200 flex items-center justify-center">
                   <span class="text-[10px] font-bold text-red-400">{{ i + 1 }}</span>
@@ -45,10 +37,9 @@
             </div>
           </div>
 
-          <!-- Outcome -->
           <div class="mt-auto rounded-xl bg-red-100/60 border border-red-200/60 px-4 py-3">
             <p class="text-xs text-red-500/80 font-medium leading-relaxed">
-              😩 Buang waktu berjam-jam, hasil tidak memuaskan, dan frustrasi karena tidak tahu apa yang salah.
+              Buang waktu berjam-jam, hasil tidak memuaskan, dan frustrasi karena tidak tahu apa yang salah.
             </p>
           </div>
         </div>
@@ -63,11 +54,7 @@
           </div>
 
           <div class="flex flex-col gap-4">
-            <div
-              v-for="(step, i) in afterSteps"
-              :key="i"
-              class="flex gap-3 items-start"
-            >
+            <div v-for="(step, i) in afterSteps" :key="i" class="flex gap-3 items-start">
               <div class="flex flex-col items-center gap-1 flex-shrink-0 pt-0.5">
                 <div class="w-5 h-5 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
                   <span class="text-[10px] font-bold text-primary">{{ i + 1 }}</span>
@@ -81,21 +68,17 @@
             </div>
           </div>
 
-          <!-- Outcome -->
           <div class="mt-auto rounded-xl bg-primary/10 border border-primary/20 px-4 py-3">
             <p class="text-xs text-primary font-medium leading-relaxed">
-              🚀 Aplikasi selesai lebih cepat, terstruktur, dan siap produksi — dengan AI sebagai partner, bukan penentu.
+              Aplikasi selesai lebih cepat, terstruktur, dan siap produksi — dengan AI sebagai partner, bukan penentu.
             </p>
           </div>
         </div>
-
       </div>
 
-      <!-- Bottom note -->
       <p class="text-center text-sm text-text/40 mt-8 reveal">
         Perbedaannya bukan di AI-nya — tapi di <span class="text-text/60 font-medium">cara kamu bekerja bersamanya</span>.
       </p>
-
     </div>
   </section>
 </template>
@@ -103,39 +86,39 @@
 <script setup>
 const beforeSteps = [
   {
-    title: 'Langsung minta AI buat aplikasi',
-    desc: 'Tanpa planning, tanpa blueprint — AI mengira-ngira sendiri apa yang kamu mau.',
+    title: 'Prompt dengan ide kasar ke AI',
+    desc: 'Tanpa planning dan konteks yang jelas — AI menghasilkan output generic yang tidak relevan.',
   },
   {
-    title: 'Prompt berulang, hasil tetap meleset',
-    desc: 'Konteks tidak lengkap, AI menghasilkan solusi yang tidak sesuai kebutuhan.',
+    title: 'Tidak ada desain arsitektur',
+    desc: 'Langsung coding tanpa schema dan struktur — hasilnya tidak konsisten dan sulit di-maintain.',
   },
   {
-    title: 'Bug muncul, tidak tahu harus mulai dari mana',
-    desc: 'Tidak ada pemahaman atas kode yang dihasilkan AI — debugging jadi tebak-tebakan.',
+    title: 'Kehilangan kontrol di tengah jalan',
+    desc: 'Kerja tidak dipecah jadi unit kecil — sulit di-review, sulit di-rollback.',
   },
   {
-    title: 'Fitur "jalan" tapi rapuh',
-    desc: 'Tidak ada testing, tidak ada code review — aplikasi tidak siap dipakai user nyata.',
+    title: 'Aplikasi "jalan" tapi penuh risiko',
+    desc: 'Halusinasi AI tidak terdeteksi, tidak ada code review — tidak siap untuk real users.',
   },
 ]
 
 const afterSteps = [
   {
-    title: 'Planning dulu sebelum koding',
-    desc: 'Validasi masalah, tentukan scope, susun PRD — AI punya konteks yang jelas.',
+    title: 'Planning terstruktur sebelum coding',
+    desc: 'Requirement jelas, scope terdefinisi, dipecah jadi unit kerja kecil yang bisa dieksekusi.',
   },
   {
-    title: 'Context-driven prompting',
-    desc: 'Setiap prompt punya konteks yang tepat — AI menghasilkan solusi yang relevan.',
+    title: 'Desain arsitektur dan schema dulu',
+    desc: 'Entitas, relasi, dan database schema dirancang sebelum AI generate kode.',
   },
   {
-    title: 'Human-in-the-loop di setiap tahap',
-    desc: 'Kamu tetap memahami dan mengontrol kode — AI mempercepat, bukan menggantikan.',
+    title: 'Kolaborasi terstruktur dengan AI',
+    desc: 'Konteks yang tepat di setiap tahap — kamu tetap mengontrol, AI mempercepat eksekusi.',
   },
   {
     title: 'Aplikasi reliable dan production-ready',
-    desc: 'Ada testing, code review, dan deployment checklist — siap untuk real users.',
+    desc: 'Code review, keamanan, dan deployment checklist — siap untuk real users.',
   },
 ]
 </script>

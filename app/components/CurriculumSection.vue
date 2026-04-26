@@ -1,7 +1,7 @@
 <template>
   <section
     id="curriculum"
-    class="py-20 px-6 bg-white"
+    class="py-20 px-6"
   >
     <div class="max-w-5xl mx-auto">
       <div class="reveal mb-12 max-w-3xl">
