@@ -32,13 +32,12 @@ Preview hasil build:
 bun run preview
 ```
 
-## Analytics (GA4 + Meta Pixel)
+## Analytics (GA4)
 
 Isi env berikut (lihat `.env.example`):
 
 ```bash
 NUXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
-NUXT_PUBLIC_META_PIXEL_ID=000000000000000
 ```
 
 Catatan:
@@ -48,4 +47,14 @@ Catatan:
 ### Verifikasi Tracking
 
 - **GA4**: buka GA DebugView atau Realtime, lalu cek event `page_view` saat buka halaman dan saat pindah route.
-- **Meta Pixel**: gunakan Meta Pixel Helper dan pastikan event `PageView` muncul saat load halaman dan navigasi route.
+
+## Deploy ke Cloudflare Pages (Wrangler)
+
+Konfigurasi Wrangler sudah disiapkan di `wrangler.toml` dengan output directory `.output/public`.
+
+Langkah deploy:
+
+```bash
+bun run build
+npx wrangler pages deploy .output/public
+```

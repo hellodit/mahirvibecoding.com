@@ -22,6 +22,20 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
+const runtimeConfig = useRuntimeConfig()
+
+useSeoMeta({
+  title: runtimeConfig.public.siteTitle,
+  description: runtimeConfig.public.siteDescription,
+  ogTitle: runtimeConfig.public.siteTitle,
+  ogDescription: runtimeConfig.public.siteDescription,
+  ogType: 'website',
+  ogUrl: runtimeConfig.public.siteUrl,
+  twitterCard: 'summary_large_image',
+  twitterTitle: runtimeConfig.public.siteTitle,
+  twitterDescription: runtimeConfig.public.siteDescription,
+})
+
 defineOgImage({
   url: '/preview.png',
   width: 1280,
