@@ -7,6 +7,10 @@ const siteName = process.env.NUXT_PUBLIC_SITE_NAME || 'MahirVibeCoding'
 const siteTitle = process.env.NUXT_PUBLIC_SITE_TITLE || 'MahirVibeCoding — Strategi Vibe Coding untuk Membangun Aplikasi Fullstack'
 const siteDescription = process.env.NUXT_PUBLIC_SITE_DESCRIPTION || 'Framework lengkap untuk membangun aplikasi fullstack bersama AI Coding Agent — dari planning hingga deploy.'
 const ogImage = process.env.NUXT_PUBLIC_OG_IMAGE || `${siteUrl}/og-image.png`
+const gaMeasurementId = process.env.NUXT_PUBLIC_GA_MEASUREMENT_ID || ''
+const metaPixelId = process.env.NUXT_PUBLIC_META_PIXEL_ID || ''
+const isGaEnabled = /^G-[A-Z0-9]+$/i.test(gaMeasurementId)
+const isMetaPixelEnabled = /^\d+$/.test(metaPixelId)
 const articleEntries = getArticleEntries()
 const articleRoutes = ['/articles', ...articleEntries.map(entry => `/articles/${entry.slug}`)]
 const studyCaseEntries = getStudyCaseEntries()
@@ -19,8 +23,22 @@ const prerenderRoutes = Array.from(new Set([...articleRoutes, ...studyCaseRoutes
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/content', '@nuxt/fonts', '@nuxt/image', '@nuxtjs/robots', '@nuxtjs/tailwindcss', '@nuxtjs/sitemap', 'nuxt-schema-org', 'nuxt-og-image', 'nuxt-link-checker'],
+  modules: ['@nuxt/content', '@nuxt/fonts', '@nuxt/image', '@nuxtjs/robots', '@nuxtjs/tailwindcss', '@nuxtjs/sitemap', 'nuxt-schema-org', 'nuxt-og-image', 'nuxt-link-checker', 'nuxt-gtag', 'nuxt-meta-pixel'],
   css: ['~/assets/css/global.css'],
+
+  gtag: {
+    enabled: isGaEnabled,
+    id: isGaEnabled ? gaMeasurementId : undefined,
+  },
+
+  metapixel: isMetaPixelEnabled
+    ? {
+        default: {
+          id: metaPixelId,
+          pageView: '**',
+        },
+      }
+    : {},
 
   runtimeConfig: {
     public: {
@@ -152,6 +170,7 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
+    '/': { prerender: true },
     '/articles': { prerender: true },
     '/articles/**': { prerender: true },
     '/studycase/**': { prerender: true },

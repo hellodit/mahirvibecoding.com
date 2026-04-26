@@ -1,75 +1,51 @@
-# Nuxt Minimal Starter
+# MahirVibeCoding
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Landing page statis berbasis Nuxt 4.
 
 ## Setup
 
-Make sure to install dependencies:
+Install dependencies dengan Bun:
 
 ```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
 bun install
 ```
 
-## Development Server
+## Development
 
-Start the development server on `http://localhost:3000`:
+Jalankan dev server di `http://localhost:3000`:
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
 bun run dev
 ```
 
-## Production
+## Build dan Preview
 
-Build the application for production:
+Build production:
 
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
 bun run build
 ```
 
-Locally preview production build:
+Preview hasil build:
 
 ```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
 bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Analytics (GA4 + Meta Pixel)
+
+Isi env berikut (lihat `.env.example`):
+
+```bash
+NUXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+NUXT_PUBLIC_META_PIXEL_ID=000000000000000
+```
+
+Catatan:
+- Jika ID masih placeholder/kosong, script analytics tidak akan diaktifkan.
+- Setelah ID valid diisi, redeploy agar konfigurasi aktif di production.
+
+### Verifikasi Tracking
+
+- **GA4**: buka GA DebugView atau Realtime, lalu cek event `page_view` saat buka halaman dan saat pindah route.
+- **Meta Pixel**: gunakan Meta Pixel Helper dan pastikan event `PageView` muncul saat load halaman dan navigasi route.
