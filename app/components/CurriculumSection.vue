@@ -1,117 +1,115 @@
 <template>
-  <section id="curriculum" class="py-24 px-6 bg-white">
+  <section
+    id="curriculum"
+    class="py-20 px-6 bg-white"
+  >
     <div class="max-w-5xl mx-auto">
-      <!-- Header -->
-      <div class="text-center mb-12 reveal">
-        <h2 class="text-2xl md:text-3xl font-bold text-text tracking-tight mb-3">
-          Apa aja <span class="text-primary">ada di dalamnya?</span>
-        </h2>
-        <p class="text-sm text-text/70 max-w-xl mx-auto mb-10">
-          Dari nol sampai bisa bikin project sendiri. Semua dibahas tuntas dengan bahasa yang gampang dipahami.
+      <div class="reveal mb-12 max-w-3xl">
+        <p class="text-xs font-semibold text-primary uppercase tracking-widest mb-3">
+          Isi Ebook
         </p>
-
-        <!-- Info cards (centered, with icons) -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12 justify-center place-items-center">
-          <div class="flex w-full flex-col items-center gap-2 rounded-xl border border-primary bg-white px-4 py-5 text-center text-sm font-medium text-text">
-            <div class="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
-              <IconBookOpen class="h-5 w-5 text-primary" />
-            </div>
-            <span class="text-text/80 font-semibold text-base">18 Bab</span>
-            <span class="text-text/60 text-xs">Materi Terstruktur</span>
-          </div>
-          <div class="flex w-full flex-col items-center gap-2 rounded-xl border border-primary bg-white px-4 py-5 text-center text-sm font-medium text-text">
-            <div class="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
-              <IconLightBulb class="h-5 w-5 text-primary" />
-            </div>
-            <span class="text-text/80 font-semibold text-base">1 Studi Kasus</span>
-            <span class="text-text/60 text-xs">Real Project</span>
-          </div>
-          <div class="flex w-full flex-col items-center gap-2 rounded-xl border border-primary bg-white px-4 py-5 text-center text-sm font-medium text-text">
-            <div class="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
-              <IconClock class="h-5 w-5 text-primary" />
-            </div>
-            <span class="text-text/80 font-semibold text-base">Teori + Praktek</span>
-            <span class="text-text/60 text-xs">Langsung Action</span>
-          </div>
-          <div class="flex w-full flex-col items-center gap-2 rounded-xl border border-primary bg-white px-4 py-5 text-center text-sm font-medium text-text">
-            <div class="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
-              <IconDocument class="h-5 w-5 text-primary" />
-            </div>
-            <span class="text-text/80 font-semibold text-base">Contoh Kode Nyata</span>
-            <span class="text-text/60 text-xs">Bisa Langsung Dipakai</span>
-          </div>
-        </div>
+        <h2 class="mb-4 font-serif text-3xl leading-tight text-text md:text-4xl">
+          Apa yang akan kamu pelajari?
+        </h2>
+        <p class="max-w-2xl text-sm leading-relaxed text-text/70 md:text-base">
+          Panduan ini merangkum workflow vibe coding dari planning sampai deployment aplikasi
+          fullstack, lengkap dengan strategi, ekspektasi, dan contoh teknis yang bisa kamu ikuti.
+        </p>
       </div>
 
-      <!-- Collapsible curriculum -->
-      <div class="space-y-4">
-        <div
-          v-for="(section, index) in sections"
-          :key="index"
-          class="reveal overflow-hidden rounded-2xl border border-primary bg-white shadow-sm"
-          :class="`reveal-delay-${(index % 3) + 1}`"
-        >
-          <button
-            type="button"
-            @click="toggle(index)"
-            class="flex w-full cursor-pointer items-center gap-4 bg-primary p-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
-          >
-            <!-- Number badge -->
-            <span
-              class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-white text-lg font-bold text-primary shadow-sm"
-            >
-              {{ index + 1 }}
-            </span>
-            <!-- Title & subtitle -->
-            <div class="min-w-0 flex-1">
-              <h3 class="text-lg font-bold text-white">
-                {{ section.title }}
-              </h3>
-              <p class="mt-0.5 text-sm text-white/75">{{ section.babCount }} bab</p>
-            </div>
-            <!-- Chevron -->
-            <span
-              class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-white/15 text-white transition-transform duration-200"
-              :class="{ 'rotate-180': openIndex === index }"
-            >
-              <IconChevronDown class="h-5 w-5" />
-            </span>
-          </button>
 
-          <!-- Collapsed content -->
-          <div
-            class="overflow-hidden border-t border-primary/15 transition-all duration-300 ease-in-out"
-            :style="{ maxHeight: openIndex === index ? '2000px' : '0px' }"
-          >
-            <div class="p-5 pt-4 space-y-6">
-              <div
-                v-for="(chapter, chIndex) in section.chapters"
-                :key="chIndex"
-                class="pl-2 border-l-2 border-primary/20"
+      <div class="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 mb-12">
+        <div class="reveal">
+          <div class="relative mx-auto max-w-[360px]">
+              <img
+                src="/cover-ebook.png"
+                alt="Cover ebook Mahir Vibe Coding"
+                class="mx-auto w-full rounded-[1.1rem] shadow-xl ring-1 ring-black/5"
+                loading="lazy"
               >
-                <h4 class="text-sm font-semibold text-text mb-1">{{ chapter.title }}</h4>
-                <p class="text-sm text-text/60 leading-relaxed">{{ chapter.description }}</p>
+          </div>
+        </div>
+
+        <div class="reveal ">
+          <div class="space-y-4">
+            <div
+              v-for="(section, index) in sections"
+              :key="index"
+              class="overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-primary/10"
+            >
+              <button
+                type="button"
+                @click="toggle(index)"
+                :aria-expanded="isOpen(index)"
+                class="flex w-full cursor-pointer items-center gap-4 p-5 text-left transition-colors hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+              >
+                <span
+                  class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-[#171717] text-sm font-bold text-white shadow-sm"
+                >
+                  {{ String(index + 1).padStart(2, '0') }}
+                </span>
+                <div class="min-w-0 flex-1">
+                  <h3 class="font-serif text-xl leading-tight text-text">
+                    {{ section.title }}
+                  </h3>
+                  <p class="mt-1 text-xs font-medium text-text/45">{{ section.babCount }} bab</p>
+                </div>
+                <span
+                  class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary transition-transform duration-200"
+                  :class="{ 'rotate-180': isOpen(index) }"
+                >
+                  <IconChevronDown class="h-5 w-5" />
+                </span>
+              </button>
+
+              <div
+                class="overflow-hidden transition-all duration-300 ease-in-out"
+                :style="{ maxHeight: isOpen(index) ? '2000px' : '0px' }"
+              >
+                <ul class="ml-8 list-disc space-y-4 px-5 pb-5 pl-5 marker:text-primary">
+                  <li
+                    v-for="(chapter, chIndex) in section.chapters"
+                    :key="chIndex"
+                    class="mt-2 pl-1"
+                  >
+                    <h4 class="mb-1 text-sm font-semibold text-text">{{ chapter.title }}</h4>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Footer -->
-      <div class="mt-6 reveal flex items-center gap-3 rounded-xl border border-primary/10 bg-white px-4 py-3 text-sm text-text/70">
-        <IconDocument class="w-5 h-5 text-text/60 flex-shrink-0" />
-        <span>Semua diilustrasikan dengan satu studi kasus nyata: Restaurant Booking & Ordering System</span>
-      </div>
+      <div class="mx-auto  flex flex-col gap-2 sm:flex-row justify-center">
+            <a
+              href="#pricing"
+              class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-primary"
+            >
+              Ambil Ebook Sekarang
+            </a>
+            <a
+              href="#faq"
+              class="inline-flex items-center justify-center rounded-full border border-primary/15 bg-white px-6 py-3 text-sm font-bold text-text transition-colors hover:border-primary/40"
+            >
+              Lihat Pertanyaan Umum
+            </a>
+          </div>
     </div>
+
+    
   </section>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 
-const openIndex = ref(-1)
+const openIndexes = ref([])
+const isOpen = (index) => openIndexes.value.includes(index)
 const toggle = (index) => {
-  openIndex.value = openIndex.value === index ? -1 : index
+  openIndexes.value = isOpen(index)
+    ? openIndexes.value.filter((openIndex) => openIndex !== index)
+    : [...openIndexes.value, index]
 }
 
 const sections = [
