@@ -20,11 +20,11 @@
 
       <div class="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 mb-12">
         <div class="reveal">
-          <div class="relative mx-auto max-w-[360px]">
+          <div class="relative mx-auto max-w-[345px] md:max-w-[450px] lg:max-w-[510px]">
               <img
-                src="/cover-ebook.png"
+                src="/new-cover.png"
                 alt="Cover ebook Mahir Vibe Coding"
-                class="mx-auto w-full rounded-[1.1rem] shadow-xl ring-1 ring-black/5"
+                class="mx-auto w-full drop-shadow-[0_20px_30px_rgba(23,23,23,0.18)]"
                 loading="lazy"
               >
           </div>
