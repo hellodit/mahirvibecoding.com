@@ -6,8 +6,6 @@ image: ""
 tools:
   - Invoice Management
   - Automation
-  - Notification System
-  - Analytics Dashboard
 order: 7
 status: draft
 ---
