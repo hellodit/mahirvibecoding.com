@@ -1,49 +1,73 @@
 ---
 id: "SC-06"
 title: "VidRecipe"
-description: "Membantu user menghemat waktu dengan mengubah short video masak menjadi resep siap pakai yang jelas dan mudah diikuti."
-image: ""
+description: "Ubah short video masak jadi resep terstruktur dengan bahan lengkap dan langkah memasak yang langsung bisa dipraktikkan, tanpa perlu pause-rewind berkali-kali."
+image: "/studycases/vidrecipe-thumbnail.png"
 tools:
   - Gemini
   - Video Processing
   - Recipe Extraction
-order: 6
-status: draft
+order: 2
+gallery:
+
+  - src: "/studycases/vidrecipe-1.png"
+    alt: "Tampilan aplikasi VidRecipe: halaman login, input URL video TikTok untuk ekstrak resep, dan koleksi resep di Your Kitchen"
+  - src: "/studycases/vidrecipe-2.png"
+    alt: "Detail resep Soto Ayam Lamongan di VidRecipe dengan tab Ingredients berisi daftar bahan dan tab Instructions berisi langkah memasak"
+  - src: "/studycases/vidrecipe-thumbnail.png"
+    alt: "Preview aplikasi VidRecipe: ubah short video masak menjadi resep terstruktur lengkap dengan bahan dan langkah memasak"
+status: published
 ---
 
-VidRecipe adalah study case aplikasi berbasis AI yang membantu user mendapatkan resep makanan dari short video. User cukup menempelkan URL video, lalu sistem akan menganalisis konten video untuk menghasilkan ringkasan resep, daftar bahan, dan langkah memasak yang relevan.
+Pernah nonton video masak di TikTok yang tampak menggugah selera, lalu kamu pause, rewind, screenshot, dan tetap saja melewatkan satu bahan? VidRecipe lahir dari frustrasi sederhana itu.
 
-Study case ini cocok untuk memahami bagaimana AI digunakan dalam alur produk yang sederhana di sisi user, tetapi kuat di sisi proses. Fokusnya bukan hanya menerima link video, melainkan memastikan hasil resep tetap jelas, terstruktur, dan bisa langsung dipraktikkan.
+VidRecipe adalah aplikasi berbasis AI yang mengubah short video masak menjadi resep siap pakai. User cukup menempelkan URL video, dan dalam hitungan detik, aplikasi mengembalikan ringkasan hidangan, daftar bahan, dan langkah memasak yang sudah terstruktur rapi.
 
-## Alur Utama Aplikasi
+Sebagai studi kasus, VidRecipe menunjukkan satu hal penting: **produk AI yang baik bukan tentang memamerkan teknologi, melainkan tentang menyelesaikan masalah nyata dengan pengalaman yang terasa mulus di sisi user.**
 
-Alur dimulai saat user menginput URL short video masakan ke dalam aplikasi. Setelah URL dikirim, sistem mengambil konteks dari video, lalu memprosesnya menggunakan Gemini untuk memahami masakan yang ditampilkan.
+## Masalah yang Diselesaikan
 
-Hasil analisis kemudian disusun menjadi tiga bagian utama: nama atau ringkasan resep, daftar bahan yang dibutuhkan, dan langkah memasak secara berurutan. Dengan cara ini, user tidak perlu menonton ulang video berkali-kali hanya untuk mencatat resep.
+Konten masak di short video sangat menarik. Visualnya cepat, durasinya pendek, dan ide hidangannya beragam. Tapi formatnya tidak ramah untuk eksekusi di dapur. User akhirnya harus menebak takaran, menghentikan video belasan kali, atau mencari referensi tambahan di Google hanya untuk memastikan satu langkah.
+
+VidRecipe menghilangkan friksi itu. Satu URL, satu klik, dan resep sudah siap dibaca seperti membaca buku resep.
+
+## Alur Aplikasi
+
+Alurnya sengaja dirancang sederhana di sisi user, walaupun proses di belakangnya kompleks:
+
+- User menempelkan URL short video masakan.
+- Sistem mengambil konten video dan memprosesnya menggunakan Gemini untuk memahami konteks hidangan.
+- AI menyusun output menjadi tiga bagian: nama atau ringkasan resep, daftar bahan, dan langkah memasak berurutan.
+- User mendapat resep yang langsung bisa dipraktikkan tanpa harus menonton ulang video.
+
+Yang menarik dari studi kasus ini bukan kompleksitas teknisnya, melainkan keputusan-keputusan kecil yang membuat hasilnya konsisten. Bagaimana menyusun prompt agar bahan tidak terlewat, bagaimana menangani video yang informasinya tidak lengkap, dan bagaimana menjaga pengalaman tetap cepat meski AI sedang bekerja di belakang.
 
 ## Fitur Utama
 
 - Input URL short video sebagai sumber resep.
-- Analisis konten video menggunakan Gemini.
-- Ekstraksi otomatis nama hidangan dan konteks masakan.
-- Generasi daftar bahan yang relevan berdasarkan isi video.
-- Generasi langkah memasak yang lebih rapi, jelas, dan mudah diikuti.
-- Output resep siap baca untuk kebutuhan memasak harian atau referensi konten.
+- Analisis konten video menggunakan Gemini untuk mengekstrak konteks hidangan.
+- Generasi otomatis nama hidangan, daftar bahan, dan langkah memasak berurutan.
+- Output resep terstruktur yang siap dibaca dan dipraktikkan.
+- Pengalaman ringan dan cepat, dirancang untuk dipakai sambil memasak.
 
-## Fokus Pembelajaran
+## Yang Akan Kamu Pelajari
 
-- Mendesain flow produk AI yang sederhana untuk user: input URL lalu menerima hasil terstruktur.
-- Mengubah konten video yang tidak terstruktur menjadi informasi resep yang bisa digunakan.
-- Menyusun prompt dan hasil AI agar bahan dan langkah tetap konsisten.
-- Menangani perbedaan kualitas video dan informasi yang tidak selalu lengkap.
-- Menjaga pengalaman user tetap cepat dan praktis meski proses analisis dilakukan oleh AI.
+Studi kasus ini melatih beberapa kemampuan inti yang dibutuhkan untuk membangun produk AI yang bekerja di dunia nyata:
 
-## Kenapa Study Case Ini Penting
+- **Mendesain flow produk AI yang sederhana di sisi user.** Bagaimana membungkus proses kompleks menjadi pengalaman satu klik.
+- **Mengubah data tidak terstruktur menjadi output terstruktur.** Dari konten video bebas menjadi resep dengan format konsisten.
+- **Menyusun prompt yang menghasilkan output stabil.** Agar bahan dan langkah tidak random setiap kali video diproses.
+- **Menangani kasus tepi dengan elegan.** Video pendek, informasi tidak lengkap, atau hidangan yang tidak familiar.
+- **Menjaga performa user-facing** meski proses AI memerlukan waktu di belakang layar.
 
-Banyak konten masak di short video menarik, tetapi sering tidak memberikan resep secara lengkap. User akhirnya harus menebak bahan, menghentikan video berkali-kali, atau mencari referensi tambahan di tempat lain.
+## Kenapa Studi Kasus Ini Penting
 
-VidRecipe menjawab masalah ini dengan memanfaatkan Gemini untuk mengubah video menjadi resep yang lebih siap pakai. Study case ini memperlihatkan bagaimana AI bisa memberikan nilai nyata pada masalah sehari-hari dengan pengalaman pengguna yang sederhana.
+Banyak tutorial AI hanya menunjukkan demo teknologi: "lihat, AI bisa melakukan X." Tapi membangun produk AI yang dipakai orang membutuhkan keterampilan yang sama sekali berbeda. Memahami pain point user, mendesain flow yang masuk akal, dan memastikan AI memberikan output yang konsisten, bukan hanya impresif sekali pakai.
+
+VidRecipe adalah contoh kecil tapi utuh dari proses itu. Dari masalah harian yang relatable, kamu akan melihat bagaimana satu URL berubah menjadi resep yang siap dipakai. Dan bagaimana setiap keputusan teknis di balik aplikasi ini ditujukan untuk satu hal: membuat hidup user lebih mudah.
 
 ## Output Akhir
 
-Di akhir study case, kamu punya gambaran bagaimana membangun aplikasi AI yang mengambil data dari URL video lalu mengubahnya menjadi resep terstruktur. Mulai dari alur input, proses analisis berbasis Gemini, hingga penyajian hasil bahan dan cara masak yang mudah dipahami user.
+Setelah menyelesaikan studi kasus ini, kamu punya gambaran utuh tentang membangun aplikasi AI yang mengambil sumber data tidak terstruktur dan menyajikannya sebagai output yang langsung berguna. Mulai dari merancang alur input, menyusun proses analisis berbasis AI, hingga menyajikan hasil yang konsisten dan mudah dipahami user.
+
+Lebih dari sekadar "bikin aplikasi AI", kamu akan paham cara mendesain pengalaman, bukan hanya menulis kode.
