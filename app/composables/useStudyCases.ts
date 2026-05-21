@@ -5,6 +5,7 @@ export interface StudyCaseRecord {
   description: string
   image: string
   videoId?: string
+  githubUrl?: string
   gallery: Array<{
     src: string
     alt: string

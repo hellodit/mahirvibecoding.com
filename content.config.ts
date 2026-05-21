@@ -28,6 +28,7 @@ export default defineContentConfig({
         description: z.string().max(220),
         image: z.string(),
         videoId: z.string().optional(),
+        githubUrl: z.string().url().optional(),
         gallery: z.array(z.object({
           src: z.string(),
           alt: z.string(),
