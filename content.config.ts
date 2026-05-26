@@ -36,6 +36,7 @@ export default defineContentConfig({
         tools: z.array(z.string()),
         order: z.number().default(0),
         status: z.enum(['draft', 'published']).default('draft'),
+        publishedAt: z.string().optional(),
       }),
     }),
   },

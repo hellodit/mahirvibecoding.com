@@ -2,22 +2,26 @@
 
 Audit covers: live site (`https://mahirvibecoding.com`) + source code in this repo. Stack: Nuxt 4, `@nuxtjs/sitemap`, `nuxt-schema-org`, `nuxt-og-image`, prerendered to Cloudflare. Locale: `id` (Indonesian, single-locale — no i18n concerns).
 
+## Execution Status (2026-05-26)
+
+All **High**-priority findings (#1, #2, #8, #11, #13, #17) have been executed at the code level — see ✅ markers in each section. The only outstanding item is the platform-side Cloudflare toggle for #1 (switch trailing-slash redirect from 307 → 301), which lives in Cloudflare Pages settings, not the repo.
+
 ## Executive Summary
 
 **Overall health: B-.** The foundation is solid — SSR-rendered HTML, dynamic OG images per article, Article + Breadcrumb schema on articles, RSS feed, sensible robots.txt, single H1 per page, well-written long-form content with cited sources (strong E-E-A-T).
 
 **Top 5 priorities (do these first):**
-1. **Fix the canonical ↔ 307-redirect mismatch on `/articles/*` and `/studycase/*`** — every indexable detail page hits a 307 to a trailing-slash URL while the canonical declares the non-slash version. Google must reconcile this and signal gets diluted.
-2. **Add study cases (and other prerendered routes) to the sitemap** — `sitemap.urls` currently only includes article + tag routes. The 4 study case URLs are absent.
-3. **Rebuild study case internal linking** — pages are orphans, only entry is the homepage, "back" link goes to `/#study-case`. Build a `/studycase` index page.
-4. **Add Article/CreativeWork + VideoObject schema to study cases** — currently only inherited Product schema.
-5. **Rewrite article slugs to remove the `artikel-N-` prefix** — keywords are pushed back ~10 chars in every URL.
+1. ✅ **Fix the canonical ↔ 307-redirect mismatch on `/articles/*` and `/studycase/*`** — every indexable detail page hits a 307 to a trailing-slash URL while the canonical declares the non-slash version. Google must reconcile this and signal gets diluted. *(Canonical + sitemap + internal links now consistently use trailing slash; platform-side 307→301 toggle in Cloudflare still pending — see #1 below.)*
+2. ✅ **Add study cases (and other prerendered routes) to the sitemap** — `sitemap.urls` currently only includes article + tag routes. The 4 study case URLs are absent.
+3. ✅ **Rebuild study case internal linking** — pages are orphans, only entry is the homepage, "back" link goes to `/#study-case`. Build a `/studycase` index page.
+4. ✅ **Add Article/CreativeWork + VideoObject schema to study cases** — currently only inherited Product schema.
+5. ✅ **Rewrite article slugs to remove the `artikel-N-` prefix** — keywords are pushed back ~10 chars in every URL.
 
 ---
 
 ## Technical SEO Findings
 
-### 1. Canonical URL vs. 307 redirect conflict — High
+### 1. Canonical URL vs. 307 redirect conflict — High ✅ (code-side done, platform pending)
 
 - **Issue:** Article and study case URLs *without* trailing slash return `HTTP 307 → /…/` (trailing slash). But each rendered page declares `<link rel="canonical" href="https://mahirvibecoding.com/articles/<slug>">` (no slash). The sitemap also uses no-slash URLs. So the canonical signal points to a URL that the server itself does not serve directly.
 - **Evidence:**
@@ -30,7 +34,7 @@ Audit covers: live site (`https://mahirvibecoding.com`) + source code in this re
   - Update Cloudflare/Nitro to return **301** instead of 307 (likely a Cloudflare Pages "Always Use Trailing Slash" or "Auto Redirect" setting).
   - In `nuxt.config.ts:113`, the homepage canonical is `siteUrl` (no slash) — keep but ensure server also serves `/` as canonical.
 
-### 2. Sitemap is incomplete — High
+### 2. Sitemap is incomplete — High ✅
 
 - **Issue:** `nuxt.config.ts:54-56` only feeds `articleRoutes` + `tagRoutes` into `@nuxtjs/sitemap`. Study case routes, `/privacy`, `/terms`, `/feed.xml`, and the homepage are not explicitly added (homepage is auto-included; the rest are not).
 - **Evidence:** `https://mahirvibecoding.com/sitemap.xml` returns 16 URLs, none of them `/studycase/*`. The 4 study case pages exist and are prerendered (per `routeRules` and `nitro.prerender.routes`).
@@ -74,7 +78,7 @@ Audit covers: live site (`https://mahirvibecoding.com`) + source code in this re
 - **Impact:** SERP shows `"MahirVibeCoding — Strategi Vibe Coding untuk Memban…"` — losing "Aplikasi Fullstack", which is the conversion keyword.
 - **Fix:** In `nuxt.config.ts:7`, shorten to ~55 chars. Example: `"Vibe Coding Fullstack: Framework AI Coding — MahirVibeCoding"` or `"Strategi Vibe Coding untuk Aplikasi Fullstack | MahirVibeCoding"`. Lead with the primary keyword "Vibe Coding".
 
-### 8. Article slugs include redundant `artikel-N-` prefix — High
+### 8. Article slugs include redundant `artikel-N-` prefix — High ✅
 
 - **Issue:** URLs like `/articles/artikel-1-kenapa-proyek-vibe-coding-gagal` push the keyword "kenapa" 11 chars after the path. Also brittle — if you reorder/delete, the numbers lie.
 - **Impact:** Weaker keyword signal in URL (a small but compounding factor); URLs harder to memorize/share; numbering decays.
@@ -101,7 +105,7 @@ Audit covers: live site (`https://mahirvibecoding.com`) + source code in this re
   - **Alternative:** Until each tag has 3+ articles, set `<meta name="robots" content="noindex, follow">` on tag pages with low article count.
   - **Long-term:** Convert tags to "topic hubs" with curated descriptions and learning paths.
 
-### 11. Study case pages lack Article/VideoObject schema — High
+### 11. Study case pages lack Article/VideoObject schema — High ✅
 
 - **Issue:** Only the inherited Product schema appears. `useSchemaOrg()` is not called in `app/pages/studycase/[slug].vue`.
 - **Impact:** Missing eligibility for article rich result, breadcrumb in SERP, and (since the page embeds YouTube via `videoId`) VideoObject rich result.
@@ -141,7 +145,7 @@ Audit covers: live site (`https://mahirvibecoding.com`) + source code in this re
 
 ## Content & Internal Linking Findings
 
-### 13. Study cases are functionally orphan pages — High
+### 13. Study cases are functionally orphan pages — High ✅
 
 - **Issue:** The 4 study case detail pages can only be reached via the homepage `StudyCaseSection`. Each study case detail page's "back" link goes to `/#study-case` (homepage anchor) — there is no `/studycase` index page. They don't link to each other (no "Related study cases"). They aren't in the sitemap. The articles index doesn't link to them. The footer doesn't link to them.
 - **Impact:** Low internal PageRank flow; if homepage `StudyCaseSection` ever changes (e.g. carousel showing only 3 of 4), one becomes fully orphaned. Crawl signal that these are important is weak.
@@ -176,7 +180,7 @@ Audit covers: live site (`https://mahirvibecoding.com`) + source code in this re
 
 ## Performance Findings
 
-### 17. `/new-cover.png` is 1.54 MB and served via raw `<img>` — High
+### 17. `/new-cover.png` is 1.54 MB and served via raw `<img>` — High ✅
 
 - **Issue:** `app/components/CurriculumSection.vue:24-29` uses `<img src="/new-cover.png">` instead of `<NuxtImg>`. The file is 1,541,257 bytes.
 - **Impact:** Even with `loading="lazy"`, any user who scrolls to the curriculum section downloads 1.5 MB. On mobile this is brutal.

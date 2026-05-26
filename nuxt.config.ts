@@ -85,8 +85,16 @@ export default defineNuxtConfig({
     '/': { prerender: true },
     '/articles': { prerender: true },
     '/articles/**': { prerender: true },
+    '/studycase': { prerender: true },
     '/studycase/**': { prerender: true },
+    '/privacy': { prerender: true },
+    '/terms': { prerender: true },
     '/feed.xml': { prerender: true },
+    // 301 redirects for legacy article slugs (renamed to drop the artikel-N- prefix)
+    '/articles/artikel-1-kenapa-proyek-vibe-coding-gagal': { redirect: { to: '/articles/kenapa-proyek-vibe-coding-gagal/', statusCode: 301 } },
+    '/articles/artikel-2-kamu-bukan-developer-lagi-kamu-jadi-penonton': { redirect: { to: '/articles/kamu-bukan-developer-lagi-kamu-jadi-penonton/', statusCode: 301 } },
+    '/articles/artikel-3-prompt-sempurna-tidak-cukup': { redirect: { to: '/articles/prompt-sempurna-tidak-cukup/', statusCode: 301 } },
+    '/articles/artikel-4-jangan-serahkan-database-schema-ke-ai': { redirect: { to: '/articles/jangan-serahkan-database-schema-ke-ai/', statusCode: 301 } },
   },
 
   nitro: {

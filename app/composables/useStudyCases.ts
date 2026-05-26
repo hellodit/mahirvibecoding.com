@@ -13,6 +13,7 @@ export interface StudyCaseRecord {
   tools: string[]
   order: number
   status: 'draft' | 'published'
+  publishedAt?: string
   body?: unknown
 }
 

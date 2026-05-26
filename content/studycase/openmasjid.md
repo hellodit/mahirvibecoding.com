@@ -25,6 +25,7 @@ tools:
   - Supabase
 order: 8
 status: published
+publishedAt: "2026-05-17"
 ---
 
 OpenMasjid adalah study case aplikasi untuk membantu pengurus masjid (DKM) mengelola operasional masjid dalam satu platform terpadu. Aplikasi ini menyatukan profil masjid, jadwal solat, kegiatan, registrasi jamaah, dan pengumuman publik ke dalam tiga antarmuka yang saling terhubung: portal jamaah, dashboard admin, dan tampilan TV masjid.

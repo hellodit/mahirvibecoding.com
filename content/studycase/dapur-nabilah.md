@@ -18,6 +18,7 @@ tools:
   - WhatsApp Notification
 order: 1
 status: published
+publishedAt: "2026-04-26"
 ---
 
 Dapur Nabilah adalah study case aplikasi booking restoran berbasis Laravel. Aplikasi ini dirancang untuk membantu restoran menampilkan menu, menerima reservasi meja, mengelola pemesanan makanan, memproses pembayaran online, dan mengirim notifikasi otomatis ke pelanggan.

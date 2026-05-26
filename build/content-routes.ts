@@ -104,7 +104,7 @@ export function buildRoutes() {
   const studyCaseEntries = getStudyCaseEntries()
 
   const articleRoutes = ['/articles/', ...articleEntries.map(entry => `/articles/${entry.slug}/`)]
-  const studyCaseRoutes = studyCaseEntries.map(entry => `/studycase/${entry.slug}/`)
+  const studyCaseRoutes = ['/studycase/', ...studyCaseEntries.map(entry => `/studycase/${entry.slug}/`)]
   const tagRoutes = Array.from(
     new Set(articleEntries.flatMap(entry => entry.tags.map(tag => `/articles/tag/${encodeURIComponent(tag)}/`))),
   )

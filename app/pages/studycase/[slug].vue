@@ -5,7 +5,7 @@
     <main class="px-6 pb-20 pt-10 md:pt-14">
       <div class="mx-auto max-w-5xl">
         <NuxtLink
-          to="/#study-case"
+          to="/studycase/"
           class="inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:text-text"
         >
           <IconArrowRight class="h-4 w-4 rotate-180" />
@@ -122,6 +122,48 @@
             </div>
           </div>
         </article>
+
+        <section v-if="relatedStudyCases.length" class="mt-16">
+          <div class="flex items-end justify-between gap-4">
+            <h2 class="text-2xl font-bold tracking-tight text-text md:text-3xl">
+              Study case lainnya
+            </h2>
+            <NuxtLink
+              to="/studycase/"
+              class="inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:text-text"
+            >
+              <span>Lihat semua</span>
+              <IconArrowRight class="h-4 w-4" />
+            </NuxtLink>
+          </div>
+
+          <div class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <NuxtLink
+              v-for="item in relatedStudyCases"
+              :key="item.id"
+              :to="`${item.path}/`"
+              class="group block overflow-hidden rounded-2xl border border-primary/10 bg-white transition hover:border-primary/25 hover:shadow-sm"
+            >
+              <div class="aspect-[16/9] overflow-hidden bg-primary/5">
+                <NuxtImg
+                  v-if="item.image"
+                  :src="item.image"
+                  :alt="item.title"
+                  class="h-full w-full object-cover transition group-hover:scale-[1.02]"
+                  loading="lazy"
+                />
+              </div>
+              <div class="p-5">
+                <h3 class="text-base font-bold tracking-tight text-text">
+                  {{ item.title }}
+                </h3>
+                <p class="mt-2 line-clamp-3 text-sm leading-relaxed text-text/70">
+                  {{ item.description }}
+                </p>
+              </div>
+            </NuxtLink>
+          </div>
+        </section>
       </div>
     </main>
 
@@ -130,7 +172,7 @@
 </template>
 
 <script setup lang="ts">
-import { fetchStudyCaseBySlug, type StudyCaseRecord } from '~/composables/useStudyCases'
+import { fetchStudyCaseBySlug, fetchStudyCases, type StudyCaseRecord } from '~/composables/useStudyCases'
 import { planBase } from '~/data/pricingPlans'
 
 const runtimeConfig = useRuntimeConfig()
@@ -152,6 +194,49 @@ if (!studyCaseData.value) {
 const studyCase = studyCaseData.value
 const canonicalUrl = `${runtimeConfig.public.siteUrl}${studyCase.path}/`
 const checkoutPlan = (planBase.find(plan => plan.featured) ?? planBase[0])!
+
+const { data: relatedStudyCasesData } = await useAsyncData<StudyCaseRecord[]>(
+  `studycase-related-${slug}`,
+  async () => {
+    const all = await fetchStudyCases()
+    return all
+      .filter(item => item.status === 'published' && item.path !== studyCase.path)
+      .slice(0, 3)
+  },
+)
+const relatedStudyCases = relatedStudyCasesData.value ?? []
+
+const absoluteImage = `${runtimeConfig.public.siteUrl}${studyCase.image}`
+
+const schemas: Array<Record<string, unknown>> = [
+  defineArticle({
+    headline: studyCase.title,
+    description: studyCase.description,
+    image: absoluteImage,
+    inLanguage: 'id-ID',
+    url: canonicalUrl,
+    ...(studyCase.publishedAt ? { datePublished: studyCase.publishedAt } : {}),
+  }),
+  defineBreadcrumb({
+    itemListElement: [
+      { position: 1, name: 'Home', item: `${runtimeConfig.public.siteUrl}/` },
+      { position: 2, name: 'Study Case', item: `${runtimeConfig.public.siteUrl}/studycase/` },
+      { position: 3, name: studyCase.title, item: canonicalUrl },
+    ],
+  }),
+]
+
+if (studyCase.videoId) {
+  schemas.push(defineVideo({
+    name: studyCase.title,
+    description: studyCase.description,
+    thumbnailUrl: absoluteImage,
+    embedUrl: `https://www.youtube.com/embed/${studyCase.videoId}`,
+    ...(studyCase.publishedAt ? { uploadDate: studyCase.publishedAt } : {}),
+  }))
+}
+
+useSchemaOrg(schemas)
 
 useSeoMeta({
   title: `${studyCase.title} — ${runtimeConfig.public.siteName}`,

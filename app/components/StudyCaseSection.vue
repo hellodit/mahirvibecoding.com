@@ -12,6 +12,16 @@
         </p>
       </div>
 
+      <div class="mb-6 flex items-center justify-end">
+        <NuxtLink
+          to="/studycase/"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:text-text"
+        >
+          <span>Lihat semua study case</span>
+          <IconArrowRight class="h-4 w-4" />
+        </NuxtLink>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <article
           v-for="(studyCase, index) in studyCases"

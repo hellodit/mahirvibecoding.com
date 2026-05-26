@@ -17,6 +17,7 @@ gallery:
   - src: "/studycases/vidrecipe-thumbnail.png"
     alt: "Preview aplikasi VidRecipe: ubah short video masak menjadi resep terstruktur lengkap dengan bahan dan langkah memasak"
 status: published
+publishedAt: "2026-04-30"
 ---
 
 Pernah nonton video masak di TikTok yang tampak menggugah selera, lalu kamu pause, rewind, screenshot, dan tetap saja melewatkan satu bahan? VidRecipe lahir dari frustrasi sederhana itu.
