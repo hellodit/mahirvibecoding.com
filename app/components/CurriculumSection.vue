@@ -154,7 +154,7 @@ const sections = [
     babCount: 4,
     chapters: [
       {
-        title: 'Schema & Migration: Dari DDL ke Laravel',
+        title: 'Schema & Migration',
         description: 'Pendekatan incremental: mulai dari Pre-Flow, tambah tabel per flow. Keputusan desain: JSON snapshot, tabel transaksi terpisah, composite index.',
       },
       {
