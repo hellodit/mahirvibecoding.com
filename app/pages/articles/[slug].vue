@@ -102,7 +102,7 @@ const { data: surroundingsData } = await useAsyncData(
 const previousArticle = surroundingsData.value?.[0] ?? null
 const nextArticle = surroundingsData.value?.[1] ?? null
 const relatedArticles = relatedArticlesData.value ?? []
-const canonicalUrl = `${runtimeConfig.public.siteUrl}${article.path}`
+const canonicalUrl = `${runtimeConfig.public.siteUrl}${article.path}/`
 const analytics = useArticleAnalytics()
 const viewCount = ref<number | null>(null)
 
@@ -132,8 +132,8 @@ useSchemaOrg([
   }),
   defineBreadcrumb({
     itemListElement: [
-      { position: 1, name: 'Home', item: runtimeConfig.public.siteUrl },
-      { position: 2, name: 'Articles', item: `${runtimeConfig.public.siteUrl}/articles` },
+      { position: 1, name: 'Home', item: `${runtimeConfig.public.siteUrl}/` },
+      { position: 2, name: 'Articles', item: `${runtimeConfig.public.siteUrl}/articles/` },
       { position: 3, name: article.title, item: canonicalUrl },
     ],
   }),

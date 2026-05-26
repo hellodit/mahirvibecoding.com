@@ -30,7 +30,7 @@ useSeoMeta({
   ogTitle: runtimeConfig.public.siteTitle,
   ogDescription: runtimeConfig.public.siteDescription,
   ogType: 'website',
-  ogUrl: runtimeConfig.public.siteUrl,
+  ogUrl: `${runtimeConfig.public.siteUrl}/`,
   twitterCard: 'summary_large_image',
   twitterTitle: runtimeConfig.public.siteTitle,
   twitterDescription: runtimeConfig.public.siteDescription,

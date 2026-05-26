@@ -79,8 +79,8 @@ const searchSections = searchSectionsData.value ?? []
 const featuredArticle = articlesPage.currentPage === 1 ? articlesPage.items[0] ?? null : null
 const restArticles = featuredArticle ? articlesPage.items.slice(1) : articlesPage.items
 const canonicalUrl = articlesPage.currentPage > 1
-  ? `${runtimeConfig.public.siteUrl}/articles?page=${articlesPage.currentPage}`
-  : `${runtimeConfig.public.siteUrl}/articles`
+  ? `${runtimeConfig.public.siteUrl}/articles/?page=${articlesPage.currentPage}`
+  : `${runtimeConfig.public.siteUrl}/articles/`
 
 defineOgImageComponent('ArticleFrame', {
   title: articlesPage.currentPage > 1 ? `Articles Page ${articlesPage.currentPage}` : 'Articles',
@@ -92,7 +92,7 @@ defineOgImageComponent('ArticleFrame', {
 useSchemaOrg([
   defineWebSite({
     name: runtimeConfig.public.siteName,
-    url: runtimeConfig.public.siteUrl,
+    url: `${runtimeConfig.public.siteUrl}/`,
   }),
   defineWebPage({
     name: articlesPage.currentPage > 1 ? `Articles Page ${articlesPage.currentPage}` : 'Articles',
@@ -101,15 +101,15 @@ useSchemaOrg([
   }),
   defineBreadcrumb({
     itemListElement: [
-      { position: 1, name: 'Home', item: runtimeConfig.public.siteUrl },
-      { position: 2, name: 'Articles', item: `${runtimeConfig.public.siteUrl}/articles` },
+      { position: 1, name: 'Home', item: `${runtimeConfig.public.siteUrl}/` },
+      { position: 2, name: 'Articles', item: `${runtimeConfig.public.siteUrl}/articles/` },
     ],
   }),
   defineItemList({
     itemListElement: articlesPage.items.map((article, index) => ({
       position: index + 1,
       name: article.title,
-      item: `${runtimeConfig.public.siteUrl}${article.path}`,
+      item: `${runtimeConfig.public.siteUrl}${article.path}/`,
     })),
   }),
 ])

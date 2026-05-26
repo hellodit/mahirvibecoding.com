@@ -12,11 +12,11 @@ const isGaEnabled = /^G-[A-Z0-9]+$/i.test(gaMeasurementId)
 const modules = ['@nuxt/content', '@nuxt/fonts', '@nuxt/image', '@nuxtjs/robots', '@nuxtjs/tailwindcss', '@nuxtjs/sitemap', 'nuxt-schema-org', 'nuxt-og-image', 'nuxt-link-checker', 'nuxt-gtag']
 
 const articleEntries = getArticleEntries()
-const articleRoutes = ['/articles', ...articleEntries.map(entry => `/articles/${entry.slug}`)]
+const articleRoutes = ['/articles/', ...articleEntries.map(entry => `/articles/${entry.slug}/`)]
 const studyCaseEntries = getStudyCaseEntries()
-const studyCaseRoutes = studyCaseEntries.map(entry => `/studycase/${entry.slug}`)
+const studyCaseRoutes = studyCaseEntries.map(entry => `/studycase/${entry.slug}/`)
 const tagRoutes = Array.from(
-  new Set(articleEntries.flatMap(entry => entry.tags.map(tag => `/articles/tag/${encodeURIComponent(tag)}`)))
+  new Set(articleEntries.flatMap(entry => entry.tags.map(tag => `/articles/tag/${encodeURIComponent(tag)}/`)))
 )
 const prerenderRoutes = Array.from(new Set([...articleRoutes, ...studyCaseRoutes, ...tagRoutes, '/feed.xml']))
 
@@ -45,6 +45,7 @@ export default defineNuxtConfig({
   site: {
     url: siteUrl,
     name: siteName,
+    trailingSlash: true,
   },
 
   robots: {
@@ -52,7 +53,7 @@ export default defineNuxtConfig({
   },
 
   sitemap: {
-    urls: [...articleRoutes, ...tagRoutes],
+    urls: [...articleRoutes, ...studyCaseRoutes, ...tagRoutes],
   },
 
   ogImage: {
@@ -91,7 +92,7 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
         // Open Graph
         { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: siteUrl },
+        { property: 'og:url', content: `${siteUrl}/` },
         { property: 'og:title', content: siteTitle },
         { property: 'og:description', content: siteDescription },
 
@@ -110,7 +111,7 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/favicon.png' },
-        { rel: 'canonical', href: siteUrl },
+        { rel: 'canonical', href: `${siteUrl}/` },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         { rel: 'alternate', type: 'application/rss+xml', title: `${siteName} Articles Feed`, href: `${siteUrl}/feed.xml` },

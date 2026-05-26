@@ -80,8 +80,8 @@ const { data: articlesPageData } = await useAsyncData(
 
 const articlesPage = articlesPageData.value ?? paginateArticles([], 1)
 const canonicalUrl = articlesPage.currentPage > 1
-  ? `${runtimeConfig.public.siteUrl}${getTagPath(currentTag)}?page=${articlesPage.currentPage}`
-  : `${runtimeConfig.public.siteUrl}${getTagPath(currentTag)}`
+  ? `${runtimeConfig.public.siteUrl}${getTagPath(currentTag)}/?page=${articlesPage.currentPage}`
+  : `${runtimeConfig.public.siteUrl}${getTagPath(currentTag)}/`
 
 defineOgImageComponent('ArticleFrame', {
   title: `#${currentTag}`,
@@ -98,8 +98,8 @@ useSchemaOrg([
   }),
   defineBreadcrumb({
     itemListElement: [
-      { position: 1, name: 'Home', item: runtimeConfig.public.siteUrl },
-      { position: 2, name: 'Articles', item: `${runtimeConfig.public.siteUrl}/articles` },
+      { position: 1, name: 'Home', item: `${runtimeConfig.public.siteUrl}/` },
+      { position: 2, name: 'Articles', item: `${runtimeConfig.public.siteUrl}/articles/` },
       { position: 3, name: `#${currentTag}`, item: canonicalUrl },
     ],
   }),
@@ -107,7 +107,7 @@ useSchemaOrg([
     itemListElement: articlesPage.items.map((article, index) => ({
       position: index + 1,
       name: article.title,
-      item: `${runtimeConfig.public.siteUrl}${article.path}`,
+      item: `${runtimeConfig.public.siteUrl}${article.path}/`,
     })),
   }),
 ])

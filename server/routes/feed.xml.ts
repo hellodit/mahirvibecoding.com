@@ -14,7 +14,7 @@ export default eventHandler(async (event) => {
   const latestArticles = articles.slice(0, 20)
 
   const items = latestArticles.map((article) => {
-    const link = `${siteUrl}${article.path}`
+    const link = `${siteUrl}${article.path}/`
     const publishedAt = new Date(article.publishedAt).toUTCString()
     const categories = article.tags.map((tag: string) => `<category>${escapeXml(tag)}</category>`).join('')
 
@@ -36,7 +36,7 @@ export default eventHandler(async (event) => {
   <channel>
     <title>${escapeXml(siteName)} Articles</title>
     <description>${escapeXml(config.public.siteDescription)}</description>
-    <link>${siteUrl}/articles</link>
+    <link>${siteUrl}/articles/</link>
     <language>id-ID</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     ${items}

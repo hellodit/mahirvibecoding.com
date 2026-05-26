@@ -150,7 +150,7 @@ if (!studyCaseData.value) {
 }
 
 const studyCase = studyCaseData.value
-const canonicalUrl = `${runtimeConfig.public.siteUrl}${studyCase.path}`
+const canonicalUrl = `${runtimeConfig.public.siteUrl}${studyCase.path}/`
 const checkoutPlan = (planBase.find(plan => plan.featured) ?? planBase[0])!
 
 useSeoMeta({
