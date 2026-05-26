@@ -20,6 +20,18 @@ const tagRoutes = Array.from(
 )
 const prerenderRoutes = Array.from(new Set([...articleRoutes, ...studyCaseRoutes, ...tagRoutes, '/feed.xml']))
 
+const sitemapUrls = [
+  { loc: '/articles/' },
+  ...articleEntries.map(entry => ({
+    loc: `/articles/${entry.slug}/`,
+    lastmod: entry.updatedAt || entry.publishedAt,
+  })),
+  ...studyCaseRoutes.map(loc => ({ loc })),
+  ...tagRoutes.map(loc => ({ loc })),
+  { loc: '/privacy/' },
+  { loc: '/terms/' },
+]
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
@@ -53,7 +65,7 @@ export default defineNuxtConfig({
   },
 
   sitemap: {
-    urls: [...articleRoutes, ...studyCaseRoutes, ...tagRoutes],
+    urls: sitemapUrls,
   },
 
   ogImage: {
@@ -203,7 +215,7 @@ function getArticleEntries() {
     return []
   }
 
-  const entries: Array<{ slug: string, tags: string[] }> = []
+  const entries: Array<{ slug: string, tags: string[], publishedAt?: string, updatedAt?: string }> = []
 
   const visit = (dir: string) => {
     for (const entry of readdirSync(dir)) {
@@ -231,6 +243,8 @@ function getArticleEntries() {
       entries.push({
         slug,
         tags: extractTags(frontmatter),
+        publishedAt: extractFrontmatterValue(frontmatter, 'publishedAt'),
+        updatedAt: extractFrontmatterValue(frontmatter, 'updatedAt'),
       })
     }
   }
@@ -284,6 +298,12 @@ function getStudyCaseEntries() {
 function extractFrontmatter(content: string) {
   const match = content.match(/^---\n([\s\S]*?)\n---/)
   return match?.[1] ?? ''
+}
+
+function extractFrontmatterValue(frontmatter: string, key: string): string | undefined {
+  const re = new RegExp(`^\\s*${key}:\\s*["']?(.+?)["']?\\s*$`, 'm')
+  const match = frontmatter.match(re)
+  return match?.[1]?.trim()
 }
 
 function isDraft(frontmatter: string) {
