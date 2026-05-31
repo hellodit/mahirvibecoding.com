@@ -5,16 +5,37 @@ import { buildHead, ogImage, seoConfig } from './build/seo'
 const { siteUrl, siteName, siteTitle, siteDescription } = seoConfig
 const gaMeasurementId = process.env.NUXT_PUBLIC_GA_MEASUREMENT_ID || ''
 const isGaEnabled = /^G-[A-Z0-9]+$/i.test(gaMeasurementId)
-const modules = ['@nuxt/content', '@nuxt/fonts', '@nuxt/image', '@nuxtjs/robots', '@nuxtjs/tailwindcss', '@nuxtjs/sitemap', 'nuxt-schema-org', 'nuxt-og-image', 'nuxt-link-checker', 'nuxt-gtag']
-
 const { prerenderRoutes, sitemapUrls } = buildRoutes()
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules,
+  modules: [
+    '@nuxt/content',
+    '@nuxt/fonts',
+    '@nuxt/image',
+    '@nuxtjs/robots',
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/sitemap',
+    'nuxt-schema-org',
+    'nuxt-og-image',
+    'nuxt-link-checker',
+    'nuxt-gtag',
+    '@nuxt/scripts',
+  ],
   css: ['~/assets/css/global.css'],
-
+  scripts: {
+    registry: {
+      metaPixel: {
+        id: process.env.NUXT_PUBLIC_META_PIXEL_ID || '',
+        trigger: 'onNuxtReady',
+        // Muat fbevents.js langsung dari connect.facebook.net (jangan di-bundle/proxy
+        // ke /_scripts). Default registry `bundle: true` membuat skrip self-hosted,
+        // sehingga Meta Pixel Helper & Events Manager tidak mengenalinya sebagai Pixel.
+        bundle: false,
+      }
+    }
+  },
   gtag: {
     enabled: isGaEnabled,
     id: isGaEnabled ? gaMeasurementId : undefined,

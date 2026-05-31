@@ -68,6 +68,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="block w-full py-3.5 bg-white text-primary text-sm font-bold rounded-xl hover:opacity-90 transition-colors text-center cursor-pointer"
+                @click="onCheckout(plan)"
               >
                 Daftar Sekarang
               </a>
@@ -90,7 +91,21 @@
 </template>
 
 <script setup lang="ts">
-import { planBase } from '~/data/pricingPlans'
+import { planBase, type PricingPlan } from '~/data/pricingPlans'
+
+const { track } = useMetaPixel()
+
+function onCheckout(plan: PricingPlan) {
+  // Harga berformat Indonesia ("99.000") -> 99000.
+  const value = Number(plan.price.replace(/\D/g, '')) || undefined
+  track('InitiateCheckout', {
+    content_name: plan.name,
+    content_ids: [plan.id],
+    content_type: 'product',
+    value,
+    currency: 'IDR',
+  })
+}
 
 function isHeading(benefit: string | { isHeading?: boolean; text?: string }) {
   return typeof benefit === 'object' && benefit?.isHeading

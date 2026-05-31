@@ -86,6 +86,8 @@ const props = defineProps({
 
 const emit = defineEmits(['dismissed', 'submit'])
 
+const { track } = useMetaPixel()
+
 const isVisible = ref(false)
 const email = ref('')
 const submitting = ref(false)
@@ -126,6 +128,7 @@ async function onSubmit() {
       body: { email: email.value },
     })
     submitted.value = true
+    track('Lead', { content_name: 'Lead Magnet - Bab Gratis' })
     setTimeout(dismiss, 3000)
   } catch (e: any) {
     error.value = 'Gagal mengirim. Silakan coba lagi.'
