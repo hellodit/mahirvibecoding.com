@@ -13,14 +13,6 @@
         </NuxtLink>
 
         <article class="mt-8 overflow-hidden rounded-[32px] border border-primary/10 bg-white shadow-sm">
-          <NuxtImg
-            :src="studyCase.image"
-            :alt="studyCase.title"
-            class="h-64 w-full object-cover md:h-80"
-            sizes="100vw lg:960px"
-            loading="eager"
-            fetchpriority="high"
-          />
 
           <div class="px-6 py-8 md:px-10 md:py-10">
             <h1 class="mt-5 text-3xl font-bold leading-tight tracking-tight text-text md:text-[2.75rem]">
