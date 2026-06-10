@@ -2,7 +2,7 @@
 id: "SC-08"
 title: "OpenMasjid"
 description: "Platform digital terpadu untuk DKM (Dewan Kemakmuran Masjid) — kelola profil masjid, jadwal solat, kegiatan, dan pengumuman lewat portal jamaah, dashboard admin, dan tampilan TV masjid."
-image: "/studycases/openmasjid/admin-dashboard.png"
+image: "/studycases/openmasjid/thumbs.png"
 githubUrl: "https://github.com/hellodit/OpenMasjid"
 gallery:
   - src: "/studycases/openmasjid/admin-dashboard.png"

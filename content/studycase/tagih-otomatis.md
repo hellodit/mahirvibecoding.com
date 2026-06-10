@@ -2,12 +2,19 @@
 id: "SC-07"
 title: "Tagih Otomatis"
 description: "Membantu bisnis mempercepat pembayaran, mengurangi invoice menunggak, dan memantau cashflow lewat penagihan otomatis."
-image: ""
+image: "/studycases/tagihotomatis/thumbs.png"
 tools:
   - Invoice Management
   - Automation
 order: 7
-status: draft
+gallery:
+  - src: "/studycases/tagihotomatis/image-1.png"
+    alt: "Dashboard utama aplikasi Tagih Otomatis menampilkan daftar invoice dengan status pembayaran dan opsi tindakan"
+  - src: "/studycases/tagihotomatis/image-2.png"
+    alt: "Detail invoice dengan informasi pelanggan, jumlah tagihan, dan notifikasi"
+  - src: "/studycases/tagihotomatis/image-3.png"
+    alt: "Daftar Customer yang dikelompokkan berdasarkan status pembayaran (on-time, overdue, high risk)"
+status: published
 ---
 
 Tagih Otomatis adalah study case aplikasi untuk membantu bisnis mengelola invoice, mengirim notifikasi pembayaran, dan melakukan penagihan secara lebih terstruktur. Aplikasi ini juga dilengkapi analytics agar tim dapat memantau performa penagihan dan kesehatan arus kas.
